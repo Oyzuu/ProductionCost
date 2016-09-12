@@ -24,7 +24,7 @@ class MaterialFormController: UITableViewController {
     @IBOutlet weak var nameField:     UITextField!
     @IBOutlet weak var priceField:    UITextField!
     @IBOutlet weak var quantityField: UITextField!
-    @IBOutlet weak var quantityCell: UITableViewCell!
+    @IBOutlet weak var quantityCell:  UITableViewCell!
     
     // MARK: Properties
     
@@ -78,6 +78,6 @@ extension MaterialFormController {
             return 0
         }
         
-        return 44
+        return 44 // Default height for static cells
     }
 }

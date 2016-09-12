@@ -169,27 +169,15 @@ extension MaterialListController: UITableViewDataSource {
             
             return cell
         }
-        else if materials[indexPath.row].isPack {
-            let cell = tableView.dequeueReusableCellWithIdentifier(
-                CellIdentifiers.PackMaterialCell, forIndexPath: indexPath) as! MainMaterialCell
-            
-            let result = materials[indexPath.row]
-            
-            cell.nameLabel.text        = result.name
-            let tempQuantity = "\(result.quantity)"
-            cell.informationLabel.text = result.quantity == 1 ? "" : "by \(result.quantity)"
-            cell.priceLabel.text       = "\(result.price) $"
-            
-            return cell
-        }
         else {
+            let material   = materials[indexPath.row]
+            let identifier = material.isPack ?
+                CellIdentifiers.PackMaterialCell : CellIdentifiers.UnitMaterialCell
+            
             let cell = tableView.dequeueReusableCellWithIdentifier(
-                CellIdentifiers.UnitMaterialCell, forIndexPath: indexPath) as! MainMaterialCell
+                identifier, forIndexPath: indexPath) as! MainMaterialCell
             
-            let result = materials[indexPath.row]
-            
-            cell.nameLabel.text        = result.name
-            cell.priceLabel.text       = "\(result.price) $"
+            cell.prepare(withMaterial: material)
             
             return cell
         }
