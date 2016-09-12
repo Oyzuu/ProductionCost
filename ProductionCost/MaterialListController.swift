@@ -15,7 +15,7 @@ struct CellIdentifiers {
     static let SubMaterialCell  = "SubMaterialCell"
 }
 
-class MaterialsViewController: UIViewController {
+class MaterialListController: UIViewController {
     
     // MARK: Outlets
     
@@ -41,22 +41,27 @@ class MaterialsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let mat1 = Material()
-        mat1.name  = "bonjour"
-        mat1.price = 1.56
-        materials.append(mat1)
+        let urls = NSFileManager.defaultManager()
+            .URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let documentsDirectory = urls[0]
+        print(documentsDirectory)
         
-        let mat2 = Material()
-        mat2.name  = "au revoir"
-        mat2.price = 150.56
-        materials.append(mat2)
-        
-        let mat3 = Material()
-        mat3.name  = "à demain"
-        mat3.isPack = true
-        mat3.quantity = 6
-        mat3.price = 25.59
-        materials.append(mat3)
+//        let mat1 = Material()
+//        mat1.name  = "bonjour"
+//        mat1.price = 1.56
+//        materials.append(mat1)
+//        
+//        let mat2 = Material()
+//        mat2.name  = "au revoir"
+//        mat2.price = 150.56
+//        materials.append(mat2)
+//        
+//        let mat3 = Material()
+//        mat3.name  = "à demain"
+//        mat3.isPack = true
+//        mat3.quantity = 6
+//        mat3.price = 25.59
+//        materials.append(mat3)
         
         tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         tableView.rowHeight = 60
@@ -75,13 +80,45 @@ class MaterialsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "AddMaterialSegue" {
+            guard let navControl = segue.destinationViewController as? UINavigationController,
+            materialForm = navControl.viewControllers[0] as? MaterialFormController  else {
+                return
+            }
+            
+            materialForm.delegate = self
+        }
+    }
+    
     // MARK: Methods
 
     @IBAction func addMaterial(sender: AnyObject) {
+        let actionSheet = UIAlertController(title: "Material type", message: "",
+                                            preferredStyle: .ActionSheet)
         
+        let addUnit = UIAlertAction(title: "Unit", style: .Default) { action in
+            print("add unit")
+            
+            self.performSegueWithIdentifier("AddMaterialSegue", sender: nil)
+        }
+        
+        let addPack = UIAlertAction(title: "Pack",   style: .Default, handler: nil)
+        let cancel  = UIAlertAction(title: "Cancel", style: .Cancel,  handler: nil)
+        
+        actionSheet.addAction(addUnit)
+        actionSheet.addAction(addPack)
+        actionSheet.addAction(cancel)
+        
+        presentViewController(actionSheet, animated: true, completion: nil)
     }
 
     @IBAction func searchMaterial(sender: AnyObject) {
+        guard materials.count > 0 else {
+            print("empty array")
+            return
+        }
+        
         let realm = try! Realm()
         
         try! realm.write {
@@ -93,9 +130,22 @@ class MaterialsViewController: UIViewController {
     
 }
 
+extension MaterialListController: MaterialFormDelegate {
+    
+    func MaterialForm(controller: MaterialFormController, didSave material: Material) {
+        materials.append(material)
+        tableView.reloadData()
+    }
+    
+    func MaterialForm(controller: MaterialFormController, didEdit material: Material) {
+        
+    }
+    
+}
+
 // MARK: EXT - Navigation bar delegate
 
-extension MaterialsViewController: UINavigationBarDelegate {
+extension MaterialListController: UINavigationBarDelegate {
     
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
         return .TopAttached
@@ -105,9 +155,13 @@ extension MaterialsViewController: UINavigationBarDelegate {
 
 // MARK: EXT - Table view delegate
 
-extension MaterialsViewController: UITableViewDelegate {
+extension MaterialListController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if materials.count == 0 {
+            addMaterial(self)
+        }
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -115,7 +169,7 @@ extension MaterialsViewController: UITableViewDelegate {
 
 // MARK: EXT - Table view data source
 
-extension MaterialsViewController: UITableViewDataSource {
+extension MaterialListController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if materials.count == 0 {

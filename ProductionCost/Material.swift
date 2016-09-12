@@ -13,10 +13,10 @@ class Material: Object {
     
     // MARK: properties
     
-    dynamic var name          = ""
-    dynamic var isPack        = false
-    dynamic var quantity      = 1
-    dynamic var price: Double = 0.0
+    dynamic var name             = ""
+    dynamic var isPack           = false
+    dynamic var quantity: Double = 1.0
+    dynamic var price: Double    = 0.0
     
 // Specify properties to ignore (Realm won't persist these)
     
