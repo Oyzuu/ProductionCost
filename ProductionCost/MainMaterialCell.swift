@@ -12,7 +12,6 @@ class MainMaterialCell: UITableViewCell {
     
     // MARK: Outlets
 
-    @IBOutlet weak var iconImageView:    UIImageView!
     @IBOutlet weak var nameLabel:        UILabel!
     @IBOutlet weak var informationLabel: UILabel!
     @IBOutlet weak var priceLabel:       UILabel!

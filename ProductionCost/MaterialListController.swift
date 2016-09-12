@@ -9,8 +9,11 @@
 import UIKit
 import RealmSwift
 
+// MARK: Cell indentifiers constants
+
 struct CellIdentifiers {
-    static let MainMaterialCell = "MainMaterialCell"
+    static let PackMaterialCell = "PackMaterialCell"
+    static let UnitMaterialCell = "UnitMaterialCell"
     static let AddMaterialCell  = "AddMaterialCell"
     static let SubMaterialCell  = "SubMaterialCell"
 }
@@ -24,16 +27,6 @@ class MaterialListController: UIViewController {
     
     // MARK: Properties
     
-//    var materials = [
-//        (name: "bonjour",       quantity: "par 20",     price: "1,00 $",    isPack: true),
-//        (name: "au revoir",     quantity: "",           price: "15,99 $",   isPack: false),
-//        (name: "qsdqsdqsd",     quantity: "par 0,5",    price: "3500,96 $", isPack: true),
-//        (name: "DsdhuD",        quantity: "",           price: "1000 $",    isPack: false),
-//        (name: "jhsqoih SQd'd", quantity: "par 3/4",    price: "150000 $",  isPack: true),
-//        (name: "Qsdss",         quantity: "",           price: "0,65 $",    isPack: false),
-//        (name: "ZeruDsdh",      quantity: "",           price: "2,36 $",    isPack: false)
-//    ]
-    
     var materials = [Material]()
     
     // MARK: Overrides
@@ -41,39 +34,25 @@ class MaterialListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let urls = NSFileManager.defaultManager()
-            .URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        let documentsDirectory = urls[0]
-        print(documentsDirectory)
+        let realm = try! Realm()
+        let results = realm.objects(Material.self)
+        for result in results {
+            materials.append(result)
+        }
         
-//        let mat1 = Material()
-//        mat1.name  = "bonjour"
-//        mat1.price = 1.56
-//        materials.append(mat1)
-//        
-//        let mat2 = Material()
-//        mat2.name  = "au revoir"
-//        mat2.price = 150.56
-//        materials.append(mat2)
-//        
-//        let mat3 = Material()
-//        mat3.name  = "à demain"
-//        mat3.isPack = true
-//        mat3.quantity = 6
-//        mat3.price = 25.59
-//        materials.append(mat3)
+        // tableView init
         
-        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 49, right: 0)
         tableView.rowHeight = 60
         
-        var cellNib = UINib(nibName: CellIdentifiers.MainMaterialCell, bundle: nil)
-        tableView.registerNib(cellNib, forCellReuseIdentifier: CellIdentifiers.MainMaterialCell)
+        var cellNib = UINib(nibName: CellIdentifiers.PackMaterialCell, bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: CellIdentifiers.PackMaterialCell)
         
         cellNib = UINib(nibName: CellIdentifiers.AddMaterialCell, bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: CellIdentifiers.AddMaterialCell)
         
-//        var cellNib = UINib(nibName: CellIdentifiers.MainMaterialCell, bundle: nil)
-//        tableView.registerNib(cellNib, forCellReuseIdentifier: CellIdentifiers.MainMaterialCell)
+        cellNib = UINib(nibName: CellIdentifiers.UnitMaterialCell, bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: CellIdentifiers.UnitMaterialCell)
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,6 +67,7 @@ class MaterialListController: UIViewController {
             }
             
             materialForm.delegate = self
+            materialForm.isUnit = sender as! Bool
         }
     }
     
@@ -98,12 +78,12 @@ class MaterialListController: UIViewController {
                                             preferredStyle: .ActionSheet)
         
         let addUnit = UIAlertAction(title: "Unit", style: .Default) { action in
-            print("add unit")
-            
-            self.performSegueWithIdentifier("AddMaterialSegue", sender: nil)
+            self.performSegueWithIdentifier("AddMaterialSegue", sender: true)
         }
         
-        let addPack = UIAlertAction(title: "Pack",   style: .Default, handler: nil)
+        let addPack = UIAlertAction(title: "Pack",   style: .Default) { action in
+            self.performSegueWithIdentifier("AddMaterialSegue", sender: false)
+        }
         let cancel  = UIAlertAction(title: "Cancel", style: .Cancel,  handler: nil)
         
         actionSheet.addAction(addUnit)
@@ -189,16 +169,26 @@ extension MaterialListController: UITableViewDataSource {
             
             return cell
         }
-        else {
+        else if materials[indexPath.row].isPack {
             let cell = tableView.dequeueReusableCellWithIdentifier(
-                CellIdentifiers.MainMaterialCell, forIndexPath: indexPath) as! MainMaterialCell
+                CellIdentifiers.PackMaterialCell, forIndexPath: indexPath) as! MainMaterialCell
             
             let result = materials[indexPath.row]
             
-            cell.iconImageView.image = result.isPack ? UIImage(named: "pack") : UIImage(named: "unit")
+            cell.nameLabel.text        = result.name
+            let tempQuantity = "\(result.quantity)"
+            cell.informationLabel.text = result.quantity == 1 ? "" : "by \(result.quantity)"
+            cell.priceLabel.text       = "\(result.price) $"
+            
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCellWithIdentifier(
+                CellIdentifiers.UnitMaterialCell, forIndexPath: indexPath) as! MainMaterialCell
+            
+            let result = materials[indexPath.row]
             
             cell.nameLabel.text        = result.name
-            cell.informationLabel.text = result.quantity == 1 ? "" : "by \(result.quantity)"
             cell.priceLabel.text       = "\(result.price) $"
             
             return cell

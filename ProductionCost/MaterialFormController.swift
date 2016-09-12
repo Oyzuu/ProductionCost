@@ -24,15 +24,22 @@ class MaterialFormController: UITableViewController {
     @IBOutlet weak var nameField:     UITextField!
     @IBOutlet weak var priceField:    UITextField!
     @IBOutlet weak var quantityField: UITextField!
+    @IBOutlet weak var quantityCell: UITableViewCell!
     
     // MARK: Properties
     
     weak var delegate: MaterialFormDelegate?
+    var materialToEdit: Material?
+    var isUnit = true
     
     // MARK: Override
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if isUnit {
+            quantityCell.hidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,12 +54,10 @@ class MaterialFormController: UITableViewController {
         let material = Material()
         material.name     = nameField.text!
         material.price    = stringToDouble(priceField.text!)
-        material.quantity = stringToDouble(quantityField.text!)
+        material.quantity = isUnit ? 1 : stringToDouble(quantityField.text!)
+        material.isPack   = !isUnit
         
-        // TODO: remove after testing
-        if material.quantity > 1 {
-            material.isPack = true
-        }
+        // TODO: Check if item exists in database with exactly same attributes
         
         delegate?.MaterialForm(self, didSave: material)
         dismissViewControllerAnimated(true, completion: nil)
@@ -62,4 +67,17 @@ class MaterialFormController: UITableViewController {
         return Double(string.stringByReplacingOccurrencesOfString(",", withString: "."))!
     }
     
+}
+
+
+extension MaterialFormController {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        
+        if isUnit && indexPath == NSIndexPath(forRow: 2, inSection: 0) {
+            return 0
+        }
+        
+        return 44
+    }
 }

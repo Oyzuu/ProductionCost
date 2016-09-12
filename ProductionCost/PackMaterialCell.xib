@@ -7,16 +7,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainMaterialCell" id="UxL-og-y7I" customClass="MainMaterialCell" customModule="ProductionCost" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PackMaterialCell" id="UxL-og-y7I" customClass="MainMaterialCell" customModule="ProductionCost" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UxL-og-y7I" id="gqU-fD-JKn">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pack" translatesAutoresizingMaskIntoConstraints="NO" id="Eb5-3S-0ey">
-                        <rect key="frame" x="8" y="14" width="32" height="32"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="by package size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKU-Yn-bel">
                         <rect key="frame" x="48" y="28" width="127" height="23"/>
                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
@@ -37,19 +34,21 @@
                         <color key="textColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="⚃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="On4-jb-Qqo">
+                        <rect key="frame" x="8" y="14" width="32" height="32"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                        <color key="textColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
-                <outlet property="iconImageView" destination="Eb5-3S-0ey" id="SCh-B0-HL4"/>
                 <outlet property="informationLabel" destination="lKU-Yn-bel" id="2Ls-K5-RDA"/>
                 <outlet property="nameLabel" destination="uat-Wb-asc" id="aR9-sH-GH2"/>
                 <outlet property="priceLabel" destination="egb-h3-Kmn" id="41o-h9-1iY"/>
             </connections>
-            <point key="canvasLocation" x="351" y="617"/>
+            <point key="canvasLocation" x="335" y="845"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="pack" width="32" height="32"/>
-    </resources>
 </document>
