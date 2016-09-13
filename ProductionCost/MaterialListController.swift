@@ -27,7 +27,8 @@ class MaterialListController: UIViewController {
     
     // MARK: Properties
     
-    var materials = [Material]()
+    var dataModel = [Material]()
+    var results: Results<Material>?
     
     // MARK: Overrides
 
@@ -35,24 +36,19 @@ class MaterialListController: UIViewController {
         super.viewDidLoad()
         
         let realm = try! Realm()
-        let results = realm.objects(Material.self)
-        for result in results {
-            materials.append(result)
-        }
+        results = realm.objects(Material.self)
+        updateDataModel()
         
         // tableView init
         
         tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 49, right: 0)
         tableView.rowHeight = 60
         
-        var cellNib = UINib(nibName: CellIdentifiers.PackMaterialCell, bundle: nil)
-        tableView.registerNib(cellNib, forCellReuseIdentifier: CellIdentifiers.PackMaterialCell)
-        
-        cellNib = UINib(nibName: CellIdentifiers.AddMaterialCell, bundle: nil)
-        tableView.registerNib(cellNib, forCellReuseIdentifier: CellIdentifiers.AddMaterialCell)
-        
-        cellNib = UINib(nibName: CellIdentifiers.UnitMaterialCell, bundle: nil)
-        tableView.registerNib(cellNib, forCellReuseIdentifier: CellIdentifiers.UnitMaterialCell)
+        nibRegistration(forIdentifiers:
+            CellIdentifiers.AddMaterialCell,
+            CellIdentifiers.UnitMaterialCell,
+            CellIdentifiers.PackMaterialCell,
+            CellIdentifiers.SubMaterialCell)
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,7 +90,7 @@ class MaterialListController: UIViewController {
     }
 
     @IBAction func searchMaterial(sender: AnyObject) {
-        guard materials.count > 0 else {
+        guard dataModel.count > 0 else {
             print("empty array")
             return
         }
@@ -102,10 +98,29 @@ class MaterialListController: UIViewController {
         let realm = try! Realm()
         
         try! realm.write {
-            for material in materials {
+            for material in dataModel {
                 realm.add(material)
             }
         }
+    }
+    
+    private func updateDataModel() {
+        guard let results = self.results else {
+            return
+        }
+        
+        dataModel = []
+        for result in results {
+            dataModel.append(result)
+        }
+    }
+    
+    private func nibRegistration(forIdentifiers identifiers: String...) {
+        for identifier in identifiers {
+            let cellNib = UINib(nibName: identifier, bundle: nil)
+            tableView.registerNib(cellNib, forCellReuseIdentifier: identifier)
+        }
+        
     }
     
 }
@@ -113,7 +128,12 @@ class MaterialListController: UIViewController {
 extension MaterialListController: MaterialFormDelegate {
     
     func MaterialForm(controller: MaterialFormController, didSave material: Material) {
-        materials.append(material)
+        dataModel.append(material)
+        
+        // TODO: Clean this ASAP
+        searchMaterial(material)
+        
+        updateDataModel()
         tableView.reloadData()
     }
     
@@ -138,11 +158,19 @@ extension MaterialListController: UINavigationBarDelegate {
 extension MaterialListController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if materials.count == 0 {
+        if dataModel.count == 0 {
             addMaterial(self)
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let material = dataModel[indexPath.row]
+            
+            // TODO: fill this
+        }
     }
     
 }
@@ -152,32 +180,38 @@ extension MaterialListController: UITableViewDelegate {
 extension MaterialListController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if materials.count == 0 {
+        if dataModel.count == 0 {
             return 1
         }
         else {
-            return materials.count
+            return dataModel.count
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print(materials.count)
+        print(dataModel.count)
         
-        if materials.count == 0 {
+        if dataModel.count == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(
                 CellIdentifiers.AddMaterialCell, forIndexPath: indexPath) as! AddMaterialCell
             
             return cell
         }
         else {
-            let material   = materials[indexPath.row]
-            let identifier = material.isPack ?
-                CellIdentifiers.PackMaterialCell : CellIdentifiers.UnitMaterialCell
+            let material   = dataModel[indexPath.row]
+            var identifier = ""
+            
+            switch (material.isPack, material.isSubMaterial) {
+            case (true, _): identifier = CellIdentifiers.PackMaterialCell
+            case (_, true): identifier = CellIdentifiers.SubMaterialCell
+            default:        identifier = CellIdentifiers.UnitMaterialCell
+            }
             
             let cell = tableView.dequeueReusableCellWithIdentifier(
                 identifier, forIndexPath: indexPath) as! MainMaterialCell
             
             cell.prepare(withMaterial: material)
+            cell.setAlternativeBackground(forEvenIndexPath: indexPath)
             
             return cell
         }

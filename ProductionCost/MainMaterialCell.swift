@@ -29,8 +29,17 @@ class MainMaterialCell: UITableViewCell {
     // MARK: Methods
     
     func prepare(withMaterial material: Material) {
-        self.nameLabel.text = material.name
-        self.priceLabel.text = "\(material.price) $"
+        let selectionView = UIView()
+        selectionView.backgroundColor = AppColors.raspberry25
+        self.selectedBackgroundView = selectionView
+        
+        self.nameLabel.text  = material.name
+        self.priceLabel.text = String(format: "%.2f $", material.price)
+        
+        if material.isSubMaterial {
+            self.nameLabel.text        = "Sub material"
+            self.informationLabel.text = "\(material.name)"
+        }
         
         if !material.isPack {
             return
@@ -43,6 +52,12 @@ class MainMaterialCell: UITableViewCell {
         }
         else {
             self.informationLabel.text = "by \(material.quantity)"
+        }
+    }
+    
+    func setAlternativeBackground(forEvenIndexPath indexPath: NSIndexPath) {
+        if indexPath.row % 2 == 0 {
+            self.backgroundColor = AppColors.white50
         }
     }
 

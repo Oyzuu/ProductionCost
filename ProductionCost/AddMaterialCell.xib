@@ -17,12 +17,12 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add material" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moh-QF-i8p">
                         <rect key="frame" x="91" y="15" width="138" height="30"/>
                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="23"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.3486260775862069" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.31056034482758621" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.4964439655172414" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
             <point key="canvasLocation" x="115" y="413"/>
         </tableViewCell>
     </objects>

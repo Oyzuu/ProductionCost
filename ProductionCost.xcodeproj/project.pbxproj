@@ -19,6 +19,9 @@
 		5C7BFCFB1D86A7CC0004CFD5 /* MainMaterialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BFCFA1D86A7CC0004CFD5 /* MainMaterialCell.swift */; };
 		5C7BFCFD1D86A8B10004CFD5 /* AddMaterialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BFCFC1D86A8B10004CFD5 /* AddMaterialCell.swift */; };
 		5C7BFCFF1D86B3D20004CFD5 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BFCFE1D86B3D20004CFD5 /* Material.swift */; };
+		5CAE04ED1D87ED5900BB9590 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE04EC1D87ED5900BB9590 /* AppColors.swift */; };
+		5CAE04F01D87FC6B00BB9590 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE04EF1D87FC6B00BB9590 /* GlobalFunctions.swift */; };
+		5CAE04F21D88006000BB9590 /* SubMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CAE04F11D88006000BB9590 /* SubMaterialCell.xib */; };
 		B128ABDE175744336124F758 /* Pods_ProductionCost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6AF232FFB136C4A930DF609 /* Pods_ProductionCost.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +41,9 @@
 		5C7BFCFA1D86A7CC0004CFD5 /* MainMaterialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMaterialCell.swift; sourceTree = "<group>"; };
 		5C7BFCFC1D86A8B10004CFD5 /* AddMaterialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMaterialCell.swift; sourceTree = "<group>"; };
 		5C7BFCFE1D86B3D20004CFD5 /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
+		5CAE04EC1D87ED5900BB9590 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		5CAE04EF1D87FC6B00BB9590 /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
+		5CAE04F11D88006000BB9590 /* SubMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubMaterialCell.xib; sourceTree = "<group>"; };
 		B6AF232FFB136C4A930DF609 /* Pods_ProductionCost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductionCost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE5272F24A44074C1357A7C4 /* Pods-ProductionCost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductionCost.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProductionCost/Pods-ProductionCost.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +81,8 @@
 		5C4AE6BE1D86915F0021199F /* ProductionCost */ = {
 			isa = PBXGroup;
 			children = (
+				5CAE04EE1D87FC4F00BB9590 /* Utils */,
+				5CAE04D91D87E4B100BB9590 /* Resources */,
 				5C4AE6D31D8695610021199F /* Model */,
 				5C4AE6D11D8691860021199F /* Controller */,
 				5C4AE6D21D8691930021199F /* View */,
@@ -99,7 +107,7 @@
 			children = (
 				5C4AE6C81D86915F0021199F /* LaunchScreen.storyboard */,
 				5C4AE6C31D86915F0021199F /* Main.storyboard */,
-				5C7BFCF51D869D450004CFD5 /* Custom views */,
+				5C7BFCF51D869D450004CFD5 /* Cell models */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -112,16 +120,33 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		5C7BFCF51D869D450004CFD5 /* Custom views */ = {
+		5C7BFCF51D869D450004CFD5 /* Cell models */ = {
 			isa = PBXGroup;
 			children = (
 				5C7BFCF61D869DC00004CFD5 /* PackMaterialCell.xib */,
 				5C7BFCF81D86A3390004CFD5 /* AddMaterialCell.xib */,
 				5C6441561D86E4FC006CA015 /* UnitMaterialCell.xib */,
+				5CAE04F11D88006000BB9590 /* SubMaterialCell.xib */,
 				5C7BFCFA1D86A7CC0004CFD5 /* MainMaterialCell.swift */,
 				5C7BFCFC1D86A8B10004CFD5 /* AddMaterialCell.swift */,
 			);
-			name = "Custom views";
+			name = "Cell models";
+			sourceTree = "<group>";
+		};
+		5CAE04D91D87E4B100BB9590 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5CAE04EC1D87ED5900BB9590 /* AppColors.swift */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		5CAE04EE1D87FC4F00BB9590 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5CAE04EF1D87FC6B00BB9590 /* GlobalFunctions.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		94A0D64F4311AC8DC4CA8D76 /* Frameworks */ = {
@@ -203,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C4AE6CA1D86915F0021199F /* LaunchScreen.storyboard in Resources */,
+				5CAE04F21D88006000BB9590 /* SubMaterialCell.xib in Resources */,
 				5C7BFCF71D869DC00004CFD5 /* PackMaterialCell.xib in Resources */,
 				5C4AE6C71D86915F0021199F /* Assets.xcassets in Resources */,
 				5C4AE6C51D86915F0021199F /* Main.storyboard in Resources */,
@@ -268,8 +294,10 @@
 			files = (
 				5C7BFCFF1D86B3D20004CFD5 /* Material.swift in Sources */,
 				5C7BFCFD1D86A8B10004CFD5 /* AddMaterialCell.swift in Sources */,
+				5CAE04F01D87FC6B00BB9590 /* GlobalFunctions.swift in Sources */,
 				5C4AE6C21D86915F0021199F /* MaterialListController.swift in Sources */,
 				5C6441551D86D80C006CA015 /* MaterialFormController.swift in Sources */,
+				5CAE04ED1D87ED5900BB9590 /* AppColors.swift in Sources */,
 				5C7BFCFB1D86A7CC0004CFD5 /* MainMaterialCell.swift in Sources */,
 				5C4AE6C01D86915F0021199F /* AppDelegate.swift in Sources */,
 			);
