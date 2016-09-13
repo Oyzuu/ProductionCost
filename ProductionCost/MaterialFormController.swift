@@ -41,6 +41,8 @@ class MaterialFormController: UITableViewController {
         if isUnit {
             quantityCell.hidden = true
         }
+        
+        nameField.becomeFirstResponder()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -65,8 +67,7 @@ class MaterialFormController: UITableViewController {
         material.isPack   = !isUnit
         
         if subSwitch.on {
-            let subMaterial = Material.createSubMaterial(fromMaterial: material)
-            material.subMaterial = subMaterial
+            material.subMaterial = Material.createSubMaterial(fromMaterial: material)
         }
         
         // TODO: Check if item exists in database with exactly same attributes

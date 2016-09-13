@@ -57,7 +57,7 @@ class MainMaterialCell: UITableViewCell {
     
     func setAlternativeBackground(forEvenIndexPath indexPath: NSIndexPath) {
         if indexPath.row % 2 == 0 {
-            self.backgroundColor = AppColors.white50
+            self.backgroundColor = AppColors.whiteLight
         }
     }
 

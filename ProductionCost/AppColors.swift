@@ -14,6 +14,7 @@ struct AppColors {
     static let black50     = black.colorWithAlphaComponent(0.5)
     static let white       = UIColor(red: 245/255, green: 240/255, blue: 240/255, alpha: 1)
     static let white50     = white.colorWithAlphaComponent(0.5)
+    static let whiteLight  = UIColor(red: 249/255, green: 246/255, blue: 246/255, alpha: 1)
     static let raspberry   = UIColor(red: 196/255, green:  41/255, blue:  69/255, alpha: 1)
     static let raspberry25 = raspberry.colorWithAlphaComponent(0.25)
     static let raspberry50 = raspberry.colorWithAlphaComponent(0.5)

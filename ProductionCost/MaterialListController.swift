@@ -51,6 +51,11 @@ class MaterialListController: UIViewController {
             CellIdentifiers.SubMaterialCell)
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.backgroundColor = AppColors.white50
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -168,6 +173,18 @@ extension MaterialListController: UITableViewDelegate {
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let material = dataModel[indexPath.row]
+            
+            let realm = try! Realm()
+            try! realm.write {
+                if let subMaterial = material.subMaterial {
+                    realm.delete(subMaterial)
+                }
+                
+                realm.delete(material)
+            }
+            
+            updateDataModel()
+            tableView.reloadData()
             
             // TODO: fill this
         }
