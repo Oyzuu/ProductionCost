@@ -72,7 +72,7 @@
         <scene sceneID="LIE-1c-Ugq">
             <objects>
                 <tableViewController id="b9K-9c-kaU" customClass="MaterialFormController" customModule="ProductionCost" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="9" sectionFooterHeight="9" id="gsE-Us-kE9" userLabel="Unit form">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="9" sectionFooterHeight="9" id="gsE-Us-kE9" userLabel="Unit form">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>

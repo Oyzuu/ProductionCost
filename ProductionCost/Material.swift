@@ -31,7 +31,7 @@ class Material: Object {
     static func createSubMaterial(fromMaterial parent: Material) -> Material {
         let subMaterial = Material()
         
-        subMaterial.name          = "from \(parent.name)"
+        subMaterial.name          = "sub_\(parent.name)"
         subMaterial.price         = parent.price / parent.quantity
         subMaterial.isSubMaterial = true
         

@@ -37,8 +37,8 @@ class MainMaterialCell: UITableViewCell {
         self.priceLabel.text = String(format: "%.2f $", material.price)
         
         if material.isSubMaterial {
-            self.nameLabel.text        = "Sub material"
-            self.informationLabel.text = "\(material.name)"
+            self.nameLabel.text        = material.name.stringByReplacingOccurrencesOfString("sub_", withString: "")
+            self.informationLabel.text = "per unit"
         }
         
         if !material.isPack {
