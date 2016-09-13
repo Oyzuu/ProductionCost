@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import RealmSwift
+
+// TODO: Fix form to manage Createing / Removing derived components
 
 // MARK: Delegate protocol
 
@@ -25,24 +28,41 @@ class MaterialFormController: UITableViewController {
     @IBOutlet weak var priceField:    UITextField!
     @IBOutlet weak var quantityField: UITextField!
     @IBOutlet weak var quantityCell:  UITableViewCell!
-    @IBOutlet weak var subSwitch:     UISwitch!
+    
+    @IBOutlet weak var subSwitch: UISwitch!
+    @IBOutlet weak var derivedComponentLabel:  UILabel!
+    @IBOutlet weak var derivedComponentButton: UIButton!
     
     // MARK: Properties
     
     weak var delegate: MaterialFormDelegate?
     var materialToEdit: Material?
-    var isUnit = true
+    var isUnit = false
     
     // MARK: Override
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if isUnit {
-            quantityCell.hidden = true
-        }
-        
         nameField.becomeFirstResponder()
+        
+        if let materialToEdit = self.materialToEdit {
+            title               = "Edit material"
+            isUnit              = !materialToEdit.isPack
+            quantityCell.hidden = isUnit
+            
+            nameField.text     = materialToEdit.name
+            priceField.text    = String(format: "%.2f", materialToEdit.price)
+            quantityField.text = String(materialToEdit.quantity)
+            subSwitch.on       = materialToEdit.subMaterial != nil
+            
+            guard materialToEdit.subMaterial != nil else {
+                return
+            }
+            
+            derivedComponentLabel.text = "\(materialToEdit.name) per unit"
+            derivedComponentButton.setTitle("Remove", forState: .Normal)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -74,6 +94,27 @@ class MaterialFormController: UITableViewController {
         
         delegate?.MaterialForm(self, didSave: material)
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func addDerivedComponent(sender: AnyObject) {
+        guard let materialToEdit = self.materialToEdit else {
+            return
+        }
+        
+        if materialToEdit.subMaterial != nil {
+            // TODO: Realm fuckery to fix
+            materialToEdit.subMaterial = nil
+            
+            derivedComponentLabel.text = "No derived component"
+            derivedComponentButton.setTitle("Create", forState: .Normal)
+        }
+        else {
+            // TODO: Realm fuckery to fix
+            materialToEdit.subMaterial = Material.createSubMaterial(fromMaterial: materialToEdit)
+            
+            derivedComponentLabel.text =  "\(materialToEdit.name) per unit"
+            derivedComponentButton.setTitle("Remove", forState: .Normal)
+        }
     }
     
     func stringToDouble(string: String) -> Double {

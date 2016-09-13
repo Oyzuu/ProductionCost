@@ -62,6 +62,7 @@
                         <outlet property="navigationBar" destination="DDQ-Oy-7tx" id="2Hj-ux-JjT"/>
                         <outlet property="tableView" destination="oig-uG-WN1" id="rox-9T-DgU"/>
                         <segue destination="dRy-ne-rqp" kind="modal" identifier="AddMaterialSegue" id="hkH-b2-KNz"/>
+                        <segue destination="dRy-ne-rqp" kind="modal" identifier="EditMaterialSegue" id="Vpb-OR-QKQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t3p-XN-41u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -143,15 +144,15 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="YGg-LP-rLD" userLabel="Quantity cell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="YGg-LP-rLD" userLabel="Create sub cell">
                                         <rect key="frame" x="0.0" y="231" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YGg-LP-rLD" id="CFa-9W-EkV">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create sub material" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuC-dy-Ntr">
-                                                    <rect key="frame" x="15" y="12" width="150" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create derived component" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuC-dy-Ntr">
+                                                    <rect key="frame" x="15" y="12" width="204" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -162,12 +163,35 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="kFA-B2-b3e" userLabel="add / remove sub cell">
+                                        <rect key="frame" x="0.0" y="275" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kFA-B2-b3e" id="d8S-k7-Qzo">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No derived component" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqC-nY-bIm">
+                                                    <rect key="frame" x="15" y="12" width="175" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xRJ-6d-dxO">
+                                                    <rect key="frame" x="247" y="7" width="65" height="30"/>
+                                                    <state key="normal" title="Create"/>
+                                                    <connections>
+                                                        <action selector="addDerivedComponent:" destination="b9K-9c-kaU" eventType="touchUpInside" id="6jo-en-ymd"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="ryt-Bi-rBF" userLabel="Unit Category">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="HXV-23-ejh" detailTextLabel="NUN-WJ-u1c" style="IBUITableViewCellStyleValue1" id="5A0-K0-8hk" userLabel="Unit cell">
-                                        <rect key="frame" x="0.0" y="293" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="337" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5A0-K0-8hk" id="Hlp-DF-2cY">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -191,7 +215,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="qzS-Xf-FJe" detailTextLabel="62S-HN-2Ki" style="IBUITableViewCellStyleValue1" id="4EZ-I0-bh4" userLabel="Category cell">
-                                        <rect key="frame" x="0.0" y="337" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="381" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4EZ-I0-bh4" id="DJo-4R-Ct8">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -219,7 +243,7 @@
                             <tableViewSection id="b2E-Lx-rJ3" userLabel="Supplier">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="lay-EO-akE" detailTextLabel="LBp-vZ-zMU" style="IBUITableViewCellStyleValue1" id="z5K-Hb-r56" userLabel="Supplier cell">
-                                        <rect key="frame" x="0.0" y="399" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="443" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z5K-Hb-r56" id="09P-SR-TE5">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -263,6 +287,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="derivedComponentButton" destination="xRJ-6d-dxO" id="kFV-M5-gEQ"/>
+                        <outlet property="derivedComponentLabel" destination="mqC-nY-bIm" id="T33-lX-Mkp"/>
                         <outlet property="nameField" destination="x6T-CN-5UT" id="Dd0-0J-JBX"/>
                         <outlet property="priceField" destination="nXi-Bu-5YV" id="OE6-NP-Vb4"/>
                         <outlet property="quantityCell" destination="epf-kL-4GL" id="lct-8b-27F"/>
@@ -335,4 +361,7 @@
             <point key="canvasLocation" x="528" y="1363"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Vpb-OR-QKQ"/>
+    </inferredMetricsTieBreakers>
 </document>

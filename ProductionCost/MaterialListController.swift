@@ -70,6 +70,21 @@ class MaterialListController: UIViewController {
             materialForm.delegate = self
             materialForm.isUnit = sender as! Bool
         }
+        
+        if segue.identifier == "EditMaterialSegue" {
+            guard let navControl = segue.destinationViewController as? UINavigationController,
+                materialForm = navControl.viewControllers[0] as? MaterialFormController  else {
+                    return
+            }
+            
+            materialForm.delegate = self
+            
+            guard let index = sender as? Int else {
+                return
+            }
+            
+            materialForm.materialToEdit = dataModel[index]
+        }
     }
     
     // MARK: Methods
@@ -82,10 +97,10 @@ class MaterialListController: UIViewController {
             self.performSegueWithIdentifier("AddMaterialSegue", sender: true)
         }
         
-        let addPack = UIAlertAction(title: "Pack",   style: .Default) { action in
+        let addPack = UIAlertAction(title: "Pack", style: .Default) { action in
             self.performSegueWithIdentifier("AddMaterialSegue", sender: false)
         }
-        let cancel  = UIAlertAction(title: "Cancel", style: .Cancel,  handler: nil)
+        let cancel  = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
         actionSheet.addAction(addUnit)
         actionSheet.addAction(addPack)
@@ -166,7 +181,10 @@ extension MaterialListController: UITableViewDelegate {
         if dataModel.count == 0 {
             addMaterial(self)
         }
-        
+        else {
+            performSegueWithIdentifier("EditMaterialSegue", sender: indexPath.row)
+        }
+
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -185,8 +203,6 @@ extension MaterialListController: UITableViewDelegate {
             
             updateDataModel()
             tableView.reloadData()
-            
-            // TODO: fill this
         }
     }
     
