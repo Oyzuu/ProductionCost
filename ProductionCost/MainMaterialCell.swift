@@ -20,6 +20,10 @@ class MainMaterialCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        let selectionView             = UIView(frame: CGRect.zero)
+        selectionView.backgroundColor = AppColors.raspberry25
+        self.selectedBackgroundView   = selectionView
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -29,9 +33,6 @@ class MainMaterialCell: UITableViewCell {
     // MARK: Methods
     
     func prepare(withMaterial material: Material) {
-        let selectionView = UIView()
-        selectionView.backgroundColor = AppColors.raspberry25
-        self.selectedBackgroundView = selectionView
         
         self.nameLabel.text  = material.name
         self.priceLabel.text = String(format: "%.2f $", material.price)
