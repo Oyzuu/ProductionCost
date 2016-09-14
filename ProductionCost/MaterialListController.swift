@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import PKHUD
 
 // MARK: Cell indentifiers constants
 
@@ -148,14 +149,11 @@ class MaterialListController: UIViewController {
 
 extension MaterialListController: MaterialFormDelegate {
     
-    func MaterialForm(controller: MaterialFormController, didSave material: Material) {
-        realm(saveMaterial: material)
+    func MaterialForm(didFinish material: Material?) {
+        if let material = material {
+            realm(saveMaterial: material)
+        }
         
-        updateDataModel()
-        tableView.reloadData()
-    }
-    
-    func MaterialForm(controller: MaterialFormController, didEdit material: Material) {
         updateDataModel()
         tableView.reloadData()
     }
@@ -179,6 +177,17 @@ extension MaterialListController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if dataModel.count == 0 {
             addMaterial(self)
+        }
+        else if dataModel[indexPath.row].isSubMaterial {
+            let subComponent = dataModel[indexPath.row]
+            let predicate    = NSPredicate(format: "subMaterial = %@", subComponent)
+            let parent       = try! Realm().objects(Material.self).filter(predicate).first
+            let parentIndex  = dataModel.indexOf(parent!)
+            let subtitle     = "Please modify source component"
+            
+            HUD.flash(.Label(subtitle), delay: 1) { result in
+                self.performSegueWithIdentifier("EditMaterialSegue", sender: parentIndex)
+            }
         }
         else {
             performSegueWithIdentifier("EditMaterialSegue", sender: indexPath.row)

@@ -8,14 +8,12 @@
 
 import UIKit
 import RealmSwift
-
-// TODO: Fix form to manage Createing / Removing derived components
+import PKHUD
 
 // MARK: Delegate protocol
 
 protocol MaterialFormDelegate: class {
-    func MaterialForm(controller: MaterialFormController, didSave material: Material)
-    func MaterialForm(controller: MaterialFormController, didEdit material: Material)
+    func MaterialForm(didFinish material: Material?)
 }
 
 // MARK: Controller class
@@ -79,6 +77,13 @@ class MaterialFormController: UITableViewController {
     }
     
     @IBAction func save(sender: AnyObject) {
+        var hudMessage = ""
+        defer {
+            HUD.flash(.LabeledSuccess(title: nil, subtitle: hudMessage), delay: 1) { result in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
+        
         if let materialToEdit = self.materialToEdit {
             let realm = try! Realm()
             
@@ -100,7 +105,9 @@ class MaterialFormController: UITableViewController {
                 }
             }
             
-            delegate?.MaterialForm(self, didEdit: materialToEdit)
+            hudMessage = "Edited"
+            
+            delegate?.MaterialForm(didFinish: nil)
         }
         else {
             let material = Material()
@@ -113,10 +120,10 @@ class MaterialFormController: UITableViewController {
                 material.createDerivedComponent()
             }
             
-            delegate?.MaterialForm(self, didSave: material)
+            hudMessage = "Saved"
+            
+            delegate?.MaterialForm(didFinish: material)
         }
-        
-        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func addDerivedComponent(sender: AnyObject) {
