@@ -28,13 +28,23 @@ class Material: Object {
     
     // MARK: Methods
     
-    static func createSubMaterial(fromMaterial parent: Material) -> Material {
+    func createDerivedComponent() {
         let subMaterial = Material()
         
-        subMaterial.name          = "sub_\(parent.name)"
-        subMaterial.price         = parent.price / parent.quantity
+        subMaterial.name          = "sub_\(self.name)"
+        subMaterial.price         = self.price / self.quantity
         subMaterial.isSubMaterial = true
         
-        return subMaterial
+        self.subMaterial = subMaterial
+    }
+    
+    func updateDerivedComponent() {
+        guard let subMaterial = self.subMaterial else {
+            return
+        }
+        
+        subMaterial.name          = "sub_\(self.name)"
+        subMaterial.price         = self.price / self.quantity
+        subMaterial.isSubMaterial = true
     }
 }

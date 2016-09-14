@@ -29,15 +29,16 @@ class MaterialFormController: UITableViewController {
     @IBOutlet weak var quantityField: UITextField!
     @IBOutlet weak var quantityCell:  UITableViewCell!
     
-    @IBOutlet weak var subSwitch: UISwitch!
+    @IBOutlet weak var derivedComponentSwitch: UISwitch!
     @IBOutlet weak var derivedComponentLabel:  UILabel!
     @IBOutlet weak var derivedComponentButton: UIButton!
     
     // MARK: Properties
     
     weak var delegate: MaterialFormDelegate?
-    var materialToEdit: Material?
     var isUnit = false
+    var materialToEdit: Material?
+    var derivedComponentWillExistAtSave = false
     
     // MARK: Override
 
@@ -51,24 +52,22 @@ class MaterialFormController: UITableViewController {
             isUnit              = !materialToEdit.isPack
             quantityCell.hidden = isUnit
             
-            nameField.text     = materialToEdit.name
-            priceField.text    = String(format: "%.2f", materialToEdit.price)
-            quantityField.text = String(materialToEdit.quantity)
-            subSwitch.on       = materialToEdit.subMaterial != nil
+            nameField.text            = materialToEdit.name
+            priceField.text           = String(format: "%.2f", materialToEdit.price)
+            quantityField.text        = String(materialToEdit.quantity)
             
-            guard materialToEdit.subMaterial != nil else {
-                return
+            if materialToEdit.subMaterial != nil {
+                derivedComponentWillExistAtSave = true
             }
             
-            derivedComponentLabel.text = "\(materialToEdit.name) per unit"
-            derivedComponentButton.setTitle("Remove", forState: .Normal)
+            refreshDerivedComponentCell()
         }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        subSwitch.onTintColor = AppColors.naples
+        derivedComponentSwitch.onTintColor = AppColors.naples
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,41 +79,77 @@ class MaterialFormController: UITableViewController {
     }
     
     @IBAction func save(sender: AnyObject) {
-        let material = Material()
-        material.name     = nameField.text!
-        material.price    = stringToDouble(priceField.text!)
-        material.quantity = isUnit ? 1 : stringToDouble(quantityField.text!)
-        material.isPack   = !isUnit
-        
-        if subSwitch.on {
-            material.subMaterial = Material.createSubMaterial(fromMaterial: material)
+        if let materialToEdit = self.materialToEdit {
+            let realm = try! Realm()
+            
+            try! realm.write() {
+                materialToEdit.name     = nameField.text!
+                materialToEdit.price    = stringToDouble(priceField.text!)
+                materialToEdit.quantity = stringToDouble(quantityField.text!)
+                
+                if derivedComponentWillExistAtSave && materialToEdit.subMaterial == nil {
+                    materialToEdit.createDerivedComponent()
+                }
+                else if !derivedComponentWillExistAtSave && materialToEdit.subMaterial != nil {
+                    let copyOfSubmaterial = materialToEdit.subMaterial
+                    materialToEdit.subMaterial = nil
+                    realm.delete(copyOfSubmaterial!)
+                }
+                else {
+                    materialToEdit.updateDerivedComponent()
+                }
+            }
+            
+            delegate?.MaterialForm(self, didEdit: materialToEdit)
+        }
+        else {
+            let material = Material()
+            material.name     = nameField.text!
+            material.price    = stringToDouble(priceField.text!)
+            material.quantity = isUnit ? 1 : stringToDouble(quantityField.text!)
+            material.isPack   = !isUnit
+            
+            if derivedComponentSwitch.on {
+                material.createDerivedComponent()
+            }
+            
+            delegate?.MaterialForm(self, didSave: material)
         }
         
-        // TODO: Check if item exists in database with exactly same attributes
-        
-        delegate?.MaterialForm(self, didSave: material)
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func addDerivedComponent(sender: AnyObject) {
-        guard let materialToEdit = self.materialToEdit else {
-            return
-        }
+        derivedComponentWillExistAtSave = !derivedComponentWillExistAtSave
+        refreshDerivedComponentCell()
+    }
+    
+    private func refreshDerivedComponentCell() {
         
-        if materialToEdit.subMaterial != nil {
-            // TODO: Realm fuckery to fix
-            materialToEdit.subMaterial = nil
+        if derivedComponentWillExistAtSave {
             
-            derivedComponentLabel.text = "No derived component"
-            derivedComponentButton.setTitle("Create", forState: .Normal)
-        }
-        else {
-            // TODO: Realm fuckery to fix
-            materialToEdit.subMaterial = Material.createSubMaterial(fromMaterial: materialToEdit)
+            transtion(onView: derivedComponentLabel) {
+                self.derivedComponentLabel.text =  "\(self.materialToEdit!.name) per unit"
+            }
             
-            derivedComponentLabel.text =  "\(materialToEdit.name) per unit"
             derivedComponentButton.setTitle("Remove", forState: .Normal)
         }
+        else {
+            
+            transtion(onView: derivedComponentLabel) {
+                self.derivedComponentLabel.text = "No derived component"
+            }
+            
+            derivedComponentButton.setTitle("Create", forState: .Normal)
+        }
+    }
+    
+    func transtion(onView view: UIView, closure: () -> ()) {
+        UIView.transitionWithView(view,
+                                  duration: 0.5,
+                                  options: UIViewAnimationOptions.TransitionCrossDissolve,
+                                  animations: closure,
+                                  completion: nil)
     }
     
     func stringToDouble(string: String) -> Double {

@@ -36,7 +36,7 @@ class MaterialListController: UIViewController {
         super.viewDidLoad()
         
         let realm = try! Realm()
-        results = realm.objects(Material.self)
+        results   = realm.objects(Material.self)
         updateDataModel()
         
         // tableView init
@@ -53,6 +53,8 @@ class MaterialListController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        updateDataModel()
         
         tableView.backgroundColor = AppColors.white50
     }
@@ -110,18 +112,7 @@ class MaterialListController: UIViewController {
     }
 
     @IBAction func searchMaterial(sender: AnyObject) {
-        guard dataModel.count > 0 else {
-            print("empty array")
-            return
-        }
         
-        let realm = try! Realm()
-        
-        try! realm.write {
-            for material in dataModel {
-                realm.add(material)
-            }
-        }
     }
     
     private func updateDataModel() {
@@ -143,22 +134,30 @@ class MaterialListController: UIViewController {
         
     }
     
+    private func realm(saveMaterial material: Material) {
+        let realm = try! Realm()
+        
+        try! realm.write {
+            realm.add(material)
+        }
+    }
+    
 }
+
+// MARK: Material form delegate
 
 extension MaterialListController: MaterialFormDelegate {
     
     func MaterialForm(controller: MaterialFormController, didSave material: Material) {
-        dataModel.append(material)
-        
-        // TODO: Clean this ASAP
-        searchMaterial(material)
+        realm(saveMaterial: material)
         
         updateDataModel()
         tableView.reloadData()
     }
     
     func MaterialForm(controller: MaterialFormController, didEdit material: Material) {
-        
+        updateDataModel()
+        tableView.reloadData()
     }
     
 }
