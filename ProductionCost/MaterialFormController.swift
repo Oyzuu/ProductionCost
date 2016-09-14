@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import PKHUD
+import FontAwesome_swift
 
 // MARK: Delegate protocol
 
@@ -33,6 +34,10 @@ class MaterialFormController: UITableViewController {
    
     @IBOutlet weak var categoryLabel: UILabel!
     
+    @IBOutlet weak var nameWarning:     UIView!
+    @IBOutlet weak var priceWarning:    UIView!
+    @IBOutlet weak var quantityWarning: UIView!
+    
     // MARK: Properties
     
     weak var delegate: MaterialFormDelegate?
@@ -45,7 +50,13 @@ class MaterialFormController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameField.becomeFirstResponder()
+        if materialToEdit == nil {
+            nameField.becomeFirstResponder()
+        }
+        
+        if isUnit {
+            quantityField.text = "1"
+        }
         
         if let materialToEdit = self.materialToEdit {
             title               = "Edit material"
@@ -93,6 +104,11 @@ class MaterialFormController: UITableViewController {
     }
     
     @IBAction func save(sender: AnyObject) {
+        guard checkMandatoryFields() else {
+            HUD.flash(.Label("Empty mandatory fields"), delay: 1)
+            return
+        }
+        
         var hudMessage = ""
         defer {
             HUD.flash(.LabeledSuccess(title: nil, subtitle: hudMessage), delay: 1) { result in
@@ -130,7 +146,7 @@ class MaterialFormController: UITableViewController {
             let material = Material()
             material.name     = nameField.text!
             material.price    = stringToDouble(priceField.text!)
-            material.quantity = isUnit ? 1 : stringToDouble(quantityField.text!)
+            material.quantity = stringToDouble(quantityField.text!)
             material.isPack   = !isUnit
             material.category = categoryLabel.text!
             
@@ -142,6 +158,28 @@ class MaterialFormController: UITableViewController {
             
             delegate?.MaterialForm(didFinish: material)
         }
+    }
+    
+    private func checkMandatoryFields() -> Bool {
+        // TODO: Listen to fields to hide warning
+        
+        if nameField.text != "" && priceField.text != "" && quantityField.text != "" {
+            return true
+        }
+        
+        if nameField.text == "" {
+            nameWarning.hidden = false
+        }
+        
+        if priceField.text == "" {
+            priceWarning.hidden = false
+        }
+        
+        if quantityField.text == "" {
+            quantityWarning.hidden = false
+        }
+        
+        return false
     }
     
     @IBAction func addDerivedComponent(sender: AnyObject) {
@@ -183,7 +221,14 @@ extension MaterialFormController {
         
         // Hide Quantity and sub material cell if material to add / edit is an unit
         if isUnit && (indexPath == NSIndexPath(forRow: 2, inSection: 0) ||
-                      indexPath == NSIndexPath(forRow: 3, inSection: 0)) {
+                      indexPath == NSIndexPath(forRow: 3, inSection: 0) ||
+                      indexPath == NSIndexPath(forRow: 4, inSection: 0)) {
+            return 0
+        }
+        else if materialToEdit != nil && indexPath == NSIndexPath(forRow: 3, inSection: 0) {
+            return 0
+        }
+        else if materialToEdit == nil && indexPath == NSIndexPath(forRow: 4, inSection: 0) {
             return 0
         }
         

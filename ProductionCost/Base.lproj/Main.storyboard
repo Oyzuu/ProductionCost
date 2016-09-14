@@ -94,11 +94,19 @@
                                                     <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Material name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x6T-CN-5UT">
-                                                    <rect key="frame" x="100" y="8" width="212" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Material name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x6T-CN-5UT" customClass="HoshiTextField">
+                                                    <rect key="frame" x="100" y="8" width="188" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YMN-Ra-k7L" customClass="FontAwesomeView" customModule="FontAwesome_swift">
+                                                    <rect key="frame" x="296" y="14" width="16" height="16"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="0.82424568965517253" colorSpace="calibratedRGB"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="iconCode" value="fa-warning"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -115,11 +123,19 @@
                                                     <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Material price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nXi-Bu-5YV">
-                                                    <rect key="frame" x="100" y="8" width="212" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Material price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nXi-Bu-5YV" customClass="HoshiTextField">
+                                                    <rect key="frame" x="100" y="8" width="188" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 </textField>
+                                                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cS5-BC-kMi" customClass="FontAwesomeView" customModule="FontAwesome_swift">
+                                                    <rect key="frame" x="296" y="15" width="16" height="16"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="0.82424568965517253" colorSpace="calibratedRGB"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="iconCode" value="fa-warning"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -136,11 +152,19 @@
                                                     <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Quantity in pack" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hg2-C1-Fq1">
-                                                    <rect key="frame" x="100" y="9" width="212" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Quantity in pack" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hg2-C1-Fq1" customClass="HoshiTextField">
+                                                    <rect key="frame" x="100" y="9" width="188" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 </textField>
+                                                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ice-uj-C6h" customClass="FontAwesomeView" customModule="FontAwesome_swift">
+                                                    <rect key="frame" x="296" y="14" width="16" height="16"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="0.82424568965517253" colorSpace="calibratedRGB"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="iconCode" value="fa-warning"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -295,9 +319,12 @@
                         <outlet property="derivedComponentLabel" destination="mqC-nY-bIm" id="T33-lX-Mkp"/>
                         <outlet property="derivedComponentSwitch" destination="7aK-W8-ZtR" id="tw2-x5-6df"/>
                         <outlet property="nameField" destination="x6T-CN-5UT" id="Dd0-0J-JBX"/>
+                        <outlet property="nameWarning" destination="YMN-Ra-k7L" id="kYL-G6-ySk"/>
                         <outlet property="priceField" destination="nXi-Bu-5YV" id="OE6-NP-Vb4"/>
+                        <outlet property="priceWarning" destination="cS5-BC-kMi" id="573-XI-wSQ"/>
                         <outlet property="quantityCell" destination="epf-kL-4GL" id="lct-8b-27F"/>
                         <outlet property="quantityField" destination="hg2-C1-Fq1" id="Ma1-sm-PCy"/>
+                        <outlet property="quantityWarning" destination="ice-uj-C6h" id="sem-Ad-m7c"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4th-O7-Cn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
