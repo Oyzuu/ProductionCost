@@ -7,10 +7,19 @@
 //
 
 import Foundation
+import UIKit
 
 func printDocumentsDirectory() {
     let urls = NSFileManager.defaultManager()
         .URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
     let documentsDirectory = urls[0]
     print(documentsDirectory)
+}
+
+func transtion(onView view: UIView, withDuration duration: Double, closure: () -> ()) {
+    UIView.transitionWithView(view,
+                              duration: duration,
+                              options: UIViewAnimationOptions.TransitionCrossDissolve,
+                              animations: closure,
+                              completion: nil)
 }

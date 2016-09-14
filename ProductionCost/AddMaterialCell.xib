@@ -23,7 +23,7 @@
                 </subviews>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-            <point key="canvasLocation" x="115" y="413"/>
+            <point key="canvasLocation" x="192" y="400"/>
         </tableViewCell>
     </objects>
 </document>

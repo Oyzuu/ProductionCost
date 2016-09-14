@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C3F5F261D89782A00AFB082 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F5F251D89782A00AFB082 /* Category.swift */; };
+		5C3F5F281D8979B600AFB082 /* CategoriesPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F5F271D8979B600AFB082 /* CategoriesPickerController.swift */; };
 		5C4AE6C01D86915F0021199F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AE6BF1D86915F0021199F /* AppDelegate.swift */; };
 		5C4AE6C21D86915F0021199F /* MaterialListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AE6C11D86915F0021199F /* MaterialListController.swift */; };
 		5C4AE6C51D86915F0021199F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C4AE6C31D86915F0021199F /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		2BA3703215BC8165CC0749F1 /* Pods-ProductionCost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductionCost.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProductionCost/Pods-ProductionCost.debug.xcconfig"; sourceTree = "<group>"; };
+		5C3F5F251D89782A00AFB082 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		5C3F5F271D8979B600AFB082 /* CategoriesPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesPickerController.swift; sourceTree = "<group>"; };
 		5C4AE6BC1D86915F0021199F /* ProductionCost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductionCost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C4AE6BF1D86915F0021199F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C4AE6C11D86915F0021199F /* MaterialListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialListController.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 			children = (
 				5C4AE6C11D86915F0021199F /* MaterialListController.swift */,
 				5C6441541D86D80C006CA015 /* MaterialFormController.swift */,
+				5C3F5F271D8979B600AFB082 /* CategoriesPickerController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				5CAE04EC1D87ED5900BB9590 /* AppColors.swift */,
+				5C3F5F251D89782A00AFB082 /* Category.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -295,8 +301,10 @@
 				5C7BFCFF1D86B3D20004CFD5 /* Material.swift in Sources */,
 				5C7BFCFD1D86A8B10004CFD5 /* AddMaterialCell.swift in Sources */,
 				5CAE04F01D87FC6B00BB9590 /* GlobalFunctions.swift in Sources */,
+				5C3F5F281D8979B600AFB082 /* CategoriesPickerController.swift in Sources */,
 				5C4AE6C21D86915F0021199F /* MaterialListController.swift in Sources */,
 				5C6441551D86D80C006CA015 /* MaterialFormController.swift in Sources */,
+				5C3F5F261D89782A00AFB082 /* Category.swift in Sources */,
 				5CAE04ED1D87ED5900BB9590 /* AppColors.swift in Sources */,
 				5C7BFCFB1D86A7CC0004CFD5 /* MainMaterialCell.swift in Sources */,
 				5C4AE6C01D86915F0021199F /* AppDelegate.swift in Sources */,

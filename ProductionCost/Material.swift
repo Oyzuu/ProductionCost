@@ -20,6 +20,8 @@ class Material: Object {
     dynamic var isPack           = false
     dynamic var subMaterial: Material?
     
+    dynamic var category = "No category"
+    
 // Specify properties to ignore (Realm won't persist these)
     
 //  override static func ignoredProperties() -> [String] {
@@ -31,9 +33,10 @@ class Material: Object {
     func createDerivedComponent() {
         let subMaterial = Material()
         
-        subMaterial.name          = "sub_\(self.name)"
+        subMaterial.name          = "\(self.name)_"
         subMaterial.price         = self.price / self.quantity
         subMaterial.isSubMaterial = true
+        subMaterial.category      = self.category
         
         self.subMaterial = subMaterial
     }
@@ -43,8 +46,9 @@ class Material: Object {
             return
         }
         
-        subMaterial.name          = "sub_\(self.name)"
+        subMaterial.name          = "\(self.name)_"
         subMaterial.price         = self.price / self.quantity
         subMaterial.isSubMaterial = true
+        subMaterial.category      = self.category
     }
 }

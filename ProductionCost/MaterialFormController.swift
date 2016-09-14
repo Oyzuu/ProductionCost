@@ -30,6 +30,8 @@ class MaterialFormController: UITableViewController {
     @IBOutlet weak var derivedComponentSwitch: UISwitch!
     @IBOutlet weak var derivedComponentLabel:  UILabel!
     @IBOutlet weak var derivedComponentButton: UIButton!
+   
+    @IBOutlet weak var categoryLabel: UILabel!
     
     // MARK: Properties
     
@@ -50,9 +52,10 @@ class MaterialFormController: UITableViewController {
             isUnit              = !materialToEdit.isPack
             quantityCell.hidden = isUnit
             
-            nameField.text            = materialToEdit.name
-            priceField.text           = String(format: "%.2f", materialToEdit.price)
-            quantityField.text        = String(materialToEdit.quantity)
+            nameField.text     = materialToEdit.name
+            priceField.text    = String(format: "%.2f", materialToEdit.price)
+            quantityField.text = String(materialToEdit.quantity)
+            categoryLabel.text = materialToEdit.category
             
             if materialToEdit.subMaterial != nil {
                 derivedComponentWillExistAtSave = true
@@ -67,6 +70,19 @@ class MaterialFormController: UITableViewController {
         
         derivedComponentSwitch.onTintColor = AppColors.naples
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "CategoryPickerSegue" {
+            guard let destination = segue.destinationViewController as? CategoriesPickerController else {
+                return
+            }
+            
+            destination.delegate = self
+        }
+        
+    }
+    
+    // MARK: Methods
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -91,6 +107,7 @@ class MaterialFormController: UITableViewController {
                 materialToEdit.name     = nameField.text!
                 materialToEdit.price    = stringToDouble(priceField.text!)
                 materialToEdit.quantity = stringToDouble(quantityField.text!)
+                materialToEdit.category = categoryLabel.text!
                 
                 if derivedComponentWillExistAtSave && materialToEdit.subMaterial == nil {
                     materialToEdit.createDerivedComponent()
@@ -115,6 +132,7 @@ class MaterialFormController: UITableViewController {
             material.price    = stringToDouble(priceField.text!)
             material.quantity = isUnit ? 1 : stringToDouble(quantityField.text!)
             material.isPack   = !isUnit
+            material.category = categoryLabel.text!
             
             if derivedComponentSwitch.on {
                 material.createDerivedComponent()
@@ -135,7 +153,7 @@ class MaterialFormController: UITableViewController {
         
         if derivedComponentWillExistAtSave {
             
-            transtion(onView: derivedComponentLabel) {
+            transtion(onView: derivedComponentLabel, withDuration: 0.3) {
                 self.derivedComponentLabel.text =  "\(self.materialToEdit!.name) per unit"
             }
             
@@ -143,20 +161,12 @@ class MaterialFormController: UITableViewController {
         }
         else {
             
-            transtion(onView: derivedComponentLabel) {
+            transtion(onView: derivedComponentLabel, withDuration: 0.3) {
                 self.derivedComponentLabel.text = "No derived component"
             }
             
             derivedComponentButton.setTitle("Create", forState: .Normal)
         }
-    }
-    
-    func transtion(onView view: UIView, closure: () -> ()) {
-        UIView.transitionWithView(view,
-                                  duration: 0.5,
-                                  options: UIViewAnimationOptions.TransitionCrossDissolve,
-                                  animations: closure,
-                                  completion: nil)
     }
     
     func stringToDouble(string: String) -> Double {
@@ -165,7 +175,7 @@ class MaterialFormController: UITableViewController {
     
 }
 
-// MARK: Table view delegate
+// MARK: EXT - Table view delegate
 
 extension MaterialFormController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -183,4 +193,14 @@ extension MaterialFormController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+}
+
+// MARK: EXT - Categories picker controller delegate
+
+extension MaterialFormController: CategoriesDelegate {
+    
+    func categoriesDelegate(didFinish categoryName: String) {
+        categoryLabel.text = categoryName
+    }
+    
 }

@@ -37,7 +37,7 @@ class MaterialListController: UIViewController {
         super.viewDidLoad()
         
         let realm = try! Realm()
-        results   = realm.objects(Material.self)
+        results   = realm.objects(Material.self).sorted("name")
         updateDataModel()
         
         // tableView init
@@ -113,7 +113,7 @@ class MaterialListController: UIViewController {
     }
 
     @IBAction func searchMaterial(sender: AnyObject) {
-        
+        tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
     }
     
     private func updateDataModel() {
@@ -196,7 +196,19 @@ extension MaterialListController: UITableViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if dataModel.count == 0 {
+            return false
+        }
+        
+        return true
+    }
+    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        guard dataModel.count > 0 else {
+            return
+        }
+        
         if editingStyle == .Delete {
             let material = dataModel[indexPath.row]
             
@@ -210,7 +222,10 @@ extension MaterialListController: UITableViewDelegate {
             }
             
             updateDataModel()
-            tableView.reloadData()
+            
+            transtion(onView: tableView, withDuration: 0.3){
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -224,9 +239,8 @@ extension MaterialListController: UITableViewDataSource {
         if dataModel.count == 0 {
             return 1
         }
-        else {
-            return dataModel.count
-        }
+
+        return dataModel.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

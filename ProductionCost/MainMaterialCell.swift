@@ -38,7 +38,7 @@ class MainMaterialCell: UITableViewCell {
         self.priceLabel.text = String(format: "%.2f $", material.price)
         
         if material.isSubMaterial {
-            self.nameLabel.text        = material.name.stringByReplacingOccurrencesOfString("sub_", withString: "")
+            self.nameLabel.text        = material.name.stringByReplacingOccurrencesOfString("_", withString: "")
             self.informationLabel.text = "per unit"
         }
         
@@ -59,6 +59,9 @@ class MainMaterialCell: UITableViewCell {
     func setAlternativeBackground(forEvenIndexPath indexPath: NSIndexPath) {
         if indexPath.row % 2 == 0 {
             self.backgroundColor = AppColors.whiteLight
+        }
+        else {
+            self.backgroundColor = AppColors.white
         }
     }
 
