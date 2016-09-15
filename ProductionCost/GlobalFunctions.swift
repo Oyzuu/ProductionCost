@@ -23,3 +23,10 @@ func transtion(onView view: UIView, withDuration duration: Double, closure: () -
                               animations: closure,
                               completion: nil)
 }
+
+//func nibRegistration(onTableview tableView: UITableView, forIdentifiers identifiers: String...) {
+//    for identifier in identifiers {
+//        let cellNib = UINib(nibName: identifier, bundle: nil)
+//        tableView.registerNib(cellNib, forCellReuseIdentifier: identifier)
+//    }
+//}

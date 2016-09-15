@@ -17,9 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.tintColor = AppColors.raspberry
         
         // TODO: Set Avenir as default font
-//        UIBarButtonItem.appearance()
-//            .setTitleTextAttributes([NSFontAttributeName : UIFont(name: "Avenir", size: 16)!],
-//                                    forState: .Normal)
+        UIBarButtonItem.appearance()
+            .setTitleTextAttributes([NSFontAttributeName : UIFont(name: "Avenir", size: 16)!],
+                                    forState: .Normal)
         
         printDocumentsDirectory()
         return true

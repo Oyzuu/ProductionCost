@@ -12,7 +12,7 @@ import PKHUD
 
 // MARK: Cell indentifiers constants
 
-struct CellIdentifiers {
+struct MaterialCellIdentifiers {
     static let PackMaterialCell = "PackMaterialCell"
     static let UnitMaterialCell = "UnitMaterialCell"
     static let AddMaterialCell  = "AddMaterialCell"
@@ -46,10 +46,10 @@ class MaterialListController: UIViewController {
         tableView.rowHeight = 60
         
         nibRegistration(forIdentifiers:
-            CellIdentifiers.AddMaterialCell,
-            CellIdentifiers.UnitMaterialCell,
-            CellIdentifiers.PackMaterialCell,
-            CellIdentifiers.SubMaterialCell)
+            MaterialCellIdentifiers.AddMaterialCell,
+            MaterialCellIdentifiers.UnitMaterialCell,
+            MaterialCellIdentifiers.PackMaterialCell,
+            MaterialCellIdentifiers.SubMaterialCell)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -59,6 +59,7 @@ class MaterialListController: UIViewController {
         
         tableView.backgroundColor = AppColors.white50
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -222,7 +223,7 @@ extension MaterialListController: UITableViewDataSource {
         
         if dataModel.count == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(
-                CellIdentifiers.AddMaterialCell, forIndexPath: indexPath) as! AddMaterialCell
+                MaterialCellIdentifiers.AddMaterialCell, forIndexPath: indexPath) as! AddMaterialCell
             
             return cell
         }
@@ -231,9 +232,9 @@ extension MaterialListController: UITableViewDataSource {
             var identifier = ""
             
             switch (material.isPack, material.isSubMaterial) {
-            case (true, _): identifier = CellIdentifiers.PackMaterialCell
-            case (_, true): identifier = CellIdentifiers.SubMaterialCell
-            default:        identifier = CellIdentifiers.UnitMaterialCell
+            case (true, _): identifier = MaterialCellIdentifiers.PackMaterialCell
+            case (_, true): identifier = MaterialCellIdentifiers.SubMaterialCell
+            default:        identifier = MaterialCellIdentifiers.UnitMaterialCell
             }
             
             let cell = tableView.dequeueReusableCellWithIdentifier(

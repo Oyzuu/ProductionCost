@@ -9,6 +9,13 @@
 import UIKit
 import RealmSwift
 
+// MARK: Cell indentifiers constants
+
+struct ProductCellIdentifiers {
+    static let ProductCell    = "ProductCell"
+    static let AddProductCell = "AddProductCell"
+}
+
 class ProductListController: UIViewController {
     
     // MARK: Outlets
@@ -30,21 +37,45 @@ class ProductListController: UIViewController {
         results   = realm.objects(Product.self).sorted("name")
         updateDataModel()
         
-        // tableView init
+        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 49, right: 0)
+        tableView.rowHeight    = 60
+        
+        nibRegistration(forIdentifiers: ProductCellIdentifiers.AddProductCell)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateDataModel()
+        
+        tableView.backgroundColor = AppColors.white50
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "AddProductSegue" {
+            // TODO: fill this
+            print("to add product")
+        }
+    }
+    
     // MARK: Methods
+    
+    private func nibRegistration(forIdentifiers identifiers: String...) {
+        for identifier in identifiers {
+            let cellNib = UINib(nibName: identifier, bundle: nil)
+            tableView.registerNib(cellNib, forCellReuseIdentifier: identifier)
+        }
+    }
     
     @IBAction func searchProducts(sender: AnyObject) {
         
     }
     
     @IBAction func addProduct(sender: AnyObject) {
-        
     }
     
     private func updateDataModel() {
@@ -58,13 +89,6 @@ class ProductListController: UIViewController {
         }
     }
     
-    private func nibRegistration(forIdentifiers identifiers: String...) {
-        for identifier in identifiers {
-            let cellNib = UINib(nibName: identifier, bundle: nil)
-            tableView.registerNib(cellNib, forCellReuseIdentifier: identifier)
-        }
-    }
-    
     private func realm(saveProduct product: Product) {
         let realm = try! Realm()
         
@@ -75,16 +99,32 @@ class ProductListController: UIViewController {
     
 }
 
+// MARK: EXT - Navigation bar delegate
+
+extension ProductListController: UINavigationBarDelegate {
+    
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return .TopAttached
+    }
+    
+}
+
 // MARK: EXT - Table view data source
 
 extension ProductListController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        if dataModel.count == 0 {
+            return 1
+        }
+        
+        return dataModel.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath)
+        let identifier = ProductCellIdentifiers.AddProductCell
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! AddProductCell
         
         return cell
     }
