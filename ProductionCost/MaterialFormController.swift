@@ -258,20 +258,6 @@ extension MaterialFormController: CategoriesDelegate {
 
 extension MaterialFormController: UITextFieldDelegate {
     
-//    func textFieldDidEndEditing(textField: UITextField) {
-//        guard hasErrors else {
-//            return
-//        }
-//        
-//        switch textField.tag {
-//        case 1: nameWarning.hidden     = textField.text != ""
-//        case 2: priceWarning.hidden    = textField.text != ""
-//        case 3: quantityWarning.hidden = textField.text != ""
-//            
-//        default: break
-//        }
-//    }
-    
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         guard hasErrors else {
             return true
@@ -285,15 +271,15 @@ extension MaterialFormController: UITextFieldDelegate {
         
         switch textField.tag {
         case 1:
-            transtion(onView: nameWarning, withDuration: 0.3) {
+            transtion(onView: nameWarning, withDuration: 0.5) {
                 self.nameWarning.hidden = string != ""
             }
         case 2:
-            transtion(onView: priceWarning, withDuration: 0.3) {
+            transtion(onView: priceWarning, withDuration: 0.5) {
                 self.priceWarning.hidden = string != ""
             }
         case 3:
-            transtion(onView: quantityWarning, withDuration: 0.3) {
+            transtion(onView: quantityWarning, withDuration: 0.5) {
                 self.quantityWarning.hidden = string != ""
             }
             

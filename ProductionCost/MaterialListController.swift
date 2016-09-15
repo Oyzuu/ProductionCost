@@ -93,7 +93,7 @@ class MaterialListController: UIViewController {
     // MARK: Methods
 
     @IBAction func addMaterial(sender: AnyObject) {
-        let actionSheet = UIAlertController(title: "Material type", message: "",
+        let actionSheet = UIAlertController(title: "Component type", message: "",
                                             preferredStyle: .ActionSheet)
         
         let addUnit = UIAlertAction(title: "Unit", style: .Default) { action in
@@ -112,7 +112,7 @@ class MaterialListController: UIViewController {
         presentViewController(actionSheet, animated: true, completion: nil)
     }
 
-    @IBAction func searchMaterial(sender: AnyObject) {
+    @IBAction func searchMaterials(sender: AnyObject) {
         tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
     }
     
@@ -132,7 +132,6 @@ class MaterialListController: UIViewController {
             let cellNib = UINib(nibName: identifier, bundle: nil)
             tableView.registerNib(cellNib, forCellReuseIdentifier: identifier)
         }
-        
     }
     
     private func realm(saveMaterial material: Material) {
@@ -203,32 +202,7 @@ extension MaterialListController: UITableViewDelegate {
         
         return true
     }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        guard dataModel.count > 0 else {
-            return
-        }
-        
-        if editingStyle == .Delete {
-            let material = dataModel[indexPath.row]
-            
-            let realm = try! Realm()
-            try! realm.write {
-                if let subMaterial = material.subMaterial {
-                    realm.delete(subMaterial)
-                }
-                
-                realm.delete(material)
-            }
-            
-            updateDataModel()
-            
-            transtion(onView: tableView, withDuration: 0.3){
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
+
 }
 
 // MARK: EXT - Table view data source
@@ -271,5 +245,31 @@ extension MaterialListController: UITableViewDataSource {
             return cell
         }
     }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        guard dataModel.count > 0 else {
+            return
+        }
+        
+        if editingStyle == .Delete {
+            let material = dataModel[indexPath.row]
+            
+            let realm = try! Realm()
+            try! realm.write {
+                if let subMaterial = material.subMaterial {
+                    realm.delete(subMaterial)
+                }
+                
+                realm.delete(material)
+            }
+            
+            updateDataModel()
+            
+            transtion(onView: tableView, withDuration: 0.3){
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
 }
 
