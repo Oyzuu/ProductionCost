@@ -20,7 +20,6 @@ class ProductListController: UIViewController {
     
     // MARK: Outlets
     
-    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var tableView:     UITableView!
     
     // MARK: Properties
@@ -32,15 +31,18 @@ class ProductListController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "ProductList"
         
         let realm = try! Realm()
         results   = realm.objects(Product.self).sorted("name")
         updateDataModel()
         
-        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 49, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 49, right: 0)
         tableView.rowHeight    = 60
         
-        nibRegistration(forIdentifiers: ProductCellIdentifiers.AddProductCell)
+        nibRegistration(forIdentifiers:
+            ProductCellIdentifiers.AddProductCell,
+            ProductCellIdentifiers.ProductCell)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -56,7 +58,7 @@ class ProductListController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "AddProductSegue" {
+        if segue.identifier == "ProductDetailsSegue" {
             // TODO: fill this
             print("to add product")
         }
@@ -64,18 +66,12 @@ class ProductListController: UIViewController {
     
     // MARK: Methods
     
-    private func nibRegistration(forIdentifiers identifiers: String...) {
-        for identifier in identifiers {
-            let cellNib = UINib(nibName: identifier, bundle: nil)
-            tableView.registerNib(cellNib, forCellReuseIdentifier: identifier)
-        }
-    }
-    
     @IBAction func searchProducts(sender: AnyObject) {
         
     }
     
     @IBAction func addProduct(sender: AnyObject) {
+        performSegueWithIdentifier("ProductDetails", sender: "")
     }
     
     private func updateDataModel() {
@@ -89,22 +85,19 @@ class ProductListController: UIViewController {
         }
     }
     
+    private func nibRegistration(forIdentifiers identifiers: String...) {
+        for identifier in identifiers {
+            let cellNib = UINib(nibName: identifier, bundle: nil)
+            tableView.registerNib(cellNib, forCellReuseIdentifier: identifier)
+        }
+    }
+    
     private func realm(saveProduct product: Product) {
         let realm = try! Realm()
         
         try! realm.write {
             realm.add(product)
         }
-    }
-    
-}
-
-// MARK: EXT - Navigation bar delegate
-
-extension ProductListController: UINavigationBarDelegate {
-    
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
     }
     
 }
@@ -129,12 +122,47 @@ extension ProductListController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        guard dataModel.count > 0 else {
+            return
+        }
+        
+        if editingStyle == .Delete {
+            let product = dataModel[indexPath.row]
+            
+            let realm = try! Realm()
+            try! realm.write {
+                realm.delete(product)
+            }
+            
+            updateDataModel()
+            
+            transtion(onView: tableView, withDuration: 0.3){
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if dataModel.count == 0 {
+            return false
+        }
+        
+        return true
+    }
+    
 }
 
 // MARK: EXT - Tableview delegate
 
 extension ProductListController:UITableViewDelegate {
     
-    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if dataModel.count == 0 {
+            addProduct(self)
+        }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
     
 }

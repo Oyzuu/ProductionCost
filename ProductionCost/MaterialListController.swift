@@ -178,6 +178,7 @@ extension MaterialListController: UITableViewDelegate {
         if dataModel.count == 0 {
             addMaterial(self)
         }
+            
         else if dataModel[indexPath.row].isSubMaterial {
             let subComponent = dataModel[indexPath.row]
             let predicate    = NSPredicate(format: "subMaterial = %@", subComponent)

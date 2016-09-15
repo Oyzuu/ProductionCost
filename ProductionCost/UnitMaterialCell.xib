@@ -29,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="naples" translatesAutoresizingMaskIntoConstraints="NO" id="8BH-jg-b3K">
-                        <rect key="frame" x="0.0" y="0.0" width="14" height="60"/>
+                        <rect key="frame" x="0.0" y="0.0" width="10" height="60"/>
                         <color key="backgroundColor" red="0.97647058819999999" green="0.86274509799999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
                 </subviews>
