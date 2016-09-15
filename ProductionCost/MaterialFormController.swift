@@ -38,6 +38,8 @@ class MaterialFormController: UITableViewController {
     @IBOutlet weak var priceWarning:    UIView!
     @IBOutlet weak var quantityWarning: UIView!
     
+    var hasErrors = false
+    
     // MARK: Properties
     
     weak var delegate: MaterialFormDelegate?
@@ -106,9 +108,11 @@ class MaterialFormController: UITableViewController {
     @IBAction func save(sender: AnyObject) {
         guard checkMandatoryFields() else {
             HUD.flash(.Label("Empty mandatory fields"), delay: 1)
+            hasErrors = true
             return
         }
         
+        hasErrors = false
         var hudMessage = ""
         defer {
             HUD.flash(.LabeledSuccess(title: nil, subtitle: hudMessage), delay: 1) { result in
@@ -249,3 +253,59 @@ extension MaterialFormController: CategoriesDelegate {
     }
     
 }
+
+// MARK: EXT - Text field delegate
+
+extension MaterialFormController: UITextFieldDelegate {
+    
+//    func textFieldDidEndEditing(textField: UITextField) {
+//        guard hasErrors else {
+//            return
+//        }
+//        
+//        switch textField.tag {
+//        case 1: nameWarning.hidden     = textField.text != ""
+//        case 2: priceWarning.hidden    = textField.text != ""
+//        case 3: quantityWarning.hidden = textField.text != ""
+//            
+//        default: break
+//        }
+//    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        guard hasErrors else {
+            return true
+        }
+        
+        guard textField.text!.isEmpty || (textField.text!.characters.count == 1 && string == "") else {
+            return true
+        }
+        
+        print("textfield is empty ? : \(string == "")")
+        
+        switch textField.tag {
+        case 1:
+            transtion(onView: nameWarning, withDuration: 0.3) {
+                self.nameWarning.hidden = string != ""
+            }
+        case 2:
+            transtion(onView: priceWarning, withDuration: 0.3) {
+                self.priceWarning.hidden = string != ""
+            }
+        case 3:
+            transtion(onView: quantityWarning, withDuration: 0.3) {
+                self.quantityWarning.hidden = string != ""
+            }
+            
+        default: break
+        }
+        
+        return true
+    }
+}
+
+
+
+
+
+
