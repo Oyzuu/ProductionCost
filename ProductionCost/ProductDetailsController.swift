@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import PKHUD
 
 class ProductDetailsController: UIViewController {
     
@@ -24,39 +25,34 @@ class ProductDetailsController: UIViewController {
     // MARk: Properties
     
     var productToEdit: Product?
-    let product = Product()
+    var product: Product!
     
     // MARK: Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "ProductDetail"
+        
+        nibRegistration(onTableView: tableView, forIdentifiers: "MaterialInProductCell")
+        
+        if let productToEdit = self.productToEdit {
+            productNameLabel.text        = productToEdit.name
+            numberOfComponentsLabel.text = numberOfComponentsAsString(forProduct: productToEdit)
+            totalPriceLabel.text         = String(format: "%.2f", productToEdit.price)
+        }
+        else {
+            product = Product()
+            product.name = generateRandomString(ofSize: 10)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        view.backgroundColor = AppColors.whiteLight
-//        totalBackgroundView.backgroundColor = AppColors.whiteLight
-        
+        view.backgroundColor         = AppColors.whiteLight
         tableView.backgroundColor    = AppColors.white
         imageView.layer.cornerRadius = imageView.frame.size.height / 2
-//        addMaterialButton.layer.cornerRadius = addMaterialButton.frame.size.height / 2
         
-        tableView.rowHeight = 50
-        
-        nibRegistration(onTableView: tableView, forIdentifiers: "MaterialInProductCell")
-        
-        // TODO: FOR TEST ONLY - SHOUD BE REMOVED
-        
-        if self.productToEdit != nil {
-            
-        }
-        else {
-            product.name = generateRandomString(ofSize: 10)
-        }
-        
-        
+        tableView.rowHeight = 50 
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,10 +60,17 @@ class ProductDetailsController: UIViewController {
     }
     
     override func willMoveToParentViewController(parent: UIViewController?) {
-        if parent == nil {
-            print("victory !")
-            realm(saveProduct: product)
-        }        
+        guard parent == nil else {
+            return
+            
+        }
+        
+        if self.productToEdit != nil {
+            return
+        }
+        
+        realm(saveProduct: product)
+        HUD.flash(.LabeledSuccess(title: nil, subtitle: "Saved !"), delay: 0.5)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -91,7 +94,15 @@ class ProductDetailsController: UIViewController {
             realm.add(product)
         }
     }
-
+    
+    private func numberOfComponentsAsString(forProduct product: Product) -> String {
+        let numberOfComponents       = product.components.count
+        var numberOfComponentsText   = "\(numberOfComponents)"
+        numberOfComponentsText      += numberOfComponents > 1 ? " components" : " component"
+        
+        return numberOfComponentsText
+    }
+    
 }
 
 // MARK: Table view data source
@@ -99,6 +110,9 @@ class ProductDetailsController: UIViewController {
 extension ProductDetailsController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let productToEdit = self.productToEdit {
+            return productToEdit.components.count
+        }
         return product.components.count
     }
     
@@ -106,12 +120,16 @@ extension ProductDetailsController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier(
             "MaterialInProductCell", forIndexPath: indexPath) as! MaterialInProductCell
         
-        let material = product.components[indexPath.row]
+        var material: Material!
         
-        var text = ""
-//        text += material.isPack        ? "pack:" : ""
-//        text += material.isSubMaterial ? "sub:"  : ""
-        text += material.name.stringByReplacingOccurrencesOfString("_", withString: "")
+        if let productToEdit = self.productToEdit {
+            material = productToEdit.components[indexPath.row]
+        }
+        else {
+            material = product.components[indexPath.row]
+        }
+        
+        let text = material.name.stringByReplacingOccurrencesOfString("_", withString: "")
         
         cell.quantityLabel.text = String(material.quantity)
         cell.nameLabel.text = text
@@ -133,17 +151,16 @@ extension ProductDetailsController: UITableViewDelegate {
 extension ProductDetailsController: MaterialPickerDelegate {
     
     func materialPicker(didPick material: Material) {
+        let product = self.productToEdit == nil ? self.product : productToEdit
+        
         try! Realm().write {
-            product.components.append(material)
+            product!.components.append(material)
         }
         
         // TODO: place this in updateUI later
         
-        totalPriceLabel.text         = String(format: "%.2f $", product.price)
-        let numberOfComponents       = product.components.count
-        var numberOfComponentsText   = "\(numberOfComponents)"
-        numberOfComponentsText      += numberOfComponents > 1 ? " components" : "component"
-        numberOfComponentsLabel.text = numberOfComponentsText
+        totalPriceLabel.text         = String(format: "%.2f $", product!.price)
+        numberOfComponentsLabel.text = numberOfComponentsAsString(forProduct: product!)
         
         tableView.reloadData()
     }

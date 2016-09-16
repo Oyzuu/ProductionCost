@@ -31,14 +31,14 @@ class ProductListController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "ProductList"
         
         let realm = try! Realm()
         results   = realm.objects(Product.self).sorted("name")
+        
         updateDataModel()
         
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 49, right: 0)
-        tableView.rowHeight    = 60
+        tableView.rowHeight    = 80
         
         nibRegistration(onTableView: tableView, forIdentifiers:
             ProductCellIdentifiers.AddProductCell,
@@ -49,6 +49,7 @@ class ProductListController: UIViewController {
         super.viewWillAppear(animated)
         
         updateDataModel()
+        tableView.reloadData()
         
         tableView.backgroundColor = AppColors.white50
     }
@@ -58,9 +59,18 @@ class ProductListController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ProductDetailsSegue" {
-            // TODO: fill this
-            print("to add product")
+        if segue.identifier == "ProductDetails" {
+            guard let controller = segue.destinationViewController as? ProductDetailsController else {
+                return
+            }
+            
+            if let productToEdit = sender as? Product {
+                controller.productToEdit = productToEdit
+                print("with product : \(productToEdit.name)")
+            }
+            else {
+                print("without product")
+            }
         }
     }
     
@@ -71,7 +81,7 @@ class ProductListController: UIViewController {
     }
     
     @IBAction func addProduct(sender: AnyObject) {
-        performSegueWithIdentifier("ProductDetails", sender: "")
+        performSegueWithIdentifier("ProductDetails", sender: sender)
     }
     
     private func updateDataModel() {
@@ -108,9 +118,28 @@ extension ProductListController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let identifier = ProductCellIdentifiers.AddProductCell
+
+        if dataModel.count == 0 {
+            let identifier = ProductCellIdentifiers.AddProductCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(
+                identifier, forIndexPath: indexPath) as! AddProductCell
+            
+            return cell
+        }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! AddProductCell
+        let identifier = ProductCellIdentifiers.ProductCell
+        let product = dataModel[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(
+            identifier, forIndexPath: indexPath) as! ProductCell
+        
+        cell.nameLabel.text  = product.name
+        cell.priceLabel.text = String(format: "%.2f $", product.price)
+        
+        let numberOfComponents            = product.components.count
+        var numberOfComponentsText        = "\(numberOfComponents)"
+        numberOfComponentsText           += numberOfComponents > 1 ? " components" : " component"
+        cell.numberOfComponentsLabel.text = numberOfComponentsText
         
         return cell
     }
@@ -153,6 +182,9 @@ extension ProductListController:UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if dataModel.count == 0 {
             addProduct(self)
+        }
+        else {
+            addProduct(dataModel[indexPath.row])
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
