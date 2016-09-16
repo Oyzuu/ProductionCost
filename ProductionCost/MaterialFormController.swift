@@ -118,7 +118,7 @@ class MaterialFormController: UITableViewController {
         hasErrors = false
         var hudMessage = ""
         defer {
-            HUD.flash(.LabeledSuccess(title: nil, subtitle: hudMessage), delay: 1) { result in
+            HUD.flash(.LabeledSuccess(title: nil, subtitle: hudMessage), delay: 0.5) { result in
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }

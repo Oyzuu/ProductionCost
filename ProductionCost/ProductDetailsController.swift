@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import PKHUD
+import LTMorphingLabel
 
 class ProductDetailsController: UIViewController {
     
@@ -19,7 +20,6 @@ class ProductDetailsController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var totalBackgroundView: UIView!
     @IBOutlet weak var totalPriceLabel: UILabel!
-    @IBOutlet weak var addMaterialButton: UIButton!
     @IBOutlet weak var numberOfComponentsLabel: UILabel!
     
     // MARk: Properties
@@ -32,7 +32,11 @@ class ProductDetailsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nibRegistration(onTableView: tableView, forIdentifiers: "MaterialInProductCell")
+        nibRegistration(onTableView: tableView, forIdentifiers:
+            "MaterialInProductCell", "AddSomethingCell")
+        
+        (numberOfComponentsLabel as! LTMorphingLabel).morphingEffect = .Evaporate
+        (totalPriceLabel         as! LTMorphingLabel).morphingEffect = .Evaporate
         
         if let productToEdit = self.productToEdit {
             productNameLabel.text        = productToEdit.name
@@ -41,7 +45,7 @@ class ProductDetailsController: UIViewController {
         }
         else {
             product                      = Product()
-            product.name                 = generateRandomString(ofSize: 10)
+            product.name                 = generateRandomString(ofSize: 16)
             productNameLabel.text        = product.name
             numberOfComponentsLabel.text = "No components"
             totalPriceLabel.text         = "0 $"
@@ -56,7 +60,10 @@ class ProductDetailsController: UIViewController {
         totalBackgroundView.backgroundColor = AppColors.white
         tableView.backgroundColor           = AppColors.white
         
-        tableView.rowHeight = 50 
+        tableView.rowHeight = 50
+        
+        updateUI()
+        bottomScroll()
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,11 +81,11 @@ class ProductDetailsController: UIViewController {
         }
         
         realm(saveProduct: product)
-        HUD.flash(.LabeledSuccess(title: nil, subtitle: "Saved !"), delay: 0.5)
+        HUD.flash(.LabeledSuccess(title: nil, subtitle: "Saved"), delay: 0.5)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ProductDetailsMaterialPicker" {
+        if segue.identifier == "ProductComponentPicker" {
             if let controller = segue.destinationViewController as? ProductDetailsMaterialPickerController {
                 controller.delegate = self
             }
@@ -86,10 +93,6 @@ class ProductDetailsController: UIViewController {
     }
     
     // MARK: Methods
-    
-    @IBAction func addMaterial() {
-        print("add material")
-    }
     
     private func realm(saveProduct product: Product) {
         let realm = try! Realm()
@@ -108,19 +111,25 @@ class ProductDetailsController: UIViewController {
     }
     
     private func updateUI() {
-        let product = productToEdit == nil ? self.product : productToEdit
+        let product = getActiveProduct()
         
-        transition(onView: totalPriceLabel, withDuration: 0.3) {
-            self.totalPriceLabel.text = String(format: "%.2f $", product.price)
-        }
-        
-        transition(onView: numberOfComponentsLabel, withDuration: 0.3) {
-            self.numberOfComponentsLabel.text = self.numberOfComponentsAsString(forProduct: product)
-        }
+        totalPriceLabel.text         = String(format: "%.2f $", product.price)
+        numberOfComponentsLabel.text = self.numberOfComponentsAsString(forProduct: product)
         
         transition(onView: tableView, withDuration: 0.3) {
             self.tableView.reloadData()
         }
+    }
+    
+    private func bottomScroll() {
+        tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: getActiveProduct().components.count, inSection: 0),
+                                         atScrollPosition: .Bottom, animated: true)
+    }
+    
+    private func getActiveProduct() -> Product {
+        let product = productToEdit == nil ? self.product : productToEdit
+        
+        return product
     }
     
 }
@@ -130,32 +139,41 @@ class ProductDetailsController: UIViewController {
 extension ProductDetailsController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let productToEdit = self.productToEdit {
-            return productToEdit.components.count
-        }
-        return product.components.count
+        return getActiveProduct().components.count + 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(
-            "MaterialInProductCell", forIndexPath: indexPath) as! MaterialInProductCell
+        let product = getActiveProduct()
         
-        var material: Material!
-        
-        if let productToEdit = self.productToEdit {
-            material = productToEdit.components[indexPath.row]
+        let count = product.components.count
+        //(count > 0 && indexPath.row == count)
+        if count == 0 || (count > 0 && indexPath.row == count) {
+            let cell = tableView.dequeueReusableCellWithIdentifier(
+                "AddSomethingCell", forIndexPath: indexPath)
+            return cell
         }
         else {
-            material = product.components[indexPath.row]
+            let cell = tableView.dequeueReusableCellWithIdentifier(
+                "MaterialInProductCell", forIndexPath: indexPath) as! MaterialInProductCell
+            
+            var material: Material!
+            
+            if let productToEdit = self.productToEdit {
+                material = productToEdit.components[indexPath.row]
+            }
+            else {
+                material = product.components[indexPath.row]
+            }
+            
+            let text = material.name.stringByReplacingOccurrencesOfString("_", withString: "")
+            
+            cell.quantityLabel.text = String(material.quantity)
+            cell.nameLabel.text = text
+            cell.priceLabel.text = String(format: "%.2f $", material.price)
+            
+            return cell
         }
         
-        let text = material.name.stringByReplacingOccurrencesOfString("_", withString: "")
-        
-        cell.quantityLabel.text = String(material.quantity)
-        cell.nameLabel.text = text
-        cell.priceLabel.text = String(format: "%.2f $", material.price)
-        
-        return cell
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -180,7 +198,19 @@ extension ProductDetailsController: UITableViewDataSource {
 
 extension ProductDetailsController: UITableViewDelegate {
     
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if tableView.cellForRowAtIndexPath(indexPath)?.reuseIdentifier == "AddSomethingCell" {
+            return false
+        }
+        
+        return true
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if tableView.cellForRowAtIndexPath(indexPath)?.reuseIdentifier == "AddSomethingCell" {
+            performSegueWithIdentifier("ProductComponentPicker", sender: nil)
+        }
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -191,17 +221,14 @@ extension ProductDetailsController: UITableViewDelegate {
 extension ProductDetailsController: MaterialPickerDelegate {
     
     func materialPicker(didPick material: Material) {
-        let product = self.productToEdit == nil ? self.product : productToEdit
+        let product = getActiveProduct()
         
         try! Realm().write {
-            product!.components.append(material)
+            product.components.append(material)
         }
         
-        // TODO: place this in updateUI later
-        
         updateUI()
-        
-        tableView.scrollToNearestSelectedRowAtScrollPosition(.Bottom, animated: true)
+        bottomScroll()
     }
     
 }

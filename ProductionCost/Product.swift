@@ -15,6 +15,7 @@ class Product: Object {
     
     dynamic var name = ""
     let components = List<Material>()
+    
     var price: Double {
         var sum = 0.0
         

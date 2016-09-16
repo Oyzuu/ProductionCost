@@ -28,8 +28,16 @@ class ProductDetailsMaterialPickerController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        results = try! Realm().objects(Material.self)
+        results = try! Realm().objects(Material.self).sorted("name")
         updateDataModel()
+        
+        nibRegistration(onTableView: tableView, forIdentifiers: "MaterialInProductPickerCell")
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.backgroundColor = AppColors.white
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,15 +68,20 @@ extension ProductDetailsMaterialPickerController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ProductDetailsMaterialPickerCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(
+            "MaterialInProductPickerCell", forIndexPath: indexPath) as! MaterialInProductPickerCell
         let material = dataModel[indexPath.row]
-        var text = ""
-        text += material.isPack        ? "pack:" : ""
-        text += material.isSubMaterial ? "sub:"  : ""
-        text += material.name.stringByReplacingOccurrencesOfString("_", withString: "")
         
-        cell.textLabel?.text = text
-        cell.detailTextLabel!.text = String(format: "%.2f $", material.price)
+        let imageName = material.isPack || material.isSubMaterial ? "raspberry" : "naples"
+        let image = UIImage(named: imageName)
+        cell.indicator.image = image
+        cell.indicator.alpha = material.isSubMaterial ? 0.5 : 1
+        
+        let text = material.name.stringByReplacingOccurrencesOfString("_", withString: "")
+        cell.nameLabel.text  = text
+        cell.priceLabel.text = String(format: "%.2f $", material.price)
+        
+        cell.setAlternativeBackground(forEvenIndexPath: indexPath)
         
         return cell
     }

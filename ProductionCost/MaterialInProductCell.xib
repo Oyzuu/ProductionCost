@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Long material name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="SDo-Ie-1y2">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Absurdly long component name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="SDo-Ie-1y2">
                         <rect key="frame" x="52" y="11" width="150" height="28"/>
                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                         <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>

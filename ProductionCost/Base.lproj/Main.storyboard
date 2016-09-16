@@ -459,8 +459,8 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="raspberry" translatesAutoresizingMaskIntoConstraints="NO" id="Vjq-pr-K4s">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="999999,99 $" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEZ-XZ-JUY">
-                                        <rect key="frame" x="139" y="23" width="173" height="32"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEZ-XZ-JUY" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
+                                        <rect key="frame" x="8" y="23" width="304" height="32"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="27"/>
                                         <color key="textColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -479,19 +479,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ooj-Vc-4tR">
                                 <rect key="frame" x="0.0" y="132" width="320" height="327"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GmX-O0-31B">
-                                    <rect key="frame" x="0.0" y="72" width="320" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                    <state key="normal" title="Add something">
-                                        <color key="titleColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="addMaterial" destination="gZ9-vP-1eN" eventType="touchUpInside" id="j8h-J1-C3A"/>
-                                        <segue destination="qIC-Sk-pXA" kind="push" identifier="ProductDetailsMaterialPicker" id="Puo-DG-ZJ8"/>
-                                    </connections>
-                                </button>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductMaterialCell" textLabel="Bmp-HO-0gr" detailTextLabel="bAA-JW-8mx" style="IBUITableViewCellStyleValue1" id="M2p-Ax-yFq">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -526,13 +513,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="raspberry" translatesAutoresizingMaskIntoConstraints="NO" id="tj9-Qb-ujJ">
                                 <rect key="frame" x="10" y="74" width="50" height="50"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Very long product name stupidly extended to absurd dimensions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="LYa-rP-cKo">
-                                <rect key="frame" x="68" y="64" width="232" height="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Really long product name, I admit it's absurd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="LYa-rP-cKo">
+                                <rect key="frame" x="68" y="64" width="244" height="39"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
                                 <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of components" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mif-no-u9O">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mif-no-u9O" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
                                 <rect key="frame" x="68" y="100" width="182" height="24"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -546,13 +533,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Product details" id="6cB-Oi-oc0"/>
                     <connections>
-                        <outlet property="addMaterialButton" destination="GmX-O0-31B" id="bam-Iw-1nU"/>
                         <outlet property="imageView" destination="tj9-Qb-ujJ" id="H9u-EA-V3o"/>
                         <outlet property="numberOfComponentsLabel" destination="mif-no-u9O" id="FKg-th-ZFP"/>
                         <outlet property="productNameLabel" destination="LYa-rP-cKo" id="WlT-0k-w7I"/>
                         <outlet property="tableView" destination="Ooj-Vc-4tR" id="tdo-H4-bGw"/>
                         <outlet property="totalBackgroundView" destination="Sx8-Up-4hw" id="6Ba-4q-WbD"/>
                         <outlet property="totalPriceLabel" destination="EEZ-XZ-JUY" id="IjE-NY-pFa"/>
+                        <segue destination="qIC-Sk-pXA" kind="push" identifier="ProductComponentPicker" id="Ieh-G9-HXy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8T-sZ-blq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -563,36 +550,10 @@
         <scene sceneID="eKk-Dp-xDZ">
             <objects>
                 <tableViewController id="qIC-Sk-pXA" customClass="ProductDetailsMaterialPickerController" customModule="ProductionCost" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ADg-oU-XYT">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ADg-oU-XYT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductDetailsMaterialPickerCell" textLabel="W0N-ah-5zj" detailTextLabel="Jbf-Pf-y6G" style="IBUITableViewCellStyleValue1" id="etW-dx-Ao8">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="etW-dx-Ao8" id="byA-pR-X72">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W0N-ah-5zj">
-                                            <rect key="frame" x="15" y="12" width="32" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jbf-Pf-y6G">
-                                            <rect key="frame" x="263" y="12" width="42" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="qIC-Sk-pXA" id="c38-Fx-EZx"/>
                             <outlet property="delegate" destination="qIC-Sk-pXA" id="QBb-c7-LtR"/>
