@@ -16,6 +16,8 @@ func printDocumentsDirectory() {
     print(documentsDirectory)
 }
 
+
+/// Shortening wrapper for transitionWithview
 func transtion(onView view: UIView, withDuration duration: Double, closure: () -> ()) {
     UIView.transitionWithView(view,
                               duration: duration,
@@ -24,9 +26,10 @@ func transtion(onView view: UIView, withDuration duration: Double, closure: () -
                               completion: nil)
 }
 
-//func nibRegistration(onTableview tableView: UITableView, forIdentifiers identifiers: String...) {
-//    for identifier in identifiers {
-//        let cellNib = UINib(nibName: identifier, bundle: nil)
-//        tableView.registerNib(cellNib, forCellReuseIdentifier: identifier)
-//    }
-//}
+/// Register variadic nib identifiers on a UITableView
+func nibRegistration(onTableView tableView: UITableView, forIdentifiers identifiers: String...) {
+    for identifier in identifiers {
+        let cellNib = UINib(nibName: identifier, bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: identifier)
+    }
+}

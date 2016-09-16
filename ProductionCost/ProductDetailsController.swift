@@ -35,11 +35,15 @@ class ProductDetailsController: UIViewController {
         super.viewWillAppear(animated)
         
         view.backgroundColor = AppColors.whiteLight
-        totalBackgroundView.backgroundColor = AppColors.raspberry25
+        totalBackgroundView.backgroundColor = AppColors.whiteLight
         
-        tableView.backgroundColor    = AppColors.white
+//        tableView.backgroundColor    = AppColors.white
         imageView.layer.cornerRadius = imageView.frame.size.height / 2
         addMaterialButton.layer.cornerRadius = addMaterialButton.frame.size.height / 2
+        
+        tableView.rowHeight = 50
+        
+        nibRegistration(onTableView: tableView, forIdentifiers: "MaterialInProductCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,16 +81,19 @@ extension ProductDetailsController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ProductMaterialCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(
+            "MaterialInProductCell", forIndexPath: indexPath) as! MaterialInProductCell
+        
         let material = product.components[indexPath.row]
         
         var text = ""
-        text += material.isPack        ? "pack:" : ""
-        text += material.isSubMaterial ? "sub:"  : ""
+//        text += material.isPack        ? "pack:" : ""
+//        text += material.isSubMaterial ? "sub:"  : ""
         text += material.name.stringByReplacingOccurrencesOfString("_", withString: "")
         
-        cell.textLabel?.text = text
-        cell.detailTextLabel!.text = String(format: "%.2f $", material.price)
+        cell.quantityLabel.text = String(material.quantity)
+        cell.nameLabel.text = text
+        cell.priceLabel.text = String(format: "%.2f $", material.price)
         
         return cell
     }
@@ -105,7 +112,12 @@ extension ProductDetailsController: MaterialPickerDelegate {
     
     func materialPicker(didPick material: Material) {
         product.components.append(material)
-        totalPriceLabel.text = String(format: "%.2f $", product.price)
+        totalPriceLabel.text         = String(format: "%.2f $", product.price)
+        let numberOfComponents       = product.components.count
+        var numberOfComponentsText   = "\(numberOfComponents)"
+        numberOfComponentsText      += numberOfComponents > 1 ? " components" : "component"
+        numberOfComponentsLabel.text = numberOfComponentsText
+        
         tableView.reloadData()
     }
     

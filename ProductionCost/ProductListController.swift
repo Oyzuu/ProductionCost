@@ -40,7 +40,7 @@ class ProductListController: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 49, right: 0)
         tableView.rowHeight    = 60
         
-        nibRegistration(forIdentifiers:
+        nibRegistration(onTableView: tableView, forIdentifiers:
             ProductCellIdentifiers.AddProductCell,
             ProductCellIdentifiers.ProductCell)
     }
@@ -82,13 +82,6 @@ class ProductListController: UIViewController {
         dataModel = []
         for result in results {
             dataModel.append(result)
-        }
-    }
-    
-    private func nibRegistration(forIdentifiers identifiers: String...) {
-        for identifier in identifiers {
-            let cellNib = UINib(nibName: identifier, bundle: nil)
-            tableView.registerNib(cellNib, forCellReuseIdentifier: identifier)
         }
     }
     

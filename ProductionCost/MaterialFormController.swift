@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import PKHUD
 import FontAwesome_swift
+import UITextField_Shake_Swift
 
 // MARK: Delegate protocol
 
@@ -107,7 +108,9 @@ class MaterialFormController: UITableViewController {
     
     @IBAction func save(sender: AnyObject) {
         guard checkMandatoryFields() else {
-            HUD.flash(.Label("Empty mandatory fields"), delay: 1)
+            HUD.flash(.Label("You have to fill these fields"), delay: 1) { result in
+                self.shake(textFields: self.nameField, self.priceField, self.quantityField)
+            }
             hasErrors = true
             return
         }
@@ -184,6 +187,14 @@ class MaterialFormController: UITableViewController {
         }
         
         return false
+    }
+    
+    private func shake(textFields fields: UITextField...) {
+        for field in fields {
+            if field.text == "" {
+                field.shake(4, withDelta: 5, speed: 0.2)
+            }
+        }
     }
     
     @IBAction func addDerivedComponent(sender: AnyObject) {
