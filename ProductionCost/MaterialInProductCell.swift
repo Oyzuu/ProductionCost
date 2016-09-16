@@ -20,6 +20,10 @@ class MaterialInProductCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        let selectionView             = UIView(frame: CGRect.zero)
+        selectionView.backgroundColor = AppColors.raspberry25
+        self.selectedBackgroundView   = selectionView
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

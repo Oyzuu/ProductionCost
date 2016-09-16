@@ -32,7 +32,7 @@ func generateRandomString(ofSize size: Int) -> String {
 }
 
 /// Shortening wrapper for transitionWithview
-func transtion(onView view: UIView, withDuration duration: Double, closure: () -> ()) {
+func transition(onView view: UIView, withDuration duration: Double, closure: () -> ()) {
     UIView.transitionWithView(view,
                               duration: duration,
                               options: UIViewAnimationOptions.TransitionCrossDissolve,

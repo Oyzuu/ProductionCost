@@ -217,7 +217,7 @@ extension MaterialListController: UITableViewDataSource {
         
         if dataModel.count == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(
-                MaterialCellIdentifiers.AddMaterialCell, forIndexPath: indexPath) as! AddMaterialCell
+                MaterialCellIdentifiers.AddMaterialCell, forIndexPath: indexPath)
             
             return cell
         }
@@ -260,7 +260,7 @@ extension MaterialListController: UITableViewDataSource {
             
             updateDataModel()
             
-            transtion(onView: tableView, withDuration: 0.3){
+            transition(onView: tableView, withDuration: 0.3) {
                 self.tableView.reloadData()
             }
         }

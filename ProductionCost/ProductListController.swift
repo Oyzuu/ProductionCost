@@ -122,7 +122,7 @@ extension ProductListController: UITableViewDataSource {
         if dataModel.count == 0 {
             let identifier = ProductCellIdentifiers.AddProductCell
             let cell = tableView.dequeueReusableCellWithIdentifier(
-                identifier, forIndexPath: indexPath) as! AddProductCell
+                identifier, forIndexPath: indexPath)
             
             return cell
         }
@@ -159,7 +159,7 @@ extension ProductListController: UITableViewDataSource {
             
             updateDataModel()
             
-            transtion(onView: tableView, withDuration: 0.3){
+            transition(onView: tableView, withDuration: 0.3){
                 self.tableView.reloadData()
             }
         }

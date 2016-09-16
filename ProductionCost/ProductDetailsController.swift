@@ -37,20 +37,24 @@ class ProductDetailsController: UIViewController {
         if let productToEdit = self.productToEdit {
             productNameLabel.text        = productToEdit.name
             numberOfComponentsLabel.text = numberOfComponentsAsString(forProduct: productToEdit)
-            totalPriceLabel.text         = String(format: "%.2f", productToEdit.price)
+            totalPriceLabel.text         = String(format: "%.2f $", productToEdit.price)
         }
         else {
-            product = Product()
-            product.name = generateRandomString(ofSize: 10)
+            product                      = Product()
+            product.name                 = generateRandomString(ofSize: 10)
+            productNameLabel.text        = product.name
+            numberOfComponentsLabel.text = "No components"
+            totalPriceLabel.text         = "0 $"
         }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        view.backgroundColor         = AppColors.whiteLight
-        tableView.backgroundColor    = AppColors.white
-        imageView.layer.cornerRadius = imageView.frame.size.height / 2
+        view.backgroundColor                = AppColors.whiteLight
+        imageView.layer.cornerRadius        = imageView.frame.size.height / 2
+        totalBackgroundView.backgroundColor = AppColors.white
+        tableView.backgroundColor           = AppColors.white
         
         tableView.rowHeight = 50 
     }
@@ -103,6 +107,22 @@ class ProductDetailsController: UIViewController {
         return numberOfComponentsText
     }
     
+    private func updateUI() {
+        let product = productToEdit == nil ? self.product : productToEdit
+        
+        transition(onView: totalPriceLabel, withDuration: 0.3) {
+            self.totalPriceLabel.text = String(format: "%.2f $", product.price)
+        }
+        
+        transition(onView: numberOfComponentsLabel, withDuration: 0.3) {
+            self.numberOfComponentsLabel.text = self.numberOfComponentsAsString(forProduct: product)
+        }
+        
+        transition(onView: tableView, withDuration: 0.3) {
+            self.tableView.reloadData()
+        }
+    }
+    
 }
 
 // MARK: Table view data source
@@ -138,11 +158,31 @@ extension ProductDetailsController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            
+            try! Realm().write {
+                if let productToEdit = self.productToEdit {
+                    productToEdit.components.removeAtIndex(indexPath.row)
+                }
+                else {
+                    product.components.removeAtIndex(indexPath.row)
+                }
+            }
+            
+            updateUI()
+        }
+    }
+    
 }
 
-// MARK : Table view delegate
+// MARK: Table view delegate
 
 extension ProductDetailsController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
     
 }
 
@@ -159,10 +199,9 @@ extension ProductDetailsController: MaterialPickerDelegate {
         
         // TODO: place this in updateUI later
         
-        totalPriceLabel.text         = String(format: "%.2f $", product!.price)
-        numberOfComponentsLabel.text = numberOfComponentsAsString(forProduct: product!)
+        updateUI()
         
-        tableView.reloadData()
+        tableView.scrollToNearestSelectedRowAtScrollPosition(.Bottom, animated: true)
     }
     
 }

@@ -206,7 +206,7 @@ class MaterialFormController: UITableViewController {
         
         if derivedComponentWillExistAtSave {
             
-            transtion(onView: derivedComponentLabel, withDuration: 0.3) {
+            transition(onView: derivedComponentLabel, withDuration: 0.3) {
                 self.derivedComponentLabel.text =  "\(self.materialToEdit!.name) per unit"
             }
             
@@ -214,7 +214,7 @@ class MaterialFormController: UITableViewController {
         }
         else {
             
-            transtion(onView: derivedComponentLabel, withDuration: 0.3) {
+            transition(onView: derivedComponentLabel, withDuration: 0.3) {
                 self.derivedComponentLabel.text = "No derived component"
             }
             
@@ -282,15 +282,15 @@ extension MaterialFormController: UITextFieldDelegate {
         
         switch textField.tag {
         case 1:
-            transtion(onView: nameWarning, withDuration: 0.5) {
+            transition(onView: nameWarning, withDuration: 0.5) {
                 self.nameWarning.hidden = string != ""
             }
         case 2:
-            transtion(onView: priceWarning, withDuration: 0.5) {
+            transition(onView: priceWarning, withDuration: 0.5) {
                 self.priceWarning.hidden = string != ""
             }
         case 3:
-            transtion(onView: quantityWarning, withDuration: 0.5) {
+            transition(onView: quantityWarning, withDuration: 0.5) {
                 self.quantityWarning.hidden = string != ""
             }
             
