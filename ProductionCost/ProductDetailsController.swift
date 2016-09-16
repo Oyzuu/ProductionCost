@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ProductDetailsController: UIViewController {
     
@@ -22,6 +23,7 @@ class ProductDetailsController: UIViewController {
     
     // MARk: Properties
     
+    var productToEdit: Product?
     let product = Product()
     
     // MARK: Overrides
@@ -35,15 +37,26 @@ class ProductDetailsController: UIViewController {
         super.viewWillAppear(animated)
         
         view.backgroundColor = AppColors.whiteLight
-        totalBackgroundView.backgroundColor = AppColors.whiteLight
+//        totalBackgroundView.backgroundColor = AppColors.whiteLight
         
-//        tableView.backgroundColor    = AppColors.white
+        tableView.backgroundColor    = AppColors.white
         imageView.layer.cornerRadius = imageView.frame.size.height / 2
-        addMaterialButton.layer.cornerRadius = addMaterialButton.frame.size.height / 2
+//        addMaterialButton.layer.cornerRadius = addMaterialButton.frame.size.height / 2
         
         tableView.rowHeight = 50
         
         nibRegistration(onTableView: tableView, forIdentifiers: "MaterialInProductCell")
+        
+        // TODO: FOR TEST ONLY - SHOUD BE REMOVED
+        
+        if self.productToEdit != nil {
+            
+        }
+        else {
+            product.name = generateRandomString(ofSize: 10)
+        }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,7 +66,8 @@ class ProductDetailsController: UIViewController {
     override func willMoveToParentViewController(parent: UIViewController?) {
         if parent == nil {
             print("victory !")
-        }
+            realm(saveProduct: product)
+        }        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -68,6 +82,14 @@ class ProductDetailsController: UIViewController {
     
     @IBAction func addMaterial() {
         print("add material")
+    }
+    
+    private func realm(saveProduct product: Product) {
+        let realm = try! Realm()
+        
+        try! realm.write {
+            realm.add(product)
+        }
     }
 
 }
@@ -111,7 +133,12 @@ extension ProductDetailsController: UITableViewDelegate {
 extension ProductDetailsController: MaterialPickerDelegate {
     
     func materialPicker(didPick material: Material) {
-        product.components.append(material)
+        try! Realm().write {
+            product.components.append(material)
+        }
+        
+        // TODO: place this in updateUI later
+        
         totalPriceLabel.text         = String(format: "%.2f $", product.price)
         let numberOfComponents       = product.components.count
         var numberOfComponentsText   = "\(numberOfComponents)"

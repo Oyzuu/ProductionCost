@@ -16,6 +16,20 @@ func printDocumentsDirectory() {
     print(documentsDirectory)
 }
 
+/// I needed this for testing at some point, don't judge me.
+func generateRandomString(ofSize size: Int) -> String {
+    var string = ""
+    let lowerCaseAlphabet = "abcdefghijklmnopqrstuvwxyz"
+    for _ in 0..<size {
+        let randomIndex = arc4random_uniform((UInt32(lowerCaseAlphabet.characters.count)))
+        let charAtIndex =
+            String(lowerCaseAlphabet[lowerCaseAlphabet.startIndex.advancedBy(Int(randomIndex))])
+        
+        string += arc4random() % 2 == 0 ? charAtIndex : charAtIndex.uppercaseString
+    }
+
+    return string
+}
 
 /// Shortening wrapper for transitionWithview
 func transtion(onView view: UIView, withDuration duration: Double, closure: () -> ()) {
