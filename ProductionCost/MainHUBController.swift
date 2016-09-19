@@ -31,13 +31,20 @@ class MainHUBController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        let font    = UIFont.fontAwesomeOfSize(20)
+        let buttons = [productsButton:   String.fontAwesomeIconWithName(.Cubes),
+                       componentsButton: String.fontAwesomeIconWithName(.Cube),
+                       suppliersButton:  String.fontAwesomeIconWithName(.Truck),
+                       accountButton:    String.fontAwesomeIconWithName(.User),
+                       settingsButton:   String.fontAwesomeIconWithName(.Gears),
+                       aboutbutton:      String.fontAwesomeIconWithName(.Info)]
         
-        let buttons = [productsButton, componentsButton, suppliersButton,
-                       accountButton, settingsButton, aboutbutton]
-        
-        for button in buttons {
+        for (button, icon) in buttons {
             button.layer.masksToBounds = true
             button.layer.cornerRadius = button.frame.size.height / 2
+            button.titleLabel?.font = font
+            button.setTitleColor(AppColors.white, forState: .Normal)
+            button.setTitle(icon, forState: .Normal)
         }
     }
 

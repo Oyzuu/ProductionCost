@@ -10,16 +10,20 @@ import UIKit
 import RealmSwift
 import PKHUD
 import CoreLocation
+import MapKit
 
 class SupplierFormController: UIViewController {
     
     // MARK: Outlets
     
-    @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var addressField: UITextField!
+    @IBOutlet weak var nameField:      UITextField!
+    @IBOutlet weak var addressField:   UITextField!
     @IBOutlet weak var locationButton: UIButton!
+    @IBOutlet weak var mapView:        MKMapView!
     
     // MARK: Properties
+    
+    var supplierToEdit: Supplier?
     
     let manager = CLLocationManager()
     var location: CLLocation?
@@ -37,6 +41,12 @@ class SupplierFormController: UIViewController {
         
         manager.desiredAccuracy = 10
         manager.delegate = self
+        
+        if let supplierToEdit = self.supplierToEdit {
+            title             = "Edit supplier"
+            nameField.text    = supplierToEdit.name
+            addressField.text = supplierToEdit.address
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,6 +55,12 @@ class SupplierFormController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if let supplierToEdit = self.supplierToEdit,
+            latitude  = supplierToEdit.latitude.value,
+            longitude = supplierToEdit.longitude.value {
+            showSupplier(withLatitude: latitude, andLongitude: longitude)
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -57,20 +73,47 @@ class SupplierFormController: UIViewController {
     // MARK: Methods
     
     @IBAction func save(sender: AnyObject) {
-        let supplier     = Supplier()
-        supplier.name    = nameField.text!
-        supplier.address = addressField.text!
+        var hudMessage = ""
         
-        
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(supplier)
+        defer {
+            HUD.flash(.LabeledSuccess(title: nil, subtitle: hudMessage), delay: 0.3) { result in
+                self.manager.delegate = nil
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
         }
         
-        HUD.flash(.LabeledSuccess(title: nil, subtitle: "Saved"), delay: 0.3) { result in
-            self.manager.delegate = nil
-            self.navigationController?.popViewControllerAnimated(true)
+        if let supplierToEdit = self.supplierToEdit {
+            let realm = try! Realm()
+            try! realm.write {
+                supplierToEdit.name            = nameField.text!
+                supplierToEdit.address         = addressField.text!
+                
+                if let location = self.location {
+                    supplierToEdit.latitude.value  = location.coordinate.latitude
+                    supplierToEdit.longitude.value = location.coordinate.longitude
+                }
+            }
+            
+            hudMessage = "Edited"
         }
+        else {
+            let supplier             = Supplier()
+            supplier.name            = nameField.text!
+            supplier.address         = addressField.text!
+            supplier.latitude.value  = location?.coordinate.latitude
+            supplier.longitude.value = location?.coordinate.longitude
+            
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(supplier)
+            }
+            
+            hudMessage = "Saved"
+        }
+    }
+    
+    @IBAction func cancel(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     @IBAction func getLocation(sender: AnyObject) {
@@ -143,6 +186,9 @@ class SupplierFormController: UIViewController {
         let validateAction = UIAlertAction(title: "Yes", style: .Default) {
             action in
             self.addressField.text! = message
+            self.showSupplier(withLatitude: location.coordinate.latitude,
+                              andLongitude: location.coordinate.longitude)
+            self.location = location
         }
         
         alert.addAction(cancelAction)
@@ -151,7 +197,16 @@ class SupplierFormController: UIViewController {
         presentViewController(alert, animated: true, completion: nil)
     }
     
+    func showSupplier(withLatitude latitude: Double, andLongitude longitude: Double) {
+        // TODO: Make this safe
+        let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let region = MKCoordinateRegionMakeWithDistance(center, 1000, 1000)
+        mapView.setRegion(region, animated: true)
+    }
+    
 }
+
+// MARK: Location manager delegate
 
 extension SupplierFormController: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
