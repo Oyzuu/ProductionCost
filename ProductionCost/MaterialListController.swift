@@ -42,7 +42,7 @@ class MaterialListController: UIViewController {
         
         // tableView init
         
-        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 49, right: 0)
+//        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 49, right: 0)
         tableView.rowHeight = 60
         
         nibRegistration(onTableView: tableView, forIdentifiers:
@@ -153,16 +153,6 @@ extension MaterialListController: MaterialFormDelegate {
     
 }
 
-// MARK: EXT - Navigation bar delegate
-
-extension MaterialListController: UINavigationBarDelegate {
-    
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
-    }
-    
-}
-
 // MARK: EXT - Table view delegate
 
 extension MaterialListController: UITableViewDelegate {
@@ -179,7 +169,7 @@ extension MaterialListController: UITableViewDelegate {
             let parentIndex  = dataModel.indexOf(parent!)
             let subtitle     = "Please modify source component"
             
-            HUD.flash(.Label(subtitle), delay: 1) { result in
+            HUD.flash(.Label(subtitle), delay: 0.5) { result in
                 self.performSegueWithIdentifier("EditMaterialSegue", sender: parentIndex)
             }
         }

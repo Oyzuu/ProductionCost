@@ -11,15 +11,15 @@ import RealmSwift
 
 // MARK: Categories Controller delegate
 
-protocol CategoriesDelegate: class {
-    func categoriesDelegate(didFinish categoryName: String)
+protocol CategoryPickerDelegate: class {
+    func categoryPickerDelegate(didFinish categoryName: String)
 }
 
 class CategoriesPickerController: UITableViewController {
     
     // MARK: Properties
     
-    var delegate: CategoriesDelegate?
+    var delegate: CategoryPickerDelegate?
     var dataModel = Category.values
     
     // MARK: Overrides
@@ -61,7 +61,7 @@ extension CategoriesPickerController {
 extension CategoriesPickerController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        delegate?.categoriesDelegate(didFinish: dataModel[indexPath.row])
+        delegate?.categoryPickerDelegate(didFinish: dataModel[indexPath.row])
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         navigationController?.popViewControllerAnimated(true)

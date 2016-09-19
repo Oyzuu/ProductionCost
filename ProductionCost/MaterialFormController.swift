@@ -34,19 +34,22 @@ class MaterialFormController: UITableViewController {
     @IBOutlet weak var derivedComponentButton: UIButton!
    
     @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var supplierLabel: UILabel!
     
     @IBOutlet weak var nameWarning:     UIView!
     @IBOutlet weak var priceWarning:    UIView!
     @IBOutlet weak var quantityWarning: UIView!
     
-    var hasErrors = false
-    
     // MARK: Properties
     
-    weak var delegate: MaterialFormDelegate?
-    var isUnit = false
+    weak var delegate:  MaterialFormDelegate?
     var materialToEdit: Material?
+    
+    var isUnit                          = false
     var derivedComponentWillExistAtSave = false
+    var hasErrors                       = false
+    
+    var componentSupplier: Supplier?
     
     // MARK: Override
 
@@ -71,6 +74,10 @@ class MaterialFormController: UITableViewController {
             quantityField.text = String(materialToEdit.quantity)
             categoryLabel.text = materialToEdit.category
             
+            if let supplierName = materialToEdit.supplier?.name {
+                supplierLabel.text = supplierName
+            }
+            
             if materialToEdit.subMaterial != nil {
                 derivedComponentWillExistAtSave = true
             }
@@ -86,8 +93,16 @@ class MaterialFormController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "CategoryPickerSegue" {
+        if segue.identifier == "CategoryPicker" {
             guard let destination = segue.destinationViewController as? CategoriesPickerController else {
+                return
+            }
+            
+            destination.delegate = self
+        }
+        
+        if segue.identifier == "SupplierPicker" {
+            guard let destination = segue.destinationViewController as? SupplierPickerController else {
                 return
             }
             
@@ -131,6 +146,7 @@ class MaterialFormController: UITableViewController {
                 materialToEdit.price    = stringToDouble(priceField.text!)
                 materialToEdit.quantity = stringToDouble(quantityField.text!)
                 materialToEdit.category = categoryLabel.text!
+                materialToEdit.supplier = componentSupplier
                 
                 if derivedComponentWillExistAtSave && materialToEdit.subMaterial == nil {
                     materialToEdit.createDerivedComponent()
@@ -156,6 +172,7 @@ class MaterialFormController: UITableViewController {
             material.quantity = stringToDouble(quantityField.text!)
             material.isPack   = !isUnit
             material.category = categoryLabel.text!
+            material.supplier = componentSupplier
             
             if derivedComponentSwitch.on {
                 material.createDerivedComponent()
@@ -255,14 +272,25 @@ extension MaterialFormController {
     }
 }
 
-// MARK: EXT - Categories picker controller delegate
+// MARK: EXT - Category picker delegate
 
-extension MaterialFormController: CategoriesDelegate {
+extension MaterialFormController: CategoryPickerDelegate {
     
-    func categoriesDelegate(didFinish categoryName: String) {
+    func categoryPickerDelegate(didFinish categoryName: String) {
         categoryLabel.text = categoryName
     }
     
+}
+
+// MARK: EXT - Supplier picker delegate
+
+extension MaterialFormController: SupplierPickerDelegate {
+    
+    func supplierPickerDelegate(didPick supplier: Supplier) {
+        componentSupplier  = supplier
+        supplierLabel.text = supplier.name
+        
+    }
 }
 
 // MARK: EXT - Text field delegate

@@ -21,6 +21,7 @@ class Material: Object {
     dynamic var subMaterial: Material?
     
     dynamic var category = "No category"
+    dynamic var supplier: Supplier?
     
 // Specify properties to ignore (Realm won't persist these)
     
@@ -37,6 +38,7 @@ class Material: Object {
         subMaterial.price         = self.price / self.quantity
         subMaterial.isSubMaterial = true
         subMaterial.category      = self.category
+        subMaterial.supplier      = self.supplier
         
         self.subMaterial = subMaterial
     }
@@ -50,5 +52,6 @@ class Material: Object {
         subMaterial.price         = self.price / self.quantity
         subMaterial.isSubMaterial = true
         subMaterial.category      = self.category
+        subMaterial.supplier      = self.supplier
     }
 }

@@ -33,6 +33,9 @@
 		5C7BFCF91D86A3390004CFD5 /* AddMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7BFCF81D86A3390004CFD5 /* AddMaterialCell.xib */; };
 		5C7BFCFB1D86A7CC0004CFD5 /* MainMaterialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BFCFA1D86A7CC0004CFD5 /* MainMaterialCell.swift */; };
 		5C7BFCFF1D86B3D20004CFD5 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BFCFE1D86B3D20004CFD5 /* Material.swift */; };
+		5C87C38E1D8FCF2300BD6C4E /* Supplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C87C38D1D8FCF2300BD6C4E /* Supplier.swift */; };
+		5C87C3901D8FD45500BD6C4E /* SupplierFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C87C38F1D8FD45500BD6C4E /* SupplierFormController.swift */; };
+		5C87C3921D8FEB6700BD6C4E /* SupplierPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C87C3911D8FEB6700BD6C4E /* SupplierPickerController.swift */; };
 		5CAE04ED1D87ED5900BB9590 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE04EC1D87ED5900BB9590 /* AppColors.swift */; };
 		5CAE04F01D87FC6B00BB9590 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE04EF1D87FC6B00BB9590 /* GlobalFunctions.swift */; };
 		5CAE04F21D88006000BB9590 /* SubMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CAE04F11D88006000BB9590 /* SubMaterialCell.xib */; };
@@ -69,6 +72,9 @@
 		5C7BFCF81D86A3390004CFD5 /* AddMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMaterialCell.xib; sourceTree = "<group>"; };
 		5C7BFCFA1D86A7CC0004CFD5 /* MainMaterialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMaterialCell.swift; sourceTree = "<group>"; };
 		5C7BFCFE1D86B3D20004CFD5 /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
+		5C87C38D1D8FCF2300BD6C4E /* Supplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
+		5C87C38F1D8FD45500BD6C4E /* SupplierFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierFormController.swift; sourceTree = "<group>"; };
+		5C87C3911D8FEB6700BD6C4E /* SupplierPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierPickerController.swift; sourceTree = "<group>"; };
 		5CAE04EC1D87ED5900BB9590 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		5CAE04EF1D87FC6B00BB9590 /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		5CAE04F11D88006000BB9590 /* SubMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubMaterialCell.xib; sourceTree = "<group>"; };
@@ -161,6 +167,8 @@
 				5C49A17E1D8A971E0008EC93 /* ProductListController.swift */,
 				5C49A1851D8AA9160008EC93 /* ProductDetailsController.swift */,
 				5C49A1931D8AE4160008EC93 /* ProductDetailsMaterialPickerController.swift */,
+				5C87C38F1D8FD45500BD6C4E /* SupplierFormController.swift */,
+				5C87C3911D8FEB6700BD6C4E /* SupplierPickerController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -180,6 +188,7 @@
 			children = (
 				5C7BFCFE1D86B3D20004CFD5 /* Material.swift */,
 				5C49A1831D8A98D30008EC93 /* Product.swift */,
+				5C87C38D1D8FCF2300BD6C4E /* Supplier.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -372,9 +381,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C7BFCFF1D86B3D20004CFD5 /* Material.swift in Sources */,
+				5C87C38E1D8FCF2300BD6C4E /* Supplier.swift in Sources */,
 				5C49A1821D8A989F0008EC93 /* ComponentOfProduction.swift in Sources */,
+				5C87C3921D8FEB6700BD6C4E /* SupplierPickerController.swift in Sources */,
 				5C49A17F1D8A971E0008EC93 /* ProductListController.swift in Sources */,
 				5CAE04F01D87FC6B00BB9590 /* GlobalFunctions.swift in Sources */,
+				5C87C3901D8FD45500BD6C4E /* SupplierFormController.swift in Sources */,
 				5C3F5F281D8979B600AFB082 /* CategoriesPickerController.swift in Sources */,
 				5C49A1941D8AE4160008EC93 /* ProductDetailsMaterialPickerController.swift in Sources */,
 				5C4AE6C21D86915F0021199F /* MaterialListController.swift in Sources */,
