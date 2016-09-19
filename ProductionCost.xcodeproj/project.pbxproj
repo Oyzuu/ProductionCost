@@ -36,6 +36,7 @@
 		5C87C38E1D8FCF2300BD6C4E /* Supplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C87C38D1D8FCF2300BD6C4E /* Supplier.swift */; };
 		5C87C3901D8FD45500BD6C4E /* SupplierFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C87C38F1D8FD45500BD6C4E /* SupplierFormController.swift */; };
 		5C87C3921D8FEB6700BD6C4E /* SupplierPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C87C3911D8FEB6700BD6C4E /* SupplierPickerController.swift */; };
+		5C87C3941D8FF59400BD6C4E /* MainHUBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C87C3931D8FF59400BD6C4E /* MainHUBController.swift */; };
 		5CAE04ED1D87ED5900BB9590 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE04EC1D87ED5900BB9590 /* AppColors.swift */; };
 		5CAE04F01D87FC6B00BB9590 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE04EF1D87FC6B00BB9590 /* GlobalFunctions.swift */; };
 		5CAE04F21D88006000BB9590 /* SubMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CAE04F11D88006000BB9590 /* SubMaterialCell.xib */; };
@@ -75,6 +76,7 @@
 		5C87C38D1D8FCF2300BD6C4E /* Supplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
 		5C87C38F1D8FD45500BD6C4E /* SupplierFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierFormController.swift; sourceTree = "<group>"; };
 		5C87C3911D8FEB6700BD6C4E /* SupplierPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierPickerController.swift; sourceTree = "<group>"; };
+		5C87C3931D8FF59400BD6C4E /* MainHUBController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHUBController.swift; sourceTree = "<group>"; };
 		5CAE04EC1D87ED5900BB9590 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		5CAE04EF1D87FC6B00BB9590 /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		5CAE04F11D88006000BB9590 /* SubMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubMaterialCell.xib; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		5C4AE6D11D8691860021199F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5C87C3931D8FF59400BD6C4E /* MainHUBController.swift */,
 				5C4AE6C11D86915F0021199F /* MaterialListController.swift */,
 				5C6441541D86D80C006CA015 /* MaterialFormController.swift */,
 				5C3F5F271D8979B600AFB082 /* CategoriesPickerController.swift */,
@@ -391,6 +394,7 @@
 				5C49A1941D8AE4160008EC93 /* ProductDetailsMaterialPickerController.swift in Sources */,
 				5C4AE6C21D86915F0021199F /* MaterialListController.swift in Sources */,
 				5C6441551D86D80C006CA015 /* MaterialFormController.swift in Sources */,
+				5C87C3941D8FF59400BD6C4E /* MainHUBController.swift in Sources */,
 				5C3F5F261D89782A00AFB082 /* Category.swift in Sources */,
 				5C4B8B151D8C3A44008778E4 /* MaterialInProductPickerCell.swift in Sources */,
 				5C49A1861D8AA9160008EC93 /* ProductDetailsController.swift in Sources */,
