@@ -10,6 +10,7 @@
 		5C07D4441D900E50001DA584 /* SupplierListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C07D4431D900E50001DA584 /* SupplierListController.swift */; };
 		5C07D4471D900F25001DA584 /* SupplierListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C07D4461D900F25001DA584 /* SupplierListCell.xib */; };
 		5C07D4491D901048001DA584 /* SupplierListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C07D4481D901048001DA584 /* SupplierListCell.swift */; };
+		5C07D44B1D90214D001DA584 /* AddSupplierCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C07D44A1D90214D001DA584 /* AddSupplierCell.xib */; };
 		5C3F5F261D89782A00AFB082 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F5F251D89782A00AFB082 /* Category.swift */; };
 		5C3F5F281D8979B600AFB082 /* CategoriesPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F5F271D8979B600AFB082 /* CategoriesPickerController.swift */; };
 		5C49A17F1D8A971E0008EC93 /* ProductListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C49A17E1D8A971E0008EC93 /* ProductListController.swift */; };
@@ -51,6 +52,7 @@
 		5C07D4431D900E50001DA584 /* SupplierListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierListController.swift; sourceTree = "<group>"; };
 		5C07D4461D900F25001DA584 /* SupplierListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SupplierListCell.xib; sourceTree = "<group>"; };
 		5C07D4481D901048001DA584 /* SupplierListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierListCell.swift; sourceTree = "<group>"; };
+		5C07D44A1D90214D001DA584 /* AddSupplierCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSupplierCell.xib; sourceTree = "<group>"; };
 		5C3F5F251D89782A00AFB082 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		5C3F5F271D8979B600AFB082 /* CategoriesPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesPickerController.swift; sourceTree = "<group>"; };
 		5C49A17E1D8A971E0008EC93 /* ProductListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				5C07D4461D900F25001DA584 /* SupplierListCell.xib */,
 				5C07D4481D901048001DA584 /* SupplierListCell.swift */,
+				5C07D44A1D90214D001DA584 /* AddSupplierCell.xib */,
 			);
 			name = Supplier;
 			sourceTree = "<group>";
@@ -217,9 +220,9 @@
 			children = (
 				5C4B8B0C1D8BE03E008778E4 /* MaterialInProductCell.xib */,
 				5C4B8B0E1D8BE13A008778E4 /* MaterialInProductCell.swift */,
-				5C4B8B101D8C17AD008778E4 /* AddSomethingCell.xib */,
 				5C4B8B121D8C394A008778E4 /* MaterialInProductPickerCell.xib */,
 				5C4B8B141D8C3A44008778E4 /* MaterialInProductPickerCell.swift */,
+				5C4B8B101D8C17AD008778E4 /* AddSomethingCell.xib */,
 			);
 			name = "Material In Product";
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				5C4B8B131D8C394A008778E4 /* MaterialInProductPickerCell.xib in Resources */,
 				5C4B8B0D1D8BE03E008778E4 /* MaterialInProductCell.xib in Resources */,
 				5C4B8B111D8C17AD008778E4 /* AddSomethingCell.xib in Resources */,
+				5C07D44B1D90214D001DA584 /* AddSupplierCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

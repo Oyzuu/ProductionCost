@@ -200,8 +200,9 @@ class SupplierFormController: UIViewController {
     func showSupplier(withLatitude latitude: Double, andLongitude longitude: Double) {
         // TODO: Make this safe
         let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let region = MKCoordinateRegionMakeWithDistance(center, 1000, 1000)
+        let region = MKCoordinateRegionMakeWithDistance(center, 500, 500)
         mapView.setRegion(region, animated: true)
+        mapView.addAnnotation(CLLocation(latitude: latitude, longitude: longitude))
     }
     
 }
@@ -248,3 +249,18 @@ extension SupplierFormController: CLLocationManagerDelegate {
         }
     }
 }
+
+// MARK: Map View delegate
+
+extension SupplierFormController: MKMapViewDelegate {
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        return annotationView
+    }
+    
+}
+
+// MARK: EXT - CLLocation to implement MKAnnotation
+
+extension CLLocation: MKAnnotation {}

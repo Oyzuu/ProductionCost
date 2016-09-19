@@ -46,6 +46,9 @@ class MainHUBController: UIViewController {
             button.setTitleColor(AppColors.white, forState: .Normal)
             button.setTitle(icon, forState: .Normal)
         }
+        
+        productsButton.setTitleColor(AppColors.raspberry, forState: .Normal)
+        aboutbutton.setTitleColor(AppColors.raspberry, forState: .Normal)
     }
 
     override func didReceiveMemoryWarning() {
