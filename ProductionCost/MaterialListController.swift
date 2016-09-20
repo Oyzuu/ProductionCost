@@ -167,11 +167,24 @@ extension MaterialListController: UITableViewDelegate {
             let predicate    = NSPredicate(format: "subMaterial = %@", subComponent)
             let parent       = try! Realm().objects(Material.self).filter(predicate).first
             let parentIndex  = dataModel.indexOf(parent!)
-            let subtitle     = "Please modify source component"
+            let subtitle     = "You have to modify the source component"
             
-            HUD.flash(.Label(subtitle), delay: 0.5) { result in
+//            HUD.flash(.Label(subtitle), delay: 0.5) { result in
+//                self.performSegueWithIdentifier("EditMaterialSegue", sender: parentIndex)
+//            }
+            
+            let alert = UIAlertController(title: "You can't edit this",
+                                          message: subtitle,
+                                          preferredStyle: .Alert)
+            let cancelAction      = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            let takeMeThereAction = UIAlertAction(title: "Take me there", style: .Default) {
+                action in
                 self.performSegueWithIdentifier("EditMaterialSegue", sender: parentIndex)
             }
+            
+            alert.addAction(cancelAction)
+            alert.addAction(takeMeThereAction)
+            presentViewController(alert, animated: true, completion: nil)
         }
         else {
             performSegueWithIdentifier("EditMaterialSegue", sender: indexPath.row)
@@ -202,9 +215,7 @@ extension MaterialListController: UITableViewDataSource {
         return dataModel.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print(dataModel.count)
-        
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {        
         if dataModel.count == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(
                 MaterialCellIdentifiers.AddMaterialCell, forIndexPath: indexPath)

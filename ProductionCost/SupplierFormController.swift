@@ -16,10 +16,11 @@ class SupplierFormController: UIViewController {
     
     // MARK: Outlets
     
-    @IBOutlet weak var nameField:      UITextField!
-    @IBOutlet weak var addressField:   UITextField!
-    @IBOutlet weak var locationButton: UIButton!
-    @IBOutlet weak var mapView:        MKMapView!
+    @IBOutlet weak var nameField:         UITextField!
+    @IBOutlet weak var addressField:      UITextField!
+    @IBOutlet weak var locationButton:    UIButton!
+    @IBOutlet weak var mapView:           MKMapView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: Properties
     
@@ -119,6 +120,7 @@ class SupplierFormController: UIViewController {
     @IBAction func getLocation(sender: AnyObject) {
         if CLLocationManager.authorizationStatus() == .NotDetermined {
             manager.requestWhenInUseAuthorization()
+            return
             
         }
         else if CLLocationManager.authorizationStatus() == .Denied {
@@ -134,6 +136,19 @@ class SupplierFormController: UIViewController {
         
         isGettingLocation = true
         manager.startUpdatingLocation()
+        updateLocationButton()
+    }
+    
+    private func updateLocationButton() {
+        if isGettingLocation || isReverseGeocoding {
+            locationButton.setTitle("Getting location...", forState: .Normal)
+            activityIndicator.startAnimating()
+        }
+        else {
+            locationButton.setTitle("Get location", forState: .Normal)
+            activityIndicator.stopAnimating()
+        }
+        
     }
     
     private func stringFromPlacemark(placemark: CLPlacemark) -> String {
@@ -218,10 +233,11 @@ extension SupplierFormController: CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let newLocation = locations.last!
-        print(newLocation)
+        let newLocation    = locations.last!
+        let lastUpdateDate = newLocation.timestamp
+        let howRecent      = lastUpdateDate.timeIntervalSinceNow
         
-        if newLocation.horizontalAccuracy <= manager.desiredAccuracy {
+        if newLocation.horizontalAccuracy <= manager.desiredAccuracy && abs(howRecent) < 2 {
             manager.stopUpdatingLocation()
             print("Manager stopped updating location")
             isGettingLocation = false
@@ -244,7 +260,7 @@ extension SupplierFormController: CLLocationManagerDelegate {
                 }
                 
                 self.isReverseGeocoding = false
-                print("isReverseGeocoding = false")
+                self.updateLocationButton()
             }
         }
     }
@@ -255,7 +271,22 @@ extension SupplierFormController: CLLocationManagerDelegate {
 extension SupplierFormController: MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        let identifier = "Location"
+        var annotationView =
+            mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as! MKPinAnnotationView!
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation,
+                                                 reuseIdentifier: "Location")
+        
+            annotationView.enabled      = true
+            annotationView.animatesDrop = true
+            annotationView.pinTintColor = AppColors.raspberry
+        }
+        else {
+            annotationView.annotation = annotation
+        }
+        
         return annotationView
     }
     

@@ -124,10 +124,17 @@
                             </textField>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UvJ-tP-RWE">
                                 <rect key="frame" x="0.0" y="303" width="320" height="265"/>
+                                <connections>
+                                    <outlet property="delegate" destination="stb-Ok-ipg" id="pLh-nI-T7E"/>
+                                </connections>
                             </mapView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="raspberry" translatesAutoresizingMaskIntoConstraints="NO" id="CgP-we-eRy">
                                 <rect key="frame" x="0.0" y="303" width="320" height="1"/>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TGb-W6-tJa">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                                <color key="color" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -144,6 +151,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="TGb-W6-tJa" id="0hf-MM-2kP"/>
                         <outlet property="addressField" destination="w06-2u-2u8" id="ptc-bD-irm"/>
                         <outlet property="locationButton" destination="52l-uc-ED0" id="MNJ-iz-iCj"/>
                         <outlet property="mapView" destination="UvJ-tP-RWE" id="fJ9-5W-0C6"/>

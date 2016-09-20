@@ -73,9 +73,11 @@ class MainHUBController: UIViewController {
                 switch response.result {
                 case .Success(let json):
                     self.prepareQuoteLabel(fromJSON: json as? [String:AnyObject])
+                    self.hasQuote = true
                 case .Failure(let error) :
                     print("JSON ERROR : \(error)")
-                    if error.code == 3840 {
+                    
+                    if error.code == 3840 && !self.hasQuote {
                         self.requestQuote()
                     }
                 }
@@ -93,12 +95,12 @@ class MainHUBController: UIViewController {
         
         transition(onView: quoteLabel, withDuration: 0.5) {
             self.quoteLabel.text  = "\"\(quote.trim())\""
+            self.quoteLabel.sizeToFit()
         }
         
         transition(onView: authorLabel, withDuration: 0.5) {
             self.authorLabel.text = "At some point in history, \(author.trim()) said :"
         }
-        
     }
 
 }
