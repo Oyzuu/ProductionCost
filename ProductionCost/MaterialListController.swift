@@ -150,7 +150,7 @@ class MaterialListController: UIViewController {
     
     private func showUsageAlert(forMaterial material: Material, inNumberOfComponents number: Int) {
         let message =
-            "This component is used in \(number) product" + (number > 1 ? "s" : "") +
+            "This component is used in " + (number > 1 ? "some" : "a") + " product" + (number > 1 ? "s" : "") +
         ", do you want to delete it ?"
         
         let alert = UIAlertController(title: "Component in use",

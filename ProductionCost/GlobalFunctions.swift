@@ -56,3 +56,15 @@ extension String {
     }
     
 }
+
+/// Add a blurred background
+func addBlurredBackground(onView view: UIView, withStyle style: UIBlurEffectStyle) {
+    let blurEffect  = UIBlurEffect(style: style)
+    let blurredView = UIVisualEffectView(effect: blurEffect)
+    
+    blurredView.frame = view.bounds
+    blurredView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+    
+    view.addSubview(blurredView)
+    view.sendSubviewToBack(blurredView)
+}

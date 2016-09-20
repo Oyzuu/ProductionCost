@@ -46,6 +46,7 @@
 		5CAE04F21D88006000BB9590 /* SubMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CAE04F11D88006000BB9590 /* SubMaterialCell.xib */; };
 		5CF233B01D914690000CFC17 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF233AF1D914690000CFC17 /* AboutController.swift */; };
 		5CF233B21D915209000CFC17 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF233B11D915209000CFC17 /* Model.swift */; };
+		5CF233B41D916F89000CFC17 /* ProductNameEditionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF233B31D916F89000CFC17 /* ProductNameEditionController.swift */; };
 		B128ABDE175744336124F758 /* Pods_ProductionCost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6AF232FFB136C4A930DF609 /* Pods_ProductionCost.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		5CAE04F11D88006000BB9590 /* SubMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubMaterialCell.xib; sourceTree = "<group>"; };
 		5CF233AF1D914690000CFC17 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		5CF233B11D915209000CFC17 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		5CF233B31D916F89000CFC17 /* ProductNameEditionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductNameEditionController.swift; sourceTree = "<group>"; };
 		B6AF232FFB136C4A930DF609 /* Pods_ProductionCost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductionCost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE5272F24A44074C1357A7C4 /* Pods-ProductionCost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductionCost.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProductionCost/Pods-ProductionCost.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,6 +193,7 @@
 				5C3F5F271D8979B600AFB082 /* CategoriesPickerController.swift */,
 				5C49A17E1D8A971E0008EC93 /* ProductListController.swift */,
 				5C49A1851D8AA9160008EC93 /* ProductDetailsController.swift */,
+				5CF233B31D916F89000CFC17 /* ProductNameEditionController.swift */,
 				5C49A1931D8AE4160008EC93 /* ProductDetailsMaterialPickerController.swift */,
 				5C07D4431D900E50001DA584 /* SupplierListController.swift */,
 				5C87C38F1D8FD45500BD6C4E /* SupplierFormController.swift */,
@@ -428,6 +431,7 @@
 				5C3F5F261D89782A00AFB082 /* Category.swift in Sources */,
 				5C4B8B151D8C3A44008778E4 /* MaterialInProductPickerCell.swift in Sources */,
 				5C49A1861D8AA9160008EC93 /* ProductDetailsController.swift in Sources */,
+				5CF233B41D916F89000CFC17 /* ProductNameEditionController.swift in Sources */,
 				5C07D4441D900E50001DA584 /* SupplierListController.swift in Sources */,
 				5CAE04ED1D87ED5900BB9590 /* AppColors.swift in Sources */,
 				5C4B8B0F1D8BE13A008778E4 /* MaterialInProductCell.swift in Sources */,

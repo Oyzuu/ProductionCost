@@ -284,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0y-Fo-WED" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="485" y="-362"/>
+            <point key="canvasLocation" x="1052" y="-687"/>
         </scene>
         <!--Suppliers-->
         <scene sceneID="9Qa-lz-sfi">
@@ -722,6 +722,77 @@
             </objects>
             <point key="canvasLocation" x="1052" y="-5"/>
         </scene>
+        <!--Product Name Edition Controller-->
+        <scene sceneID="uIQ-2L-HHB">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="Xh1-Uh-5NB" customClass="ProductNameEditionController" customModule="ProductionCost" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iFF-bN-Axo"/>
+                        <viewControllerLayoutGuide type="bottom" id="26w-sW-9DU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AHg-nD-mlS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2IX-zd-vF3" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <rect key="frame" x="68" y="54" width="232" height="54"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                        <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.5" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.50021551724137936" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                        <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="product name"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FwQ-Vi-wKs">
+                                <rect key="frame" x="68" y="116" width="48" height="35"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel:" destination="Xh1-Uh-5NB" eventType="touchUpInside" id="l89-3F-HbM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deL-BD-kaf">
+                                <rect key="frame" x="124" y="116" width="35" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Ok">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="validate:" destination="Xh1-Uh-5NB" eventType="touchUpInside" id="A0R-H1-JME"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="nameField" destination="2IX-zd-vF3" id="aCI-hl-0XQ"/>
+                        <outlet property="okButton" destination="deL-BD-kaf" id="aqr-mO-u8a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PLE-Ai-JYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2016" y="-687"/>
+        </scene>
         <!--Product details-->
         <scene sceneID="ms4-Lq-IDD">
             <objects>
@@ -760,12 +831,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="raspberry" translatesAutoresizingMaskIntoConstraints="NO" id="tj9-Qb-ujJ">
                                 <rect key="frame" x="10" y="74" width="50" height="50"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Really long product name, I admit it's absurd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="LYa-rP-cKo">
-                                <rect key="frame" x="68" y="64" width="244" height="39"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
-                                <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mif-no-u9O" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
                                 <rect key="frame" x="68" y="100" width="182" height="24"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
@@ -809,6 +874,18 @@
                                     <outlet property="delegate" destination="gZ9-vP-1eN" id="PYl-ix-QbC"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SqX-HD-jK1">
+                                <rect key="frame" x="63" y="72" width="237" height="37"/>
+                                <connections>
+                                    <segue destination="Xh1-Uh-5NB" kind="modal" identifier="ProductNameEdition" id="uBB-Ru-Aeh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="LYa-rP-cKo">
+                                <rect key="frame" x="68" y="64" width="244" height="39"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.054901960780000002" green="0.47843137250000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -825,7 +902,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8T-sZ-blq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1454" y="-5"/>
+            <point key="canvasLocation" x="1518" y="-5"/>
         </scene>
         <!--Product Details Material Picker Controller-->
         <scene sceneID="eKk-Dp-xDZ">
@@ -844,7 +921,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q8n-Sz-GN5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1852" y="-5"/>
+            <point key="canvasLocation" x="2016" y="-5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lqH-2F-kZP">
@@ -882,13 +959,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="justified" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="eEn-AD-axN">
-                                <rect key="frame" x="20" y="491" width="280" height="69"/>
-                                <string key="text">"No man was ever wise by chance.""No man was ever wise by chance.""No man was ever wise by chance.""No man was ever wise by chance.""No man was ever wise by chance."</string>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.5" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gih-WC-1Jm">
                                 <rect key="frame" x="31" y="185" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.86274509799999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -965,6 +1035,13 @@
                                 <rect key="frame" x="20" y="471" width="280" height="17"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                 <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.50021551724137936" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="justified" lineBreakMode="headTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="eEn-AD-axN">
+                                <rect key="frame" x="20" y="491" width="280" height="69"/>
+                                <string key="text">"No man was ever wise by chance.""No man was ever wise by chance.""No man was ever wise by chance.""No man was ever wise by chance.""No man was ever wise by chance."</string>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

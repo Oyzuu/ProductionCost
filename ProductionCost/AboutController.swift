@@ -17,13 +17,7 @@ class AboutController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let blurEffect  = UIBlurEffect(style: .Dark)
-        let blurredView = UIVisualEffectView(effect: blurEffect)
-        blurredView.frame = view.bounds
-        blurredView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        
-        view.addSubview(blurredView)
-        view.sendSubviewToBack(blurredView)
+        addBlurredBackground(onView: self.view, withStyle: .Dark)
     }
 
     override func didReceiveMemoryWarning() {

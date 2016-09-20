@@ -45,10 +45,9 @@ class ProductDetailsController: UIViewController {
         }
         else {
             product                      = Product()
-            product.name                 = generateRandomString(ofSize: 16)
-            productNameLabel.text        = product.name
             numberOfComponentsLabel.text = "No components"
             totalPriceLabel.text         = "0 $"
+            performSegueWithIdentifier("ProductNameEdition", sender: nil)
         }
     }
     
@@ -80,14 +79,24 @@ class ProductDetailsController: UIViewController {
             return
         }
         
+        // TODO: Should verify field completion
+        
+        product.name = productNameLabel.text!
         realm(saveProduct: product)
-        HUD.flash(.LabeledSuccess(title: nil, subtitle: "Saved"), delay: 0.5)
+        HUD.flash(.LabeledSuccess(title: nil, subtitle: product.name + " has been saved"),
+                  delay: 0.5)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ProductComponentPicker" {
             if let controller = segue.destinationViewController as? ProductDetailsMaterialPickerController {
                 controller.delegate = self
+            }
+        }
+        if segue.identifier == "ProductNameEdition" {
+            if let controller = segue.destinationViewController as? ProductNameEditionController {
+                controller.nameToEdit = getActiveProduct().name
+                controller.delegate   = self
             }
         }
     }
@@ -97,7 +106,7 @@ class ProductDetailsController: UIViewController {
     private func realm(saveProduct product: Product) {
         let realm = try! Realm()
         
-        try! Realm().write {
+        try! realm.write {
             realm.add(product)
         }
     }
@@ -216,7 +225,7 @@ extension ProductDetailsController: UITableViewDelegate {
     
 }
 
-// MARK: MaterialPickerDelegate
+// MARK: EXT - MaterialPickerDelegate
 
 extension ProductDetailsController: MaterialPickerDelegate {
     
@@ -229,6 +238,22 @@ extension ProductDetailsController: MaterialPickerDelegate {
         
         updateUI()
         bottomScroll()
+    }
+    
+}
+
+// MARK: EXT - ProductNameEditionDelegate
+
+extension ProductDetailsController: ProductNameEditionDelegate {
+    
+    func productNameEditionDelegate(didFinishEditing name: String) {
+        productNameLabel.text = name
+        
+        if let productToEdit = self.productToEdit {
+            try! Realm().write {
+                productToEdit.name = name
+            }
+        }
     }
     
 }
