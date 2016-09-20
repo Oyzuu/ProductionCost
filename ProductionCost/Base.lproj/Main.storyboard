@@ -750,9 +750,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&quot;Uninspired quote of the day&quot; - Random dead philosopher" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEn-AD-axN">
-                                <rect key="frame" x="20" y="509" width="193" height="51"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="justified" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="eEn-AD-axN">
+                                <rect key="frame" x="20" y="491" width="280" height="69"/>
+                                <string key="text">"No man was ever wise by chance.""No man was ever wise by chance.""No man was ever wise by chance.""No man was ever wise by chance.""No man was ever wise by chance."</string>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                 <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -825,6 +826,12 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="On a random day, this random philospher with a lengthy name said : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="lOH-L7-clO">
+                                <rect key="frame" x="20" y="471" width="280" height="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.50021551724137936" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -832,8 +839,10 @@
                     <connections>
                         <outlet property="aboutbutton" destination="4Ap-ay-Y7b" id="q5r-XA-dQ9"/>
                         <outlet property="accountButton" destination="fUL-Td-brq" id="K9T-s2-YSu"/>
+                        <outlet property="authorLabel" destination="lOH-L7-clO" id="5x1-a7-26y"/>
                         <outlet property="componentsButton" destination="0sh-XJ-dZz" id="mID-3z-bsb"/>
                         <outlet property="productsButton" destination="gih-WC-1Jm" id="jaG-wv-Nwe"/>
+                        <outlet property="quoteLabel" destination="eEn-AD-axN" id="mDU-wT-52L"/>
                         <outlet property="settingsButton" destination="Qh9-MK-HDa" id="3P2-JS-zUU"/>
                         <outlet property="suppliersButton" destination="mKp-ix-20e" id="MZD-48-gaB"/>
                     </connections>

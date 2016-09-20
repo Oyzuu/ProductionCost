@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MainHUBController: UIViewController {
     
@@ -18,6 +19,12 @@ class MainHUBController: UIViewController {
     @IBOutlet weak var accountButton:    UIButton!
     @IBOutlet weak var settingsButton:   UIButton!
     @IBOutlet weak var aboutbutton:      UIButton!
+    @IBOutlet weak var quoteLabel:       UILabel!
+    @IBOutlet weak var authorLabel:      UILabel!
+    
+    // MARK: properties 
+    
+    var hasQuote = false
 
     // MARK: Overrides
 
@@ -27,6 +34,8 @@ class MainHUBController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        requestQuote()
     }
     
     override func viewDidLayoutSubviews() {
@@ -53,6 +62,43 @@ class MainHUBController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: Methods
+    private func requestQuote() {
+        print("quote requested")
+        request(.GET, "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json")
+            .validate()
+            .responseJSON() { response in
+                switch response.result {
+                case .Success(let json):
+                    self.prepareQuoteLabel(fromJSON: json as? [String:AnyObject])
+                case .Failure(let error) :
+                    print("JSON ERROR : \(error)")
+                    if error.code == 3840 {
+                        self.requestQuote()
+                    }
+                }
+        }
+    }
+    
+    private func prepareQuoteLabel(fromJSON json: [String:AnyObject]?) {
+        guard let json = json else {
+            print("json error")
+            return
+        }
+        
+        let quote  = json["quoteText"]!   as! String
+        let author = json["quoteAuthor"]! as! String
+        
+        transition(onView: quoteLabel, withDuration: 0.5) {
+            self.quoteLabel.text  = "\"\(quote.trim())\""
+        }
+        
+        transition(onView: authorLabel, withDuration: 0.5) {
+            self.authorLabel.text = "At some point in history, \(author.trim()) said :"
+        }
+        
     }
 
 }

@@ -47,3 +47,12 @@ func nibRegistration(onTableView tableView: UITableView, forIdentifiers identifi
         tableView.registerNib(cellNib, forCellReuseIdentifier: identifier)
     }
 }
+
+/// String easy trim
+extension String {
+    
+    func trim() -> String {
+        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+    }
+    
+}
