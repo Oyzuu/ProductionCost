@@ -44,6 +44,7 @@
 		5CAE04ED1D87ED5900BB9590 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE04EC1D87ED5900BB9590 /* AppColors.swift */; };
 		5CAE04F01D87FC6B00BB9590 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE04EF1D87FC6B00BB9590 /* GlobalFunctions.swift */; };
 		5CAE04F21D88006000BB9590 /* SubMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CAE04F11D88006000BB9590 /* SubMaterialCell.xib */; };
+		5CF233B01D914690000CFC17 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF233AF1D914690000CFC17 /* AboutController.swift */; };
 		B128ABDE175744336124F758 /* Pods_ProductionCost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6AF232FFB136C4A930DF609 /* Pods_ProductionCost.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		5CAE04EC1D87ED5900BB9590 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		5CAE04EF1D87FC6B00BB9590 /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		5CAE04F11D88006000BB9590 /* SubMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubMaterialCell.xib; sourceTree = "<group>"; };
+		5CF233AF1D914690000CFC17 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		B6AF232FFB136C4A930DF609 /* Pods_ProductionCost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductionCost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE5272F24A44074C1357A7C4 /* Pods-ProductionCost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductionCost.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProductionCost/Pods-ProductionCost.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,6 +193,7 @@
 				5C07D4431D900E50001DA584 /* SupplierListController.swift */,
 				5C87C38F1D8FD45500BD6C4E /* SupplierFormController.swift */,
 				5C87C3911D8FEB6700BD6C4E /* SupplierPickerController.swift */,
+				5CF233AF1D914690000CFC17 /* AboutController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				5C49A1901D8AC5420008EC93 /* ProductCell.swift in Sources */,
 				5C4AE6C01D86915F0021199F /* AppDelegate.swift in Sources */,
 				5C49A1841D8A98D30008EC93 /* Product.swift in Sources */,
+				5CF233B01D914690000CFC17 /* AboutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
