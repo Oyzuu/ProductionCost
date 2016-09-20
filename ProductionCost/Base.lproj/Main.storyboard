@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Materials-->
@@ -174,15 +175,92 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="rwf-o2-3pW">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwf-o2-3pW">
                                 <rect key="frame" x="20" y="165" width="280" height="238"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <string key="text">ProdEasy helps calculating production costs and create an easily maintainable component set.  Perfect for small businesses.  De Cooman Sammy 2016 </string>
-                                <color key="textColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="ProdEasy">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="18" name="Avenir-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" helps calculating ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="18" name="Avenir-Book"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="production costs">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="18" name="Avenir-Heavy"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" and create an ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="18" name="Avenir-Book"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="easily maintainable">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="18" name="Avenir-Heavy"/>
+                                            <font key="NSOriginalFont" size="18" name="Avenir-Heavy"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" component set.  Perfect for small businesses.  ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="18" name="Avenir-Book"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="De Cooman Sammy 2016">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name="Avenir-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="18" name="Avenir-Book"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZfL-dS-8yh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8a-Tq-tgD">
+                                <rect key="frame" x="86" y="109" width="149" height="48"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Prod">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="34" name="Avenir-Black"/>
+                                            <font key="NSOriginalFont" size="24" name="Avenir-Black"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Easy">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.5" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="34" name="Futura-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZfL-dS-8yh">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <connections>
                                     <action selector="close:" destination="iOK-4S-bOi" eventType="touchUpInside" id="UIr-PV-bSd"/>
@@ -190,6 +268,18 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZfL-dS-8yh" firstAttribute="centerX" secondItem="y8a-Tq-tgD" secondAttribute="centerX" id="3Hl-l2-qW1"/>
+                            <constraint firstItem="rwf-o2-3pW" firstAttribute="top" secondItem="y8a-Tq-tgD" secondAttribute="bottom" constant="8" symbolic="YES" id="3qG-oZ-p67"/>
+                            <constraint firstItem="ZfL-dS-8yh" firstAttribute="leading" secondItem="53q-qT-XTd" secondAttribute="leading" id="6HN-Zd-BNL"/>
+                            <constraint firstItem="rwf-o2-3pW" firstAttribute="leading" secondItem="53q-qT-XTd" secondAttribute="leadingMargin" constant="4" id="9FG-4E-hMI"/>
+                            <constraint firstItem="y8a-Tq-tgD" firstAttribute="centerY" secondItem="53q-qT-XTd" secondAttribute="centerY" constant="-151" id="AWN-UE-89d"/>
+                            <constraint firstItem="rwf-o2-3pW" firstAttribute="centerX" secondItem="53q-qT-XTd" secondAttribute="centerX" id="T6N-e1-8hM"/>
+                            <constraint firstItem="ZfL-dS-8yh" firstAttribute="centerY" secondItem="rwf-o2-3pW" secondAttribute="centerY" id="WOH-zm-3fe"/>
+                            <constraint firstItem="rwf-o2-3pW" firstAttribute="centerY" secondItem="53q-qT-XTd" secondAttribute="centerY" id="Ysn-Jp-acq"/>
+                            <constraint firstItem="y8a-Tq-tgD" firstAttribute="centerX" secondItem="53q-qT-XTd" secondAttribute="centerX" id="ZPt-aU-6bV"/>
+                            <constraint firstItem="ZfL-dS-8yh" firstAttribute="bottom" secondItem="Pvh-cA-viG" secondAttribute="top" id="sNh-w3-ydD"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0y-Fo-WED" userLabel="First Responder" sceneMemberID="firstResponder"/>

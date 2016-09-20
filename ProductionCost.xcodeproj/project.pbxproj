@@ -45,6 +45,7 @@
 		5CAE04F01D87FC6B00BB9590 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE04EF1D87FC6B00BB9590 /* GlobalFunctions.swift */; };
 		5CAE04F21D88006000BB9590 /* SubMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CAE04F11D88006000BB9590 /* SubMaterialCell.xib */; };
 		5CF233B01D914690000CFC17 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF233AF1D914690000CFC17 /* AboutController.swift */; };
+		5CF233B21D915209000CFC17 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF233B11D915209000CFC17 /* Model.swift */; };
 		B128ABDE175744336124F758 /* Pods_ProductionCost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6AF232FFB136C4A930DF609 /* Pods_ProductionCost.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		5CAE04EF1D87FC6B00BB9590 /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		5CAE04F11D88006000BB9590 /* SubMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubMaterialCell.xib; sourceTree = "<group>"; };
 		5CF233AF1D914690000CFC17 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
+		5CF233B11D915209000CFC17 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		B6AF232FFB136C4A930DF609 /* Pods_ProductionCost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductionCost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE5272F24A44074C1357A7C4 /* Pods-ProductionCost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductionCost.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProductionCost/Pods-ProductionCost.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,6 +216,7 @@
 				5C7BFCFE1D86B3D20004CFD5 /* Material.swift */,
 				5C49A1831D8A98D30008EC93 /* Product.swift */,
 				5C87C38D1D8FCF2300BD6C4E /* Supplier.swift */,
+				5CF233B11D915209000CFC17 /* Model.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				5C87C3901D8FD45500BD6C4E /* SupplierFormController.swift in Sources */,
 				5C3F5F281D8979B600AFB082 /* CategoriesPickerController.swift in Sources */,
 				5C49A1941D8AE4160008EC93 /* ProductDetailsMaterialPickerController.swift in Sources */,
+				5CF233B21D915209000CFC17 /* Model.swift in Sources */,
 				5C4AE6C21D86915F0021199F /* MaterialListController.swift in Sources */,
 				5C6441551D86D80C006CA015 /* MaterialFormController.swift in Sources */,
 				5C87C3941D8FF59400BD6C4E /* MainHUBController.swift in Sources */,

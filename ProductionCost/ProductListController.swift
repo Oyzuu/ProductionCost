@@ -76,10 +76,6 @@ class ProductListController: UIViewController {
     
     // MARK: Methods
     
-    @IBAction func searchProducts(sender: AnyObject) {
-        
-    }
-    
     @IBAction func addProduct(sender: AnyObject) {
         performSegueWithIdentifier("ProductDetails", sender: sender)
     }

@@ -136,6 +136,38 @@ class MaterialListController: UIViewController {
         }
     }
     
+    private func realm(deleteMaterial material: Material) {
+        let realm = try! Realm()
+        
+        try! realm.write {
+            if let subMaterial = material.subMaterial {
+                realm.delete(subMaterial)
+            }
+            
+            realm.delete(material)
+        }
+    }
+    
+    private func showUsageAlert(forMaterial material: Material, inNumberOfComponents number: Int) {
+        let message =
+            "This component is used in \(number) product" + (number > 1 ? "s" : "") +
+        ", do you want to delete it ?"
+        
+        let alert = UIAlertController(title: "Component in use",
+                                      message: message, preferredStyle: .Alert)
+        
+        let noAction     = UIAlertAction(title: "No",     style: .Cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) {
+            action in
+            
+            self.realm(deleteMaterial: material)
+        }
+        
+        alert.addAction(noAction)
+        alert.addAction(deleteAction)
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: Material form delegate
@@ -167,11 +199,8 @@ extension MaterialListController: UITableViewDelegate {
             let predicate    = NSPredicate(format: "subMaterial = %@", subComponent)
             let parent       = try! Realm().objects(Material.self).filter(predicate).first
             let parentIndex  = dataModel.indexOf(parent!)
-            let subtitle     = "You have to modify the source component"
-            
-//            HUD.flash(.Label(subtitle), delay: 0.5) { result in
-//                self.performSegueWithIdentifier("EditMaterialSegue", sender: parentIndex)
-//            }
+            let subtitle     =
+            "This is a derived component, you have to edit the source component."
             
             let alert = UIAlertController(title: "You can't edit this",
                                           message: subtitle,
@@ -250,13 +279,23 @@ extension MaterialListController: UITableViewDataSource {
         if editingStyle == .Delete {
             let material = dataModel[indexPath.row]
             
-            let realm = try! Realm()
-            try! realm.write {
-                if let subMaterial = material.subMaterial {
-                    realm.delete(subMaterial)
-                }
+            let inProductsCount =
+                try! Realm().objects(Product.self).filter("%@ in components", material).count
+            
+            if inProductsCount == 0 && material.subMaterial == nil {
+                realm(deleteMaterial: material)
+            }
+            else if let submaterial = material.subMaterial {
+                let submaterialInProductsCount =
+                    try! Realm().objects(Product.self).filter("%@ in components", submaterial).count
                 
-                realm.delete(material)
+                if submaterialInProductsCount > 0 {
+                    showUsageAlert(forMaterial: submaterial,
+                                   inNumberOfComponents: submaterialInProductsCount + inProductsCount)
+                }
+            }
+            else {
+                showUsageAlert(forMaterial: material, inNumberOfComponents: inProductsCount)
             }
             
             updateDataModel()

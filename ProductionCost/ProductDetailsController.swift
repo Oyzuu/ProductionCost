@@ -97,7 +97,7 @@ class ProductDetailsController: UIViewController {
     private func realm(saveProduct product: Product) {
         let realm = try! Realm()
         
-        try! realm.write {
+        try! Realm().write {
             realm.add(product)
         }
     }
