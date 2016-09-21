@@ -65,7 +65,7 @@ class MaterialFormController: UITableViewController {
         }
         
         if let materialToEdit = self.materialToEdit {
-            title               = "Edit material"
+            title               = "Edit component"
             isUnit              = !materialToEdit.isPack
             quantityCell.hidden = isUnit
             

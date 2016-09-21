@@ -898,6 +898,7 @@
                         <outlet property="totalBackgroundView" destination="Sx8-Up-4hw" id="6Ba-4q-WbD"/>
                         <outlet property="totalPriceLabel" destination="EEZ-XZ-JUY" id="IjE-NY-pFa"/>
                         <segue destination="qIC-Sk-pXA" kind="push" identifier="ProductComponentPicker" id="Ieh-G9-HXy"/>
+                        <segue destination="Xh1-Uh-5NB" kind="modal" identifier="ProductNameEditionNA" animates="NO" id="pf4-gr-CgB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8T-sZ-blq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1247,7 +1248,8 @@
         <image name="raspberry" width="1" height="1"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vpb-OR-QKQ"/>
         <segue reference="dWe-kC-2um"/>
+        <segue reference="Vpb-OR-QKQ"/>
+        <segue reference="pf4-gr-CgB"/>
     </inferredMetricsTieBreakers>
 </document>

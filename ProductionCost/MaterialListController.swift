@@ -157,6 +157,7 @@ class MaterialListController: UIViewController {
                                       message: message, preferredStyle: .Alert)
         
         let noAction     = UIAlertAction(title: "No",     style: .Cancel, handler: nil)
+        
         let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) {
             action in
             
@@ -164,9 +165,11 @@ class MaterialListController: UIViewController {
             
             self.updateDataModel()
             
-            transition(onView: self.tableView, withDuration: 0.3) {
-                self.tableView.reloadData()
-            }
+            dispatch_after(1000, dispatch_get_main_queue()) {
+                transition(onView: self.tableView, withDuration: 0.3) {
+                    self.tableView.reloadData()
+                }
+            }            
         }
         
         alert.addAction(noAction)
@@ -285,25 +288,23 @@ extension MaterialListController: UITableViewDataSource {
         if editingStyle == .Delete {
             let material = dataModel[indexPath.row]
             
-            let inProductsCount =
+            var inProductsCount =
                 try! Realm().objects(Product.self).filter("%@ in components", material).count
             
-            if inProductsCount == 0 && material.subMaterial == nil {
+            if let submaterial = material.subMaterial {
+                let submaterialInProductsCount =
+                    try! Realm().objects(Product.self).filter("%@ in components", submaterial).count
+                
+                inProductsCount += submaterialInProductsCount
+            }
+            
+            if inProductsCount == 0 {
                 realm(deleteMaterial: material)
                 
                 updateDataModel()
                 
                 transition(onView: tableView, withDuration: 0.3) {
                     self.tableView.reloadData()
-                }
-            }
-            else if let submaterial = material.subMaterial {
-                let submaterialInProductsCount =
-                    try! Realm().objects(Product.self).filter("%@ in components", submaterial).count
-                
-                if submaterialInProductsCount > 0 {
-                    showUsageAlert(forMaterial: material,
-                                   inNumberOfComponents: submaterialInProductsCount + inProductsCount)
                 }
             }
             else {

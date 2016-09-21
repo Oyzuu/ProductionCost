@@ -48,7 +48,7 @@ class ProductDetailsController: UIViewController {
             product                      = Product()
             numberOfComponentsLabel.text = "No components"
             totalPriceLabel.text         = "0 $"
-            performSegueWithIdentifier("ProductNameEdition", sender: nil)
+            performSegueWithIdentifier("ProductNameEditionNA", sender: nil)
         }
     }
     
@@ -93,7 +93,15 @@ class ProductDetailsController: UIViewController {
                 controller.delegate = self
             }
         }
+        
         if segue.identifier == "ProductNameEdition" {
+            if let controller = segue.destinationViewController as? ProductNameEditionController {
+                controller.nameToEdit = getActiveProduct().name
+                controller.delegate   = self
+            }
+        }
+        
+        if segue.identifier == "ProductNameEditionNA" {
             if let controller = segue.destinationViewController as? ProductNameEditionController {
                 controller.nameToEdit = getActiveProduct().name
                 controller.delegate   = self
