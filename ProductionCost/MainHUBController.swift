@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Firebase
 
 class MainHUBController: UIViewController {
     
@@ -21,6 +22,7 @@ class MainHUBController: UIViewController {
     @IBOutlet weak var aboutbutton:      UIButton!
     @IBOutlet weak var quoteLabel:       UILabel!
     @IBOutlet weak var authorLabel:      UILabel!
+    @IBOutlet weak var currentUserLabel: UILabel!
     
     // MARK: properties 
     
@@ -36,6 +38,20 @@ class MainHUBController: UIViewController {
         super.viewWillAppear(animated)
         
         requestQuote()
+        
+        FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
+            if let user = user {
+                transition(onView: self.currentUserLabel, withDuration: 0.5) {
+                    self.currentUserLabel.text = user.email
+                    setDefaultRealmForUser(user.email!)
+                }
+            }
+            else {
+                transition(onView: self.currentUserLabel, withDuration: 0.5) {
+                    self.currentUserLabel.text = "no user"
+                }
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {

@@ -11,6 +11,7 @@ import SkyFloatingLabelTextField
 
 protocol ProductNameEditionDelegate: class {
     
+    func productNameEditionDelegate(didCancel controller: ProductNameEditionController)
     func productNameEditionDelegate(didFinishEditing name: String)
     
 }
@@ -41,6 +42,7 @@ class ProductNameEditionController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        view.backgroundColor = UIColor.clearColor()
         addBlurredBackground(onView: self.view, withStyle: .Dark)
         okButton.layer.cornerRadius = okButton.frame.size.height / 2
     }
@@ -52,10 +54,15 @@ class ProductNameEditionController: UIViewController {
     // MARK: Methods
     
     @IBAction func cancel(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)        
+        delegate?.productNameEditionDelegate(didCancel: self)
     }
     
     @IBAction func validate(sender: AnyObject) {
+        guard nameField.text != "" else {
+            nameField.shake()
+            return
+        }
+        
         if let nameString = nameField.text {
             delegate?.productNameEditionDelegate(didFinishEditing: nameString)
             dismissViewControllerAnimated(true, completion: nil)

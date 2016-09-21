@@ -69,6 +69,7 @@ class ProductListController: UIViewController {
                 print("with product : \(productToEdit.name)")
             }
             else {
+                controller.isANewProduct = true
                 print("without product")
             }
         }

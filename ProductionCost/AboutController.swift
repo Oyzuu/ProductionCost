@@ -17,6 +17,7 @@ class AboutController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        view.backgroundColor = UIColor.clearColor()
         addBlurredBackground(onView: self.view, withStyle: .Dark)
     }
 

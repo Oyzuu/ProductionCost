@@ -26,6 +26,7 @@ class ProductDetailsController: UIViewController {
     
     var productToEdit: Product?
     var product: Product!
+    var isANewProduct = false
     
     // MARK: Overrides
 
@@ -72,10 +73,9 @@ class ProductDetailsController: UIViewController {
     override func willMoveToParentViewController(parent: UIViewController?) {
         guard parent == nil else {
             return
-            
         }
         
-        if self.productToEdit != nil {
+        if self.productToEdit != nil || isANewProduct {
             return
         }
         
@@ -246,8 +246,17 @@ extension ProductDetailsController: MaterialPickerDelegate {
 
 extension ProductDetailsController: ProductNameEditionDelegate {
     
+    func productNameEditionDelegate(didCancel controller: ProductNameEditionController) {
+        dismissViewControllerAnimated(true, completion: nil)
+        
+        if isANewProduct {
+            navigationController?.popViewControllerAnimated(true)
+        }
+    }
+    
     func productNameEditionDelegate(didFinishEditing name: String) {
         productNameLabel.text = name
+        isANewProduct = false
         
         if let productToEdit = self.productToEdit {
             try! Realm().write {

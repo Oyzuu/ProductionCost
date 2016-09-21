@@ -161,6 +161,12 @@ class MaterialListController: UIViewController {
             action in
             
             self.realm(deleteMaterial: material)
+            
+            self.updateDataModel()
+            
+            transition(onView: self.tableView, withDuration: 0.3) {
+                self.tableView.reloadData()
+            }
         }
         
         alert.addAction(noAction)
@@ -284,24 +290,24 @@ extension MaterialListController: UITableViewDataSource {
             
             if inProductsCount == 0 && material.subMaterial == nil {
                 realm(deleteMaterial: material)
+                
+                updateDataModel()
+                
+                transition(onView: tableView, withDuration: 0.3) {
+                    self.tableView.reloadData()
+                }
             }
             else if let submaterial = material.subMaterial {
                 let submaterialInProductsCount =
                     try! Realm().objects(Product.self).filter("%@ in components", submaterial).count
                 
                 if submaterialInProductsCount > 0 {
-                    showUsageAlert(forMaterial: submaterial,
+                    showUsageAlert(forMaterial: material,
                                    inNumberOfComponents: submaterialInProductsCount + inProductsCount)
                 }
             }
             else {
                 showUsageAlert(forMaterial: material, inNumberOfComponents: inProductsCount)
-            }
-            
-            updateDataModel()
-            
-            transition(onView: tableView, withDuration: 0.3) {
-                self.tableView.reloadData()
             }
         }
     }

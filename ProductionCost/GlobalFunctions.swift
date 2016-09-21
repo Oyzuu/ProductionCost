@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 func printDocumentsDirectory() {
     let urls = NSFileManager.defaultManager()
@@ -32,12 +33,42 @@ func generateRandomString(ofSize size: Int) -> String {
 }
 
 /// Shortening wrapper for transitionWithview
-func transition(onView view: UIView, withDuration duration: Double, closure: () -> ()) {
+func transition(onView view: UIView, withDuration duration: Double, action: () -> ()) {
     UIView.transitionWithView(view,
                               duration: duration,
                               options: UIViewAnimationOptions.TransitionCrossDissolve,
-                              animations: closure,
+                              animations: action,
                               completion: nil)
+}
+
+/// Shortening wrapper for transitionWithview with completion closure
+func transition(onView view: UIView, withDuration duration: Double, action: () -> (), completion: (Bool) -> ()) {
+    UIView.transitionWithView(view,
+                              duration: duration,
+                              options: UIViewAnimationOptions.TransitionCrossDissolve,
+                              animations: action,
+                              completion: completion)
+}
+
+/// Shortening wrapper for transitionWithview to be called by the view
+extension UIView {
+    
+    func transition(withDuration duration: Double, action: () -> ()) {
+        UIView.transitionWithView(self,
+                                  duration: duration,
+                                  options: UIViewAnimationOptions.TransitionCrossDissolve,
+                                  animations: action,
+                                  completion: nil)
+    }
+    
+    func transition(onView view: UIView, withDuration duration: Double, action: () -> (), completion: (Bool) -> ()) {
+        UIView.transitionWithView(view,
+                                  duration: duration,
+                                  options: UIViewAnimationOptions.TransitionCrossDissolve,
+                                  animations: action,
+                                  completion: completion)
+    }
+    
 }
 
 /// Register variadic nib identifiers on a UITableView
@@ -67,4 +98,15 @@ func addBlurredBackground(onView view: UIView, withStyle style: UIBlurEffectStyl
     
     view.addSubview(blurredView)
     view.sendSubviewToBack(blurredView)
+}
+
+/// Wrapper for Realm instance configuration
+func setDefaultRealmForUser(username: String) {
+    var config = Realm.Configuration()
+    
+    config.fileURL = config.fileURL!.URLByDeletingLastPathComponent!
+        .URLByAppendingPathComponent("\(username).realm")
+    
+    // Set this as the configuration used for the default Realm
+    Realm.Configuration.defaultConfiguration = config
 }

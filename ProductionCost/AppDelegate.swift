@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window?.tintColor = AppColors.raspberry
         
-        // TODO: Set Avenir as default font
+        FIRApp.configure()
+        
         UIBarButtonItem.appearance()
             .setTitleTextAttributes([NSFontAttributeName : UIFont(name: "Avenir", size: 16)!],
                                     forState: .Normal)
