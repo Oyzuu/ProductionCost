@@ -50,6 +50,7 @@ class LoginController: UIViewController {
     // MARK: Methods
 
     @IBAction func backToHub(sender: AnyObject) {
+        view.endEditing(true)
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -91,18 +92,23 @@ class LoginController: UIViewController {
             case 17007:
                 message = error!.localizedDescription
                 self.mailField.errorMessage = "Already in use"
+                self.mailField.shake()
             case 17008:
                 message = error!.localizedDescription
                 self.mailField.errorMessage = "Wrong mail format"
+                self.mailField.shake()
             case 17009:
                 message = "Wrong password"
                 self.passwordField.errorMessage = "Wrong password"
+                self.passwordField.shake()
             case 17011:
                 message = "Mail not registered"
                 self.mailField.errorMessage = "Mail not registered"
+                self.mailField.shake()
             case 17026:
                 message = error!.localizedDescription
                 self.passwordField.errorMessage = "Password too short"
+                self.passwordField.shake()
             case 17999:
                 print(mailField.text)
                 print(passwordField.text)
@@ -110,10 +116,12 @@ class LoginController: UIViewController {
                 if self.mailField.text! == "" {
                     message = "Wrong user mail"
                     self.mailField.errorMessage = "No mail"
+                    self.mailField.shake()
                 }
                 else {
                     message = "Please enter a password"
                     self.passwordField.errorMessage = "No password"
+                    self.passwordField.shake()
                 }
                 
             default: message = error!.localizedDescription

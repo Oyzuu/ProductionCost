@@ -966,13 +966,13 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                        <color key="value" red="0.97647058819999999" green="0.86274509799999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.5" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
                                         <color key="value" red="0.97647058819999999" green="0.86274509799999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                                        <color key="value" red="0.97647058819999999" green="0.86274509799999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.5" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
                                         <color key="value" red="0.97647058819999999" green="0.86274509799999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -984,6 +984,9 @@
                                         <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.5" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="your mail"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
+                                        <color key="value" red="1" green="0.33670168360000002" blue="0.28469473779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hxy-NU-iwb" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
@@ -993,13 +996,13 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                        <color key="value" red="0.97647058819999999" green="0.86274509799999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.5" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
                                         <color key="value" red="0.97647058819999999" green="0.86274509799999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                                        <color key="value" red="0.97647058819999999" green="0.86274509799999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.5" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
                                         <color key="value" red="0.97647058819999999" green="0.86274509799999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -1011,6 +1014,9 @@
                                         <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.5" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="your password"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
+                                        <color key="value" red="1" green="0.3566261802539808" blue="0.35828429316357419" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFx-CK-QF5">
@@ -1124,6 +1130,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qh9-MK-HDa">
                                 <rect key="frame" x="135" y="301" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="toSettings" destination="Dgc-0Y-NVU" eventType="touchUpInside" id="SOb-v9-oK1"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mW-wD-pkf">
                                 <rect key="frame" x="129" y="359" width="62" height="24"/>

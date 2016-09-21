@@ -54,10 +54,14 @@ class ProductNameEditionController: UIViewController {
     // MARK: Methods
     
     @IBAction func cancel(sender: AnyObject) {
+        view.endEditing(true)
+        
         delegate?.productNameEditionDelegate(didCancel: self)
     }
     
     @IBAction func validate(sender: AnyObject) {
+        view.endEditing(true)
+        
         guard nameField.text != "" else {
             nameField.shake()
             return

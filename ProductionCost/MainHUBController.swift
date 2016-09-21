@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Firebase
+import PKHUD
 
 class MainHUBController: UIViewController {
     
@@ -81,6 +82,11 @@ class MainHUBController: UIViewController {
     }
     
     // MARK: Methods
+    
+    @IBAction func toSettings() {
+        HUD.flash(.LabeledError(title: nil, subtitle: "Not implemented yet"), delay: 0.5)
+    }
+    
     private func requestQuote() {
         print("quote requested")
         request(.GET, "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json")
