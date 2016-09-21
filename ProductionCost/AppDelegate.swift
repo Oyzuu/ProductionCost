@@ -16,6 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window?.tintColor = AppColors.raspberry
+        print(NSLocale.preferredLanguages()[0])
+        
+        if NSLocale.preferredLanguages()[0].hasPrefix("fr-") {
+            print("OKAY C'EST DU FRANCAIS")
+        }
         
         FIRApp.configure()
         

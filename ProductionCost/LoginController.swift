@@ -38,7 +38,9 @@ class LoginController: UIViewController {
         signUpButton.layer.borderWidth  = 1
         signUpButton.layer.borderColor  = AppColors.raspberry.CGColor
         backButton.layer.cornerRadius   = 5
-        mailField.becomeFirstResponder()
+        
+        self.mailField.becomeFirstResponder()
+        
         mailField.delegate     = self
         passwordField.delegate = self
     }

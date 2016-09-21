@@ -84,7 +84,7 @@ class MainHUBController: UIViewController {
     // MARK: Methods
     
     @IBAction func toSettings() {
-        HUD.flash(.LabeledError(title: nil, subtitle: "Not implemented yet"), delay: 0.5)
+        HUD.flash(.LabeledError(title: nil, subtitle: "Not implemented yet"), delay: 1)
     }
     
     private func requestQuote() {

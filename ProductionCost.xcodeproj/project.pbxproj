@@ -85,6 +85,8 @@
 		5C7BFCF81D86A3390004CFD5 /* AddMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMaterialCell.xib; sourceTree = "<group>"; };
 		5C7BFCFA1D86A7CC0004CFD5 /* MainMaterialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMaterialCell.swift; sourceTree = "<group>"; };
 		5C7BFCFE1D86B3D20004CFD5 /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
+		5C8651A51D92BF4100B2733D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		5C8651A61D92BF4200B2733D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5C87C38D1D8FCF2300BD6C4E /* Supplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
 		5C87C38F1D8FD45500BD6C4E /* SupplierFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierFormController.swift; sourceTree = "<group>"; };
 		5C87C3911D8FEB6700BD6C4E /* SupplierPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierPickerController.swift; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5C4AE6C41D86915F0021199F /* Base */,
+				5C8651A51D92BF4100B2733D /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5C4AE6C91D86915F0021199F /* Base */,
+				5C8651A61D92BF4200B2733D /* fr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

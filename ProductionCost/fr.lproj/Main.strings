@@ -1,0 +1,147 @@
+
+/* Class = "UIViewController"; title = "Materials"; ObjectID = "0fL-32-QOl"; */
+"0fL-32-QOl.title" = "Materials";
+
+/* Class = "UILabel"; text = "Quantity"; ObjectID = "1a4-PA-fQY"; */
+"1a4-PA-fQY.text" = "Quantité";
+
+/* Class = "UILabel"; text = "Settings"; ObjectID = "2mW-wD-pkf"; */
+"2mW-wD-pkf.text" = "Paramètres";
+
+/* Class = "UILabel"; text = "Suppliers"; ObjectID = "3dY-ex-Gco"; */
+"3dY-ex-Gco.text" = "Fournisseurs";
+
+/* Class = "UINavigationItem"; title = "Components"; ObjectID = "4B7-k1-RCk"; */
+"4B7-k1-RCk.title" = "Composants";
+
+/* Class = "UIButton"; normalTitle = "Get location"; ObjectID = "52l-uc-ED0"; */
+"52l-uc-ED0.normalTitle" = "Ma position";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "5m6-a2-zRL"; */
+"5m6-a2-zRL.text" = "Titre";
+
+/* Class = "UILabel"; text = "No category"; ObjectID = "62S-HN-2Ki"; */
+"62S-HN-2Ki.text" = "Sans catégorie";
+
+/* Class = "UINavigationItem"; title = "Product details"; ObjectID = "6cB-Oi-oc0"; */
+"6cB-Oi-oc0.title" = "Détail produit";
+
+/* Class = "UILabel"; text = "Total"; ObjectID = "7Ep-75-AB4"; */
+"7Ep-75-AB4.text" = "Total";
+
+/* Class = "UIViewController"; title = "Products"; ObjectID = "7l2-UH-cx1"; */
+"7l2-UH-cx1.title" = "Produits";
+
+/* Class = "UILabel"; text = "About"; ObjectID = "9fW-0K-k3h"; */
+"9fW-0K-k3h.text" = "À propos";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Bmp-HO-0gr"; */
+"Bmp-HO-0gr.text" = "Titre";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "CJH-vl-J4W"; */
+"CJH-vl-J4W.text" = "Détail";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "Fgk-ps-STN"; */
+"Fgk-ps-STN.placeholder" = "Nom";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "FwQ-Vi-wKs"; */
+"FwQ-Vi-wKs.normalTitle" = "Annuler";
+
+/* Class = "UILabel"; text = "Measurement unit"; ObjectID = "HXV-23-ejh"; */
+"HXV-23-ejh.text" = "Unité de mesure";
+
+/* Class = "UILabel"; text = "No supplier"; ObjectID = "LBp-vZ-zMU"; */
+"LBp-vZ-zMU.text" = "Sans fournisseur";
+
+/* Class = "UINavigationItem"; title = "Suppliers"; ObjectID = "LL0-oR-3NY"; */
+"LL0-oR-3NY.title" = "Fournisseurs";
+
+/* Class = "UILabel"; text = "Unit"; ObjectID = "NUN-WJ-u1c"; */
+"NUN-WJ-u1c.text" = "Unité";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "P2u-GT-7uO"; */
+"P2u-GT-7uO.normalTitle" = "Annuler";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "SFx-CK-QF5"; */
+"SFx-CK-QF5.normalTitle" = "Se connecter";
+
+/* Class = "UILabel"; text = "Products"; ObjectID = "VzM-U8-a1L"; */
+"VzM-U8-a1L.text" = "Produits";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "bAA-JW-8mx"; */
+"bAA-JW-8mx.text" = "Détail";
+
+/* Class = "UILabel"; text = "Components"; ObjectID = "cSp-FP-VoD"; */
+"cSp-FP-VoD.text" = "Composants";
+
+/* Class = "UILabel"; text = "Current user : "; ObjectID = "cdG-KS-q2j"; */
+"cdG-KS-q2j.text" = "Utilisateur : ";
+
+/* Class = "UIButton"; normalTitle = "Ok"; ObjectID = "deL-BD-kaf"; */
+"deL-BD-kaf.normalTitle" = "Ok";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "e9P-Z8-Rjr"; */
+"e9P-Z8-Rjr.text" = "Nom";
+
+/* Class = "UILabel"; text = "\"No man was ever wise by chance.\"\"No man was ever wise by chance.\"\"No man was ever wise by chance.\"\"No man was ever wise by chance.\"\"No man was ever wise by chance.\""; ObjectID = "eEn-AD-axN"; */
+"eEn-AD-axN.text" = "\"No man was ever wise by chance.\"\"No man was ever wise by chance.\"\"No man was ever wise by chance.\"\"No man was ever wise by chance.\"\"No man was ever wise by chance.\"";
+
+/* Class = "UITextField"; placeholder = "Quantity in pack"; ObjectID = "hg2-C1-Fq1"; */
+"hg2-C1-Fq1.placeholder" = "Quantité";
+
+/* Class = "UINavigationItem"; title = "Suppliers"; ObjectID = "hsT-hV-L49"; */
+"hsT-hV-L49.title" = "Fournisseurs";
+
+/* Class = "UINavigationItem"; title = "Add component"; ObjectID = "jM8-lf-XdI"; */
+"jM8-lf-XdI.title" = "Ajouter composant";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "jyn-e5-BL5"; */
+"jyn-e5-BL5.text" = "Titre";
+
+/* Class = "UILabel"; text = "On a random day, this random philospher with a lengthy name said : "; ObjectID = "lOH-L7-clO"; */
+"lOH-L7-clO.text" = "On a random day, this random philospher with a lengthy name said : ";
+
+/* Class = "UILabel"; text = "Supplier"; ObjectID = "lay-EO-akE"; */
+"lay-EO-akE.text" = "Fournisseur";
+
+/* Class = "UINavigationItem"; title = "Products"; ObjectID = "mSX-Rj-5Jj"; */
+"mSX-Rj-5Jj.title" = "Produits";
+
+/* Class = "UILabel"; text = "No derived component"; ObjectID = "mqC-nY-bIm"; */
+"mqC-nY-bIm.text" = "Sans composant dérivé";
+
+/* Class = "UITextField"; placeholder = "Component price"; ObjectID = "nXi-Bu-5YV"; */
+"nXi-Bu-5YV.placeholder" = "Prix du composant";
+
+/* Class = "UIButton"; normalTitle = "Sign up"; ObjectID = "nbx-CX-0sE"; */
+"nbx-CX-0sE.normalTitle" = "S'enregistrer";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "oBH-Fm-WYU"; */
+"oBH-Fm-WYU.text" = "Prix";
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "qvz-5p-1v5"; */
+"qvz-5p-1v5.text" = "Profil";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "qzS-Xf-FJe"; */
+"qzS-Xf-FJe.text" = "Catégorie";
+
+/* Class = "UINavigationItem"; title = "Add a supplier"; ObjectID = "rnN-wf-S5d"; */
+"rnN-wf-S5d.title" = "Ajouter un fournisseur";
+
+/* Class = "UINavigationItem"; title = "Categories"; ObjectID = "s4D-Os-caD"; */
+"s4D-Os-caD.title" = "Catégories";
+
+/* Class = "UILabel"; text = "Create derived component"; ObjectID = "uuC-dy-Ntr"; */
+"uuC-dy-Ntr.text" = "Créer un composant dérivé";
+
+/* Class = "UITextField"; placeholder = "Address"; ObjectID = "w06-2u-2u8"; */
+"w06-2u-2u8.placeholder" = "Adresse";
+
+/* Class = "UITextField"; placeholder = "Component name"; ObjectID = "x6T-CN-5UT"; */
+"x6T-CN-5UT.placeholder" = "Nom du composant";
+
+/* Class = "UIButton"; normalTitle = "Create"; ObjectID = "xRJ-6d-dxO"; */
+"xRJ-6d-dxO.normalTitle" = "Créer";
+
+/* Class = "UILabel"; text = "current@user.com"; ObjectID = "ySI-cI-KGB"; */
+"ySI-cI-KGB.text" = "current@user.com";
