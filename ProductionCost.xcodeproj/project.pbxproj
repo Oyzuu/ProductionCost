@@ -31,6 +31,7 @@
 		5C4B8B111D8C17AD008778E4 /* AddSomethingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4B8B101D8C17AD008778E4 /* AddSomethingCell.xib */; };
 		5C4B8B131D8C394A008778E4 /* MaterialInProductPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4B8B121D8C394A008778E4 /* MaterialInProductPickerCell.xib */; };
 		5C4B8B151D8C3A44008778E4 /* MaterialInProductPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4B8B141D8C3A44008778E4 /* MaterialInProductPickerCell.swift */; };
+		5C57A5B51D93D0C500AC57A0 /* AddSomethingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C57A5B41D93D0C500AC57A0 /* AddSomethingCell.swift */; };
 		5C6441551D86D80C006CA015 /* MaterialFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6441541D86D80C006CA015 /* MaterialFormController.swift */; };
 		5C6441571D86E4FC006CA015 /* UnitMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C6441561D86E4FC006CA015 /* UnitMaterialCell.xib */; };
 		5C7BFCF71D869DC00004CFD5 /* PackMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7BFCF61D869DC00004CFD5 /* PackMaterialCell.xib */; };
@@ -79,6 +80,7 @@
 		5C4B8B101D8C17AD008778E4 /* AddSomethingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSomethingCell.xib; sourceTree = "<group>"; };
 		5C4B8B121D8C394A008778E4 /* MaterialInProductPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaterialInProductPickerCell.xib; sourceTree = "<group>"; };
 		5C4B8B141D8C3A44008778E4 /* MaterialInProductPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialInProductPickerCell.swift; sourceTree = "<group>"; };
+		5C57A5B41D93D0C500AC57A0 /* AddSomethingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSomethingCell.swift; sourceTree = "<group>"; };
 		5C6441541D86D80C006CA015 /* MaterialFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialFormController.swift; sourceTree = "<group>"; };
 		5C6441561D86E4FC006CA015 /* UnitMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnitMaterialCell.xib; sourceTree = "<group>"; };
 		5C7BFCF61D869DC00004CFD5 /* PackMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PackMaterialCell.xib; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				5C4B8B121D8C394A008778E4 /* MaterialInProductPickerCell.xib */,
 				5C4B8B141D8C3A44008778E4 /* MaterialInProductPickerCell.swift */,
 				5C4B8B101D8C17AD008778E4 /* AddSomethingCell.xib */,
+				5C57A5B41D93D0C500AC57A0 /* AddSomethingCell.swift */,
 			);
 			name = "Material In Product";
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				5C3F5F281D8979B600AFB082 /* CategoriesPickerController.swift in Sources */,
 				5C49A1941D8AE4160008EC93 /* ProductDetailsMaterialPickerController.swift in Sources */,
 				5C4AE6C21D86915F0021199F /* MaterialListController.swift in Sources */,
+				5C57A5B51D93D0C500AC57A0 /* AddSomethingCell.swift in Sources */,
 				5C6441551D86D80C006CA015 /* MaterialFormController.swift in Sources */,
 				5C87C3941D8FF59400BD6C4E /* MainHUBController.swift in Sources */,
 				5C3F5F261D89782A00AFB082 /* Category.swift in Sources */,

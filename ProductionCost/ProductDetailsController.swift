@@ -166,7 +166,9 @@ extension ProductDetailsController: UITableViewDataSource {
         //(count > 0 && indexPath.row == count)
         if count == 0 || (count > 0 && indexPath.row == count) {
             let cell = tableView.dequeueReusableCellWithIdentifier(
-                "AddSomethingCell", forIndexPath: indexPath)
+                "AddSomethingCell", forIndexPath: indexPath) as! AddSomethingCell
+            cell.addLabel.hidden   = count != 0
+            cell.addAwesome.hidden = count == 0
             return cell
         }
         else {
@@ -184,9 +186,18 @@ extension ProductDetailsController: UITableViewDataSource {
             
             let text = material.name.stringByReplacingOccurrencesOfString("_", withString: "")
             
-            cell.quantityLabel.text = String(material.quantity)
+            if material.quantity % 1 == 0 {
+                cell.quantityLabel.text = String(format: "%.0f",material.quantity)
+            }
+            else {
+                cell.quantityLabel.text = String(material.quantity)
+            }
+            
+//            cell.quantityLabel.text = String(material.quantity)
             cell.nameLabel.text = text
             cell.priceLabel.text = String(format: "%.2f $", material.price)
+            
+            cell.setAlternativeBackground(forEvenIndexPath: indexPath)
             
             return cell
         }

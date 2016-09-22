@@ -21,6 +21,13 @@ class Product: Object {
         
         for component in components {
             sum += component.price
+            
+//            if component is Material {
+//                sum += (component as! Material).price
+//            }
+//            else {
+//                sum += (component as! Product).price
+//            }
         }
         
         return sum

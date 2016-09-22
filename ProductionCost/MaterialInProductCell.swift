@@ -29,5 +29,14 @@ class MaterialInProductCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    func setAlternativeBackground(forEvenIndexPath indexPath: NSIndexPath) {
+        if indexPath.row % 2 == 0 {
+            self.backgroundColor = AppColors.whiteLight
+        }
+        else {
+            self.backgroundColor = AppColors.white
+        }
+    }
 
 }
