@@ -33,6 +33,7 @@
 		5C57A5B51D93D0C500AC57A0 /* AddSomethingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C57A5B41D93D0C500AC57A0 /* AddSomethingCell.swift */; };
 		5C57A5B71D93E0C700AC57A0 /* ComponentQuantityModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C57A5B61D93E0C700AC57A0 /* ComponentQuantityModal.swift */; };
 		5C57A5B91D94002500AC57A0 /* MaterialWithModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C57A5B81D94002500AC57A0 /* MaterialWithModifier.swift */; };
+		5C57A5BB1D9425F400AC57A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C57A5BA1D9425F400AC57A0 /* GoogleService-Info.plist */; };
 		5C6441551D86D80C006CA015 /* MaterialFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6441541D86D80C006CA015 /* MaterialFormController.swift */; };
 		5C6441571D86E4FC006CA015 /* UnitMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C6441561D86E4FC006CA015 /* UnitMaterialCell.xib */; };
 		5C7BFCF71D869DC00004CFD5 /* PackMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7BFCF61D869DC00004CFD5 /* PackMaterialCell.xib */; };
@@ -47,7 +48,6 @@
 		5CAE04F01D87FC6B00BB9590 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE04EF1D87FC6B00BB9590 /* GlobalFunctions.swift */; };
 		5CAE04F21D88006000BB9590 /* SubMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CAE04F11D88006000BB9590 /* SubMaterialCell.xib */; };
 		5CCAD8A01D92751300A2D686 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCAD89F1D92751300A2D686 /* LoginController.swift */; };
-		5CCAD8A61D927A1A00A2D686 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CCAD8A51D927A1A00A2D686 /* GoogleService-Info.plist */; };
 		5CF233B01D914690000CFC17 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF233AF1D914690000CFC17 /* AboutController.swift */; };
 		5CF233B41D916F89000CFC17 /* ProductNameEditionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF233B31D916F89000CFC17 /* ProductNameEditionController.swift */; };
 		B128ABDE175744336124F758 /* Pods_ProductionCost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6AF232FFB136C4A930DF609 /* Pods_ProductionCost.framework */; };
@@ -83,6 +83,7 @@
 		5C57A5B41D93D0C500AC57A0 /* AddSomethingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSomethingCell.swift; sourceTree = "<group>"; };
 		5C57A5B61D93E0C700AC57A0 /* ComponentQuantityModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentQuantityModal.swift; sourceTree = "<group>"; };
 		5C57A5B81D94002500AC57A0 /* MaterialWithModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialWithModifier.swift; sourceTree = "<group>"; };
+		5C57A5BA1D9425F400AC57A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5C6441541D86D80C006CA015 /* MaterialFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialFormController.swift; sourceTree = "<group>"; };
 		5C6441561D86E4FC006CA015 /* UnitMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnitMaterialCell.xib; sourceTree = "<group>"; };
 		5C7BFCF61D869DC00004CFD5 /* PackMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PackMaterialCell.xib; sourceTree = "<group>"; };
@@ -99,7 +100,6 @@
 		5CAE04EF1D87FC6B00BB9590 /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		5CAE04F11D88006000BB9590 /* SubMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubMaterialCell.xib; sourceTree = "<group>"; };
 		5CCAD89F1D92751300A2D686 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		5CCAD8A51D927A1A00A2D686 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5CF233AF1D914690000CFC17 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		5CF233B31D916F89000CFC17 /* ProductNameEditionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductNameEditionController.swift; sourceTree = "<group>"; };
 		B6AF232FFB136C4A930DF609 /* Pods_ProductionCost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductionCost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,7 +173,7 @@
 			children = (
 				5C4AE6BF1D86915F0021199F /* AppDelegate.swift */,
 				5C4AE6C61D86915F0021199F /* Assets.xcassets */,
-				5CCAD8A51D927A1A00A2D686 /* GoogleService-Info.plist */,
+				5C57A5BA1D9425F400AC57A0 /* GoogleService-Info.plist */,
 				5C4AE6CB1D86915F0021199F /* Info.plist */,
 				5CAE04EE1D87FC4F00BB9590 /* Utils */,
 				5CAE04D91D87E4B100BB9590 /* Resources */,
@@ -382,10 +382,10 @@
 				5C07D4471D900F25001DA584 /* SupplierListCell.xib in Resources */,
 				5CAE04F21D88006000BB9590 /* SubMaterialCell.xib in Resources */,
 				5C7BFCF71D869DC00004CFD5 /* PackMaterialCell.xib in Resources */,
-				5CCAD8A61D927A1A00A2D686 /* GoogleService-Info.plist in Resources */,
 				5C4AE6C71D86915F0021199F /* Assets.xcassets in Resources */,
 				5C4AE6C51D86915F0021199F /* Main.storyboard in Resources */,
 				5C49A1881D8AAA740008EC93 /* AddProductCell.xib in Resources */,
+				5C57A5BB1D9425F400AC57A0 /* GoogleService-Info.plist in Resources */,
 				5C6441571D86E4FC006CA015 /* UnitMaterialCell.xib in Resources */,
 				5C7BFCF91D86A3390004CFD5 /* AddMaterialCell.xib in Resources */,
 				5C4B8B131D8C394A008778E4 /* MaterialInProductPickerCell.xib in Resources */,
