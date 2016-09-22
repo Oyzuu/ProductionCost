@@ -12,7 +12,7 @@ import RealmSwift
 // MARK: Protocol for delegate
 
 protocol MaterialPickerDelegate: class {
-    func materialPicker(didPick material: Material)
+    func materialPicker(didPick material: Material, withQuantity quantity: Double)
 }
 
 class ProductDetailsMaterialPickerController: UITableViewController {
@@ -42,6 +42,17 @@ class ProductDetailsMaterialPickerController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ComponentQuantityModal" {
+            guard let controller = segue.destinationViewController as? ComponentQuantityModal else {
+                return
+            }
+            
+            controller.delegate         = self
+            controller.selectedMaterial = (sender as! Material)
+        }
     }
     
     // MARK: Methods
@@ -93,8 +104,21 @@ extension ProductDetailsMaterialPickerController {
 extension ProductDetailsMaterialPickerController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let material = results![indexPath.row]
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        delegate?.materialPicker(didPick: dataModel[indexPath.row])
+        performSegueWithIdentifier("ComponentQuantityModal", sender: material)
+    }
+    
+}
+
+// MARK: EXT - Component quantity delegate
+
+extension ProductDetailsMaterialPickerController: ComponentQuantityDelegate {
+    
+    func componentQuantityDelegate(didPick quantity: Double, onMaterial material: Material) {
+        delegate?.materialPicker(didPick: material, withQuantity: quantity)
+        dismissViewControllerAnimated(true, completion: nil)
         navigationController?.popViewControllerAnimated(true)
     }
     

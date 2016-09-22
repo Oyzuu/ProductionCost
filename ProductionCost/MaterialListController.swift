@@ -137,15 +137,38 @@ class MaterialListController: UIViewController {
     }
     
     private func realm(deleteMaterial material: Material) {
-        let realm = try! Realm()
+        let realm   = try! Realm()
+        let results = realm.objects(MaterialWithModifier.self).filter("material = %@", material)
         
         try! realm.write {
+            for result in results {
+                realm.delete(result)
+            }
+            
             if let subMaterial = material.subMaterial {
-                realm.delete(subMaterial)
+                self.realm(deleteMaterial: subMaterial)
             }
             
             realm.delete(material)
         }
+    }
+    
+    private func usageInProductsCount(forMaterial material: Material) -> Int {        
+        let materialWithIdentifierResults = try! Realm()
+            .objects(MaterialWithModifier.self)
+            .filter("material = %@", material)
+        
+        if materialWithIdentifierResults.count > 0 {
+            let materialWithIdentifier = materialWithIdentifierResults[0]
+            
+            let inProductsCount = try! Realm()
+                .objects(Product.self)
+                .filter("%@ in components", materialWithIdentifier).count
+            
+            return inProductsCount
+        }
+        
+        return 0
     }
     
     private func showUsageAlert(forMaterial material: Material, inNumberOfComponents number: Int) {
@@ -157,7 +180,6 @@ class MaterialListController: UIViewController {
                                       message: message, preferredStyle: .Alert)
         
         let noAction     = UIAlertAction(title: "No",     style: .Cancel, handler: nil)
-        
         let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) {
             action in
             
@@ -288,12 +310,10 @@ extension MaterialListController: UITableViewDataSource {
         if editingStyle == .Delete {
             let material = dataModel[indexPath.row]
             
-            var inProductsCount =
-                try! Realm().objects(Product.self).filter("%@ in components", material).count
-            
+            var inProductsCount = usageInProductsCount(forMaterial: material)
+
             if let submaterial = material.subMaterial {
-                let submaterialInProductsCount =
-                    try! Realm().objects(Product.self).filter("%@ in components", submaterial).count
+                let submaterialInProductsCount = usageInProductsCount(forMaterial: submaterial)
                 
                 inProductsCount += submaterialInProductsCount
             }

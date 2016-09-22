@@ -46,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t3p-XN-41u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1518" y="692"/>
+            <point key="canvasLocation" x="1517" y="691"/>
         </scene>
         <!--Add a supplier-->
         <scene sceneID="eaX-7y-RY4">
@@ -60,7 +60,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w06-2u-2u8" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w06-2u-2u8" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                 <rect key="frame" x="20" y="155" width="280" height="42"/>
                                 <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
@@ -86,9 +86,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52l-uc-ED0">
-                                <rect key="frame" x="66" y="233" width="189" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52l-uc-ED0">
+                                <rect key="frame" x="62" y="233" width="197" height="33"/>
                                 <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="Cqq-Tq-2g0"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Get location">
                                     <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -97,7 +100,7 @@
                                     <action selector="getLocation:" destination="stb-Ok-ipg" eventType="touchUpInside" id="zO2-Ve-a9G"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="justified" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Fgk-ps-STN" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="justified" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Fgk-ps-STN" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                 <rect key="frame" x="20" y="105" width="280" height="42"/>
                                 <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
@@ -123,21 +126,39 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UvJ-tP-RWE">
-                                <rect key="frame" x="0.0" y="303" width="320" height="265"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TGb-W6-tJa">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                                <color key="color" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UvJ-tP-RWE">
+                                <rect key="frame" x="-4" y="303" width="328" height="265"/>
                                 <connections>
                                     <outlet property="delegate" destination="stb-Ok-ipg" id="pLh-nI-T7E"/>
                                 </connections>
                             </mapView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="raspberry" translatesAutoresizingMaskIntoConstraints="NO" id="CgP-we-eRy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="raspberry" translatesAutoresizingMaskIntoConstraints="NO" id="CgP-we-eRy">
                                 <rect key="frame" x="0.0" y="303" width="320" height="1"/>
                             </imageView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TGb-W6-tJa">
-                                <rect key="frame" x="150" y="274" width="20" height="20"/>
-                                <color key="color" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Fgk-ps-STN" firstAttribute="top" secondItem="leS-sy-Xvb" secondAttribute="bottom" constant="41" id="1QA-4P-Ow5"/>
+                            <constraint firstItem="CgP-we-eRy" firstAttribute="top" secondItem="TGb-W6-tJa" secondAttribute="bottom" constant="9" id="1it-g7-8pc"/>
+                            <constraint firstItem="w06-2u-2u8" firstAttribute="top" secondItem="Fgk-ps-STN" secondAttribute="bottom" constant="8" symbolic="YES" id="6FP-fe-On0"/>
+                            <constraint firstItem="Fgk-ps-STN" firstAttribute="centerX" secondItem="rRd-IM-Kqq" secondAttribute="centerX" id="AiD-9O-8Bs"/>
+                            <constraint firstItem="Fgk-ps-STN" firstAttribute="centerX" secondItem="TGb-W6-tJa" secondAttribute="centerX" id="D4g-XD-gQS"/>
+                            <constraint firstItem="Fgk-ps-STN" firstAttribute="centerX" secondItem="CgP-we-eRy" secondAttribute="centerX" id="Mtm-rl-BAx"/>
+                            <constraint firstItem="CgP-we-eRy" firstAttribute="leading" secondItem="UvJ-tP-RWE" secondAttribute="leading" constant="4" id="Nt7-jT-2yH"/>
+                            <constraint firstItem="CgP-we-eRy" firstAttribute="top" secondItem="UvJ-tP-RWE" secondAttribute="top" id="Nxx-oc-vD4"/>
+                            <constraint firstItem="w06-2u-2u8" firstAttribute="centerX" secondItem="rRd-IM-Kqq" secondAttribute="centerX" id="R7z-gf-4i0"/>
+                            <constraint firstItem="52l-uc-ED0" firstAttribute="leading" secondItem="rRd-IM-Kqq" secondAttribute="leadingMargin" constant="46" id="REe-0Q-QZJ"/>
+                            <constraint firstItem="7vk-4Y-nSB" firstAttribute="top" secondItem="UvJ-tP-RWE" secondAttribute="bottom" id="SBc-gX-jIF"/>
+                            <constraint firstItem="TGb-W6-tJa" firstAttribute="top" secondItem="52l-uc-ED0" secondAttribute="bottom" constant="8" symbolic="YES" id="Yzs-XT-q7f"/>
+                            <constraint firstItem="52l-uc-ED0" firstAttribute="top" secondItem="w06-2u-2u8" secondAttribute="bottom" constant="36" id="ZT2-ux-4fW"/>
+                            <constraint firstItem="52l-uc-ED0" firstAttribute="centerX" secondItem="rRd-IM-Kqq" secondAttribute="centerX" id="ir0-Hd-spJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UvJ-tP-RWE" secondAttribute="trailing" constant="-20" id="qKu-N7-Tlt"/>
+                            <constraint firstItem="UvJ-tP-RWE" firstAttribute="leading" secondItem="rRd-IM-Kqq" secondAttribute="leadingMargin" constant="-20" id="sXg-2V-TiK"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add a supplier" id="rnN-wf-S5d">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2az-DD-7NS">
@@ -267,7 +288,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ZfL-dS-8yh" firstAttribute="centerX" secondItem="y8a-Tq-tgD" secondAttribute="centerX" id="3Hl-l2-qW1"/>
                             <constraint firstItem="rwf-o2-3pW" firstAttribute="top" secondItem="y8a-Tq-tgD" secondAttribute="bottom" constant="8" symbolic="YES" id="3qG-oZ-p67"/>
@@ -284,7 +305,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0y-Fo-WED" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="671" y="-394"/>
+            <point key="canvasLocation" x="671" y="-393.99999999999994"/>
         </scene>
         <!--Suppliers-->
         <scene sceneID="9Qa-lz-sfi">
@@ -323,7 +344,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3nO-ZM-oaC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="485" y="993"/>
+            <point key="canvasLocation" x="485" y="992.99999999999977"/>
         </scene>
         <!--Suppliers-->
         <scene sceneID="gfI-6C-wIl">
@@ -643,7 +664,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4th-O7-Cn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1987" y="1429"/>
+            <point key="canvasLocation" x="1987" y="1428.9999999999998"/>
         </scene>
         <!--Categories-->
         <scene sceneID="e6W-Uu-Cdg">
@@ -782,7 +803,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="nameField" destination="2IX-zd-vF3" id="aCI-hl-0XQ"/>
@@ -791,7 +812,130 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PLE-Ai-JYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1600" y="-723"/>
+            <point key="canvasLocation" x="1600" y="-722.99999999999989"/>
+        </scene>
+        <!--Component Quantity Modal-->
+        <scene sceneID="NSj-BK-frr">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="per-5t-5LM" customClass="ComponentQuantityModal" customModule="ProductionCost" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GgC-Yx-ZUr"/>
+                        <viewControllerLayoutGuide type="bottom" id="eSD-EV-UdT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8eB-aK-ZqB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s48-fb-vMY">
+                                <rect key="frame" x="51" y="176" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <state key="normal" title="1/4">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOneQuarter:" destination="per-5t-5LM" eventType="touchUpInside" id="Rh6-pF-Eh3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34D-Xr-xRF">
+                                <rect key="frame" x="129" y="176" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <state key="normal" title="1/2">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOneHalf:" destination="per-5t-5LM" eventType="touchUpInside" id="vcg-cB-ajO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHS-YZ-MXr">
+                                <rect key="frame" x="208" y="176" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <state key="normal" title="3/4">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addThreeQuarter:" destination="per-5t-5LM" eventType="touchUpInside" id="o4B-O3-xzn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BkF-1R-dnb">
+                                <rect key="frame" x="51" y="254" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <state key="normal" title="1">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addOne:" destination="per-5t-5LM" eventType="touchUpInside" id="EXX-iq-OKq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cI8-hJ-k1K">
+                                <rect key="frame" x="208" y="254" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <state key="normal" title="10">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addTen:" destination="per-5t-5LM" eventType="touchUpInside" id="Alu-sB-nMZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o65-OM-CYc">
+                                <rect key="frame" x="129" y="332" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                <state key="normal" title="Pack">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addPack:" destination="per-5t-5LM" eventType="touchUpInside" id="6vg-ko-VTM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOE-gq-oNi">
+                                <rect key="frame" x="120" y="28" width="78" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel:" destination="per-5t-5LM" eventType="touchUpInside" id="5DR-mZ-BgS"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQn-13-heF">
+                                <rect key="frame" x="76" y="125" width="177" height="32"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <color key="textColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwg-ni-Iko">
+                                <rect key="frame" x="129" y="254" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <state key="normal" title="5">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addFive:" destination="per-5t-5LM" eventType="touchUpInside" id="R6x-JN-dZk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="fiveButton" destination="dwg-ni-Iko" id="mBk-li-bQK"/>
+                        <outlet property="oneButton" destination="BkF-1R-dnb" id="eI5-7Z-98O"/>
+                        <outlet property="oneHalfButton" destination="34D-Xr-xRF" id="Sw4-TM-ZC4"/>
+                        <outlet property="oneQuarterButton" destination="s48-fb-vMY" id="Ss0-1m-pNG"/>
+                        <outlet property="packButton" destination="o65-OM-CYc" id="eWa-3P-F39"/>
+                        <outlet property="tenButton" destination="cI8-hJ-k1K" id="LAm-Qm-AR3"/>
+                        <outlet property="threeQuarterButton" destination="VHS-YZ-MXr" id="dxC-Np-aMt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bd3-Tf-xq5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2046" y="-723"/>
         </scene>
         <!--Product details-->
         <scene sceneID="ms4-Lq-IDD">
@@ -919,6 +1063,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="uJ2-6K-V5p"/>
+                    <connections>
+                        <segue destination="per-5t-5LM" kind="modal" identifier="ComponentQuantityModal" id="WTk-af-klY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q8n-Sz-GN5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -946,7 +1093,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1a8-Ss-xrf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1518" y="1429"/>
+            <point key="canvasLocation" x="1518" y="1428.9999999999998"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="iV9-b0-RaC">
@@ -960,7 +1107,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gMR-gZ-acv" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gMR-gZ-acv" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                 <rect key="frame" x="58" y="70" width="204" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
@@ -990,7 +1137,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hxy-NU-iwb" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hxy-NU-iwb" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                 <rect key="frame" x="58" y="144" width="204" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
@@ -1020,9 +1167,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFx-CK-QF5">
-                                <rect key="frame" x="58" y="219" width="204" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFx-CK-QF5">
+                                <rect key="frame" x="58" y="219" width="204" height="36"/>
                                 <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Sign in">
                                     <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1030,9 +1178,10 @@
                                     <action selector="signIn:" destination="55h-sE-r8s" eventType="touchUpInside" id="x93-Er-YlM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbx-CX-0sE">
-                                <rect key="frame" x="58" y="257" width="204" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbx-CX-0sE">
+                                <rect key="frame" x="58" y="263" width="204" height="36"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Sign up">
                                     <color key="titleColor" red="0.96078431372549022" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1040,8 +1189,9 @@
                                     <action selector="signUp:" destination="55h-sE-r8s" eventType="touchUpInside" id="KG7-cp-gSw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2u-GT-7uO">
-                                <rect key="frame" x="58" y="295" width="204" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2u-GT-7uO">
+                                <rect key="frame" x="58" y="307" width="204" height="36"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1050,7 +1200,22 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="nbx-CX-0sE" firstAttribute="centerX" secondItem="K5t-Bl-VlQ" secondAttribute="centerX" id="3Pu-Gh-Tda"/>
+                            <constraint firstItem="gMR-gZ-acv" firstAttribute="top" secondItem="Qse-rk-CZV" secondAttribute="bottom" constant="50" id="86c-Np-3y2"/>
+                            <constraint firstItem="SFx-CK-QF5" firstAttribute="centerX" secondItem="K5t-Bl-VlQ" secondAttribute="centerX" id="DHe-7Z-TLB"/>
+                            <constraint firstItem="P2u-GT-7uO" firstAttribute="centerX" secondItem="K5t-Bl-VlQ" secondAttribute="centerX" id="Dy0-bq-Fl0"/>
+                            <constraint firstItem="P2u-GT-7uO" firstAttribute="top" secondItem="nbx-CX-0sE" secondAttribute="bottom" constant="8" symbolic="YES" id="Ntq-hA-FcL"/>
+                            <constraint firstItem="hxy-NU-iwb" firstAttribute="centerX" secondItem="K5t-Bl-VlQ" secondAttribute="centerX" id="Zy2-lE-bxZ"/>
+                            <constraint firstItem="nbx-CX-0sE" firstAttribute="top" secondItem="SFx-CK-QF5" secondAttribute="bottom" constant="8" symbolic="YES" id="c5x-zH-Tiw"/>
+                            <constraint firstItem="hxy-NU-iwb" firstAttribute="top" secondItem="gMR-gZ-acv" secondAttribute="bottom" constant="29" id="cll-XQ-55y"/>
+                            <constraint firstItem="gMR-gZ-acv" firstAttribute="centerX" secondItem="K5t-Bl-VlQ" secondAttribute="centerX" id="czk-3h-lfE"/>
+                            <constraint firstItem="gMR-gZ-acv" firstAttribute="leading" secondItem="P2u-GT-7uO" secondAttribute="leading" id="hQu-We-DOz"/>
+                            <constraint firstItem="gMR-gZ-acv" firstAttribute="leading" secondItem="nbx-CX-0sE" secondAttribute="leading" id="lsf-4A-mK7"/>
+                            <constraint firstItem="gMR-gZ-acv" firstAttribute="leading" secondItem="SFx-CK-QF5" secondAttribute="leading" id="meh-G3-AiL"/>
+                            <constraint firstItem="SFx-CK-QF5" firstAttribute="top" secondItem="hxy-NU-iwb" secondAttribute="bottom" constant="30" id="rXS-Tt-4IR"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="P2u-GT-7uO" id="IHl-a3-tME"/>
@@ -1062,7 +1227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lQq-Tq-GDf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="300" y="-394"/>
+            <point key="canvasLocation" x="300" y="-393.99999999999994"/>
         </scene>
         <!--MainHUB Controller-->
         <scene sceneID="Xcd-iB-ORK">
@@ -1154,12 +1319,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="On a random day, this random philospher with a lengthy name said : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="lOH-L7-clO">
-                                <rect key="frame" x="20" y="471" width="280" height="17"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
-                                <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.50021551724137936" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="justified" lineBreakMode="headTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="eEn-AD-axN">
                                 <rect key="frame" x="20" y="491" width="280" height="69"/>
                                 <string key="text">"No man was ever wise by chance.""No man was ever wise by chance.""No man was ever wise by chance.""No man was ever wise by chance.""No man was ever wise by chance."</string>
@@ -1173,10 +1332,16 @@
                                 <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.74865301724137934" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="On a random day, this random philospher with a lengthy name said : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="lOH-L7-clO">
+                                <rect key="frame" x="20" y="471" width="280" height="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.50021551724137936" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="current@user.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySI-cI-KGB">
                                 <rect key="frame" x="111" y="74" width="189" height="20"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1197,7 +1362,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Sf-pC-yt3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="485" y="306"/>
+            <point key="canvasLocation" x="485" y="305.99999999999994"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3VC-QN-aaZ">
@@ -1219,7 +1384,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4jr-u5-2Z6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97" y="306"/>
+            <point key="canvasLocation" x="97" y="305.99999999999994"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gH6-pM-UhW">
@@ -1248,8 +1413,8 @@
         <image name="raspberry" width="1" height="1"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pf4-gr-CgB"/>
         <segue reference="hkH-b2-KNz"/>
-        <segue reference="dWe-kC-2um"/>
+        <segue reference="pah-zM-iAV"/>
+        <segue reference="uBB-Ru-Aeh"/>
     </inferredMetricsTieBreakers>
 </document>

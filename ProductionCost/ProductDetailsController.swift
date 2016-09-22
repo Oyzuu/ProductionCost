@@ -175,27 +175,25 @@ extension ProductDetailsController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCellWithIdentifier(
                 "MaterialInProductCell", forIndexPath: indexPath) as! MaterialInProductCell
             
-            var material: Material!
-            
-            if let productToEdit = self.productToEdit {
-                material = productToEdit.components[indexPath.row]
-            }
-            else {
-                material = product.components[indexPath.row]
-            }
+            let material = getActiveProduct().components[indexPath.row].material!
+            let modifier = getActiveProduct().components[indexPath.row].modifier
             
             let text = material.name.stringByReplacingOccurrencesOfString("_", withString: "")
             
-            if material.quantity % 1 == 0 {
-                cell.quantityLabel.text = String(format: "%.0f",material.quantity)
+            if material.quantity * modifier % 1 == 0 {
+                cell.quantityLabel.text = String(format: "%.0f",material.quantity * modifier)
             }
             else {
-                cell.quantityLabel.text = String(material.quantity)
+                switch material.quantity * modifier {
+                case 0.25: cell.quantityLabel.text = "1/4"
+                case 0.50: cell.quantityLabel.text = "1/2"
+                case 0.75: cell.quantityLabel.text = "3/4"
+                default:   cell.quantityLabel.text = String(material.quantity * modifier)
+                }
             }
             
-//            cell.quantityLabel.text = String(material.quantity)
-            cell.nameLabel.text = text
-            cell.priceLabel.text = String(format: "%.2f $", material.price)
+            cell.nameLabel.text  = text
+            cell.priceLabel.text = String(format: "%.2f $", material.price * modifier)
             
             cell.setAlternativeBackground(forEvenIndexPath: indexPath)
             
@@ -248,11 +246,25 @@ extension ProductDetailsController: UITableViewDelegate {
 
 extension ProductDetailsController: MaterialPickerDelegate {
     
-    func materialPicker(didPick material: Material) {
+    func materialPicker(didPick material: Material, withQuantity quantity: Double) {
         let product = getActiveProduct()
         
+        let results = try! Realm().objects(MaterialWithModifier.self)
+            .filter("material = %@ AND modifier = %@", material, quantity)
+        
         try! Realm().write {
-            product.components.append(material)
+            var materialWithModifier: MaterialWithModifier
+            
+            if results.count > 0 {
+                materialWithModifier = results.first!
+            }
+            else {
+                materialWithModifier = MaterialWithModifier()
+                materialWithModifier.material = material
+                materialWithModifier.modifier = quantity
+            }
+            
+            product.components.append(materialWithModifier)
         }
         
         updateUI()

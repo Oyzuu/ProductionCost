@@ -23,12 +23,6 @@ class Material: Object {
     dynamic var category = "No category"
     dynamic var supplier: Supplier?
     
-// Specify properties to ignore (Realm won't persist these)
-    
-//  override static func ignoredProperties() -> [String] {
-//    return []
-//  }
-    
     // MARK: Methods
     
     func createDerivedComponent() {

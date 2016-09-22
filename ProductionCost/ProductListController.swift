@@ -151,6 +151,7 @@ extension ProductListController: UITableViewDataSource {
             
             let realm = try! Realm()
             try! realm.write {
+                realm.delete(product.components)
                 realm.delete(product)
             }
             

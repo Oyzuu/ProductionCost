@@ -12,6 +12,7 @@ import UIKit
 struct AppColors {
     static let black       = UIColor(red:  35/255, green:  30/255, blue:  30/255, alpha: 1)
     static let black50     = black.colorWithAlphaComponent(0.5)
+    static let modalBlack  = black.colorWithAlphaComponent(0.9)
     
     static let white       = UIColor(red: 245/255, green: 240/255, blue: 240/255, alpha: 1)
     static let white50     = white.colorWithAlphaComponent(0.5)

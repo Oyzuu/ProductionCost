@@ -41,51 +41,12 @@ func transition(onView view: UIView, withDuration duration: Double, action: () -
                               completion: nil)
 }
 
-/// Shortening wrapper for transitionWithview with completion closure
-func transition(onView view: UIView, withDuration duration: Double, action: () -> (), completion: (Bool) -> ()) {
-    UIView.transitionWithView(view,
-                              duration: duration,
-                              options: UIViewAnimationOptions.TransitionCrossDissolve,
-                              animations: action,
-                              completion: completion)
-}
-
-/// Shortening wrapper for transitionWithview to be called by the view
-extension UIView {
-    
-    func transition(withDuration duration: Double, action: () -> ()) {
-        UIView.transitionWithView(self,
-                                  duration: duration,
-                                  options: UIViewAnimationOptions.TransitionCrossDissolve,
-                                  animations: action,
-                                  completion: nil)
-    }
-    
-    func transition(onView view: UIView, withDuration duration: Double, action: () -> (), completion: (Bool) -> ()) {
-        UIView.transitionWithView(view,
-                                  duration: duration,
-                                  options: UIViewAnimationOptions.TransitionCrossDissolve,
-                                  animations: action,
-                                  completion: completion)
-    }
-    
-}
-
 /// Register variadic nib identifiers on a UITableView
 func nibRegistration(onTableView tableView: UITableView, forIdentifiers identifiers: String...) {
     for identifier in identifiers {
         let cellNib = UINib(nibName: identifier, bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: identifier)
     }
-}
-
-/// String easy trim
-extension String {
-    
-    func trim() -> String {
-        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-    }
-    
 }
 
 /// Add a blurred background
@@ -109,4 +70,23 @@ func setDefaultRealmForUser(username: String) {
     
     // Set this as the configuration used for the default Realm
     Realm.Configuration.defaultConfiguration = config
+}
+
+// MARK: Extensions
+
+/// String easy trim
+extension String {
+    
+    func trim() -> String {
+        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+    }
+    
+}
+
+extension UIButton {
+    
+    func round() {
+        self.layer.cornerRadius = self.frame.size.height / 2
+    }
+    
 }
