@@ -141,14 +141,14 @@ class MaterialListController: UIViewController {
         let results = realm.objects(MaterialWithModifier.self).filter("material = %@", material)
         
         try! realm.write {
-            for result in results {
-                realm.delete(result)
-            }
-            
             if let subMaterial = material.subMaterial {
-                self.realm(deleteMaterial: subMaterial)
+                let subResults = realm.objects(MaterialWithModifier.self)
+                    .filter("material = %@", subMaterial)
+                realm.delete(subResults)
+                realm.delete(subMaterial)
             }
             
+            realm.delete(results)
             realm.delete(material)
         }
     }
@@ -163,7 +163,7 @@ class MaterialListController: UIViewController {
             
             let inProductsCount = try! Realm()
                 .objects(Product.self)
-                .filter("%@ in components", materialWithIdentifier).count
+                .filter("%@  in components", materialWithIdentifier).count
             
             return inProductsCount
         }

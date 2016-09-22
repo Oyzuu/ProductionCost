@@ -249,20 +249,20 @@ extension ProductDetailsController: MaterialPickerDelegate {
     func materialPicker(didPick material: Material, withQuantity quantity: Double) {
         let product = getActiveProduct()
         
-        let results = try! Realm().objects(MaterialWithModifier.self)
-            .filter("material = %@ AND modifier = %@", material, quantity)
+//        let results = try! Realm().objects(MaterialWithModifier.self)
+//            .filter("material = %@ AND modifier = %@", material, quantity)
         
         try! Realm().write {
             var materialWithModifier: MaterialWithModifier
-            
-            if results.count > 0 {
-                materialWithModifier = results.first!
-            }
-            else {
+//            
+//            if results.count > 0 {
+//                materialWithModifier = results.first!
+//            }
+//            else {
                 materialWithModifier = MaterialWithModifier()
                 materialWithModifier.material = material
                 materialWithModifier.modifier = quantity
-            }
+//            }
             
             product.components.append(materialWithModifier)
         }
