@@ -30,14 +30,13 @@ class LoginController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        view.backgroundColor = UIColor.clearColor()
         addBlurredBackground(onView: self.view, withStyle: .Dark)
         
-        signInButton.layer.cornerRadius = 5
-        signUpButton.layer.cornerRadius = 5
+        signInButton.withRoundedBorders()
+        signUpButton.withRoundedBorders()
         signUpButton.layer.borderWidth  = 1
         signUpButton.layer.borderColor  = AppColors.raspberry.CGColor
-        backButton.layer.cornerRadius   = 5
+        backButton.withRoundedBorders()
         
         self.mailField.becomeFirstResponder()
         

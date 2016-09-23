@@ -289,8 +289,8 @@ extension MaterialFormController: SupplierPickerDelegate {
     func supplierPickerDelegate(didPick supplier: Supplier) {
         componentSupplier  = supplier
         supplierLabel.text = supplier.name
-        
     }
+    
 }
 
 // MARK: EXT - Text field delegate

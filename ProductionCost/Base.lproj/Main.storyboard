@@ -743,6 +743,62 @@
             </objects>
             <point key="canvasLocation" x="1134" y="-49"/>
         </scene>
+        <!--Export Modal-->
+        <scene sceneID="kju-aa-7j4">
+            <objects>
+                <viewController modalPresentationStyle="overFullScreen" id="TxY-m6-KFe" customClass="ExportModal" customModule="ProductionCost" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1ln-aX-83K"/>
+                        <viewControllerLayoutGuide type="bottom" id="tTS-n1-grg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7u2-Fs-NcH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnS-Wq-5TP">
+                                <rect key="frame" x="60" y="231" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                <state key="normal" title="To PDF">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="exportToPDF:" destination="TxY-m6-KFe" eventType="touchUpInside" id="EoG-uK-pH9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4u-Cz-DNn">
+                                <rect key="frame" x="60" y="297" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                <state key="normal" title="To CSV">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="exportToCSV:" destination="TxY-m6-KFe" eventType="touchUpInside" id="kcH-Xk-HHd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWb-a0-Sj7">
+                                <rect key="frame" x="60" y="361" width="200" height="40"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel" destination="TxY-m6-KFe" eventType="touchUpInside" id="mFG-MN-5uh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="csvButton" destination="d4u-Cz-DNn" id="eXy-fF-Etv"/>
+                        <outlet property="pdfButton" destination="TnS-Wq-5TP" id="Ecm-mP-sWJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uR8-xS-gFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1204" y="-723"/>
+        </scene>
         <!--Product Name Edition Controller-->
         <scene sceneID="uIQ-2L-HHB">
             <objects>
@@ -892,17 +948,6 @@
                                     <action selector="addPack:" destination="per-5t-5LM" eventType="touchUpInside" id="6vg-ko-VTM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOE-gq-oNi">
-                                <rect key="frame" x="120" y="28" width="78" height="40"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancel:" destination="per-5t-5LM" eventType="touchUpInside" id="5DR-mZ-BgS"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQn-13-heF">
                                 <rect key="frame" x="76" y="125" width="177" height="32"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
@@ -918,6 +963,17 @@
                                 </state>
                                 <connections>
                                     <action selector="addFive:" destination="per-5t-5LM" eventType="touchUpInside" id="R6x-JN-dZk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOE-gq-oNi">
+                                <rect key="frame" x="121" y="415" width="78" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel:" destination="per-5t-5LM" eventType="touchUpInside" id="5DR-mZ-BgS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -969,6 +1025,16 @@
                                         <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TfI-h0-jEC">
+                                        <rect key="frame" x="8" y="15" width="59" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Export">
+                                            <color key="titleColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="TxY-m6-KFe" kind="modal" identifier="ExportModal" id="cOU-BI-nCt"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.71372549019999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -1035,6 +1101,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Product details" id="6cB-Oi-oc0"/>
                     <connections>
+                        <outlet property="exportButton" destination="TfI-h0-jEC" id="t0C-fe-JCY"/>
                         <outlet property="imageView" destination="tj9-Qb-ujJ" id="H9u-EA-V3o"/>
                         <outlet property="numberOfComponentsLabel" destination="mif-no-u9O" id="FKg-th-ZFP"/>
                         <outlet property="productNameLabel" destination="LYa-rP-cKo" id="WlT-0k-w7I"/>

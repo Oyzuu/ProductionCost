@@ -38,6 +38,7 @@ PODS:
   - Realm/Headers (1.0.2)
   - RealmSwift (1.0.2):
     - Realm (= 1.0.2)
+  - SimplePDF (1.0.1)
   - SkyFloatingLabelTextField (1.2.1)
   - UITextField-Shake-Swift (1.0.3)
 
@@ -49,6 +50,7 @@ DEPENDENCIES:
   - LTMorphingLabel
   - PKHUD
   - RealmSwift
+  - SimplePDF (~> 1.0)
   - SkyFloatingLabelTextField
   - UITextField-Shake-Swift
 
@@ -68,9 +70,10 @@ SPEC CHECKSUMS:
   PKHUD: 001c11518f125a273ddf026bcc64918423744ea2
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
   RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
+  SimplePDF: e33c9f6b827b18e57d463211321d03edd74fa60e
   SkyFloatingLabelTextField: 3f6610aded18e778df5cfab3b9e12a11b3e014e9
   UITextField-Shake-Swift: 696d23a4af95293db711bd6ebeccd94a95034bd0
 
-PODFILE CHECKSUM: 2c7b0d8d1183774d69f2f31d404b12a1564cfe26
+PODFILE CHECKSUM: 4cf5e43734326151b89b0fe8f4e0d016b629306d
 
 COCOAPODS: 1.0.1

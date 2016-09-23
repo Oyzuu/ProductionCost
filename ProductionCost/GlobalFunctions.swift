@@ -17,6 +17,13 @@ func printDocumentsDirectory() {
     print(documentsDirectory)
 }
 
+func getDocumentsDirectory() -> String {
+//    let urls = NSFileManager.defaultManager()
+//        .URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+    let bis = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+    return bis + "/"
+}
+
 /// I needed this for testing at some point, don't judge me.
 func generateRandomString(ofSize size: Int) -> String {
     var string = ""
@@ -59,6 +66,7 @@ func addBlurredBackground(onView view: UIView, withStyle style: UIBlurEffectStyl
     
     view.addSubview(blurredView)
     view.sendSubviewToBack(blurredView)
+    view.backgroundColor = UIColor.clearColor()
 }
 
 /// Wrapper for Realm instance configuration
@@ -87,6 +95,10 @@ extension UIButton {
     
     func round() {
         self.layer.cornerRadius = self.frame.size.height / 2
+    }
+    
+    func withRoundedBorders() {
+        self.layer.cornerRadius = 2
     }
     
 }

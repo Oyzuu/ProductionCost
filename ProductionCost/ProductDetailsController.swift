@@ -21,6 +21,7 @@ class ProductDetailsController: UIViewController {
     @IBOutlet weak var totalBackgroundView: UIView!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var numberOfComponentsLabel: UILabel!
+    @IBOutlet weak var exportButton: UIButton!
     
     // MARk: Properties
     
@@ -91,6 +92,12 @@ class ProductDetailsController: UIViewController {
         if segue.identifier == "ProductComponentPicker" {
             if let controller = segue.destinationViewController as? ProductDetailsMaterialPickerController {
                 controller.delegate = self
+            }
+        }
+        
+        if segue.identifier == "ExportModal" {
+            if let controller = segue.destinationViewController as? ExportModal {
+                controller.productToExport = getActiveProduct()
             }
         }
         
@@ -248,6 +255,8 @@ extension ProductDetailsController: MaterialPickerDelegate {
     
     func materialPicker(didPick material: Material, withQuantity quantity: Double) {
         let product = getActiveProduct()
+        
+        // TODO: Uncomment these to implement reference counting on unique MaterialWithModifier
         
 //        let results = try! Realm().objects(MaterialWithModifier.self)
 //            .filter("material = %@ AND modifier = %@", material, quantity)

@@ -34,6 +34,7 @@
 		5C57A5B71D93E0C700AC57A0 /* ComponentQuantityModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C57A5B61D93E0C700AC57A0 /* ComponentQuantityModal.swift */; };
 		5C57A5B91D94002500AC57A0 /* MaterialWithModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C57A5B81D94002500AC57A0 /* MaterialWithModifier.swift */; };
 		5C57A5BB1D9425F400AC57A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C57A5BA1D9425F400AC57A0 /* GoogleService-Info.plist */; };
+		5C592DFB1D951BC8007F26DB /* ExportModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C592DFA1D951BC8007F26DB /* ExportModal.swift */; };
 		5C6441551D86D80C006CA015 /* MaterialFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6441541D86D80C006CA015 /* MaterialFormController.swift */; };
 		5C6441571D86E4FC006CA015 /* UnitMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C6441561D86E4FC006CA015 /* UnitMaterialCell.xib */; };
 		5C7BFCF71D869DC00004CFD5 /* PackMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7BFCF61D869DC00004CFD5 /* PackMaterialCell.xib */; };
@@ -84,6 +85,7 @@
 		5C57A5B61D93E0C700AC57A0 /* ComponentQuantityModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentQuantityModal.swift; sourceTree = "<group>"; };
 		5C57A5B81D94002500AC57A0 /* MaterialWithModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialWithModifier.swift; sourceTree = "<group>"; };
 		5C57A5BA1D9425F400AC57A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5C592DFA1D951BC8007F26DB /* ExportModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportModal.swift; sourceTree = "<group>"; };
 		5C6441541D86D80C006CA015 /* MaterialFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialFormController.swift; sourceTree = "<group>"; };
 		5C6441561D86E4FC006CA015 /* UnitMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnitMaterialCell.xib; sourceTree = "<group>"; };
 		5C7BFCF61D869DC00004CFD5 /* PackMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PackMaterialCell.xib; sourceTree = "<group>"; };
@@ -230,6 +232,16 @@
 			name = "Material In Product";
 			sourceTree = "<group>";
 		};
+		5C592DFC1D951F35007F26DB /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+				5CF233B31D916F89000CFC17 /* ProductNameEditionController.swift */,
+				5C57A5B61D93E0C700AC57A0 /* ComponentQuantityModal.swift */,
+				5C592DFA1D951BC8007F26DB /* ExportModal.swift */,
+			);
+			name = Modals;
+			sourceTree = "<group>";
+		};
 		5C7BFCF51D869D450004CFD5 /* Cell models */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,9 +286,8 @@
 			children = (
 				5C49A17E1D8A971E0008EC93 /* ProductListController.swift */,
 				5C49A1851D8AA9160008EC93 /* ProductDetailsController.swift */,
-				5CF233B31D916F89000CFC17 /* ProductNameEditionController.swift */,
 				5C49A1931D8AE4160008EC93 /* ProductDetailsMaterialPickerController.swift */,
-				5C57A5B61D93E0C700AC57A0 /* ComponentQuantityModal.swift */,
+				5C592DFC1D951F35007F26DB /* Modals */,
 			);
 			name = "Product list";
 			sourceTree = "<group>";
@@ -456,6 +467,7 @@
 				5CCAD8A01D92751300A2D686 /* LoginController.swift in Sources */,
 				5C07D4491D901048001DA584 /* SupplierListCell.swift in Sources */,
 				5C57A5B91D94002500AC57A0 /* MaterialWithModifier.swift in Sources */,
+				5C592DFB1D951BC8007F26DB /* ExportModal.swift in Sources */,
 				5C57A5B71D93E0C700AC57A0 /* ComponentQuantityModal.swift in Sources */,
 				5C49A17F1D8A971E0008EC93 /* ProductListController.swift in Sources */,
 				5CAE04F01D87FC6B00BB9590 /* GlobalFunctions.swift in Sources */,

@@ -16,5 +16,6 @@ pod 'Firebase'
 pod 'Firebase/Auth’
 pod 'FontAwesome.swift'
 pod 'UITextField-Shake-Swift'
+pod 'SimplePDF', '~> 1.0'
 
 end

@@ -67,7 +67,7 @@ class MainHUBController: UIViewController {
         
         for (button, icon) in buttons {
             button.layer.masksToBounds = true
-            button.layer.cornerRadius = button.frame.size.height / 2
+            button.round()
             button.titleLabel?.font = font
             button.setTitleColor(AppColors.white, forState: .Normal)
             button.setTitle(icon, forState: .Normal)

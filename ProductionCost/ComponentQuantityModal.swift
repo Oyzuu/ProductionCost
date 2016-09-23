@@ -42,8 +42,6 @@ class ComponentQuantityModal: UIViewController {
         super.viewWillAppear(animated)
         
         view.backgroundColor = AppColors.modalBlack
-//        view.backgroundColor = UIColor.clearColor()
-//        addBlurredBackground(onView: view, withStyle: .Dark)
         
         let buttons = [oneQuarterButton, oneHalfButton, threeQuarterButton, oneButton,
                        fiveButton,       tenButton,     packButton]
@@ -90,9 +88,6 @@ class ComponentQuantityModal: UIViewController {
     }
     
     @IBAction func addPack(sender: AnyObject) {
-        HUD.flash(.LabeledError(title: nil, subtitle: "Not implemented yet"), delay: 1) {
-            result in
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
+        HUD.flash(.LabeledError(title: nil, subtitle: "Not implemented yet"), delay: 1)
     }
 }

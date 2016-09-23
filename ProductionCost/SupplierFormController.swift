@@ -49,10 +49,6 @@ class SupplierFormController: UIViewController {
             addressField.text = supplierToEdit.address
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,7 +58,15 @@ class SupplierFormController: UIViewController {
             longitude = supplierToEdit.longitude.value {
             showSupplier(withLatitude: latitude, andLongitude: longitude)
         }
+        
+        locationButton.withRoundedBorders()
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)

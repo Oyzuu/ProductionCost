@@ -48,4 +48,23 @@ class Material: Object {
         subMaterial.category      = self.category
         subMaterial.supplier      = self.supplier
     }
+    
+    func asArray(withModifier mod: Double) -> [String] {
+        var componentArray = [String]()
+        
+        componentArray.append(name)
+        componentArray.append("\(quantity * mod)")
+        componentArray.append(category)
+        
+        if let supplier = supplier {
+            componentArray.append(supplier.name)
+        }
+        else {
+            componentArray.append("")
+        }
+        
+        componentArray.append(String(format: "%.2f $", price * mod))
+        
+        return componentArray
+    }
 }
