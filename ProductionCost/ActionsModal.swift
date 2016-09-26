@@ -92,7 +92,7 @@ class ActionsModal: UIViewController {
         
         // Components table
         
-        let productData = generateData(fromProduct: productToExport)
+        let productData = generateData(fromProduct: productToExport, forFileType: ".pdf")
         
         pdf.addTable(productData.tableData.count,
                      columnCount: productData.columnCount,
@@ -149,7 +149,7 @@ class ActionsModal: UIViewController {
     }
     
     @IBAction func exportToCSV(sender: AnyObject) {
-        let productData = generateData(fromProduct: productToExport)
+        let productData = generateData(fromProduct: productToExport, forFileType: ".csv")
         var dataString = ""
         for row in productData.tableData {
             for element in row {
@@ -175,7 +175,8 @@ class ActionsModal: UIViewController {
         }
     }
     
-    private func generateData(fromProduct product: Product) -> (tableData: [[String]], columnCount: Int, suppliers: Set<Supplier>) {
+    private func generateData(fromProduct product: Product, forFileType type: String) ->
+        (tableData: [[String]], columnCount: Int, suppliers: Set<Supplier>) {
         var suppliers = Set<Supplier>()
         var dataArray = [[String]]()
         let titles = ["Name", "Quantity", "Category", "Supplier", "Price"]
@@ -192,7 +193,7 @@ class ActionsModal: UIViewController {
             }
             
             print("tick")
-            dataArray.append(material.asArray(withModifier: modifier))
+            dataArray.append(material.asArray(withModifier: modifier, forFileType: type))
         }
         
         let total = ["", "", "", "TOTAL :", String(format: "%.2f $", productToExport.price)]

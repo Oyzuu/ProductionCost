@@ -191,21 +191,11 @@ extension ProductDetailsController: UITableViewDataSource {
             let modifier = getActiveProduct().components[indexPath.row].modifier
             
             let text = material.name.stringByReplacingOccurrencesOfString("_", withString: "")
-            
-            if material.quantity * modifier % 1 == 0 {
-                cell.quantityLabel.text = String(format: "%.0f",material.quantity * modifier)
-            }
-            else {
-                switch material.quantity * modifier {
-                case 0.25: cell.quantityLabel.text = "1/4"
-                case 0.50: cell.quantityLabel.text = "1/2"
-                case 0.75: cell.quantityLabel.text = "3/4"
-                default:   cell.quantityLabel.text = String(material.quantity * modifier)
-                }
-            }
-            
-            cell.nameLabel.text  = text
-            cell.priceLabel.text = String(format: "%.2f $", material.price * modifier)
+
+            cell.quantityLabel.text = Material.formattedQuantity(forMaterial: material,
+                                                                 withModifier: modifier)
+            cell.nameLabel.text     = text
+            cell.priceLabel.text    = String(format: "%.2f $", material.price * modifier)
             
             cell.setAlternativeBackground(forEvenIndexPath: indexPath)
             

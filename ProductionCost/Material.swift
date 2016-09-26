@@ -49,15 +49,21 @@ class Material: Object {
         subMaterial.supplier      = self.supplier
     }
     
-    func asArray(withModifier mod: Double) -> [String] {
+    func asArray(withModifier mod: Double, forFileType type: String) -> [String] {
         var componentArray = [String]()
         
         componentArray.append(name.stringByReplacingOccurrencesOfString("_", withString: ""))
-        componentArray.append("\(quantity * mod)")
+        componentArray.append(Material.formattedQuantity(forMaterial: self, withModifier: mod))
         componentArray.append(category)
         
         if let supplier = supplier {
-            componentArray.append(supplier.name)
+            if supplier.name.characters.count > 15 && type == ".pdf" {
+                let supplierName = supplier.name as NSString
+                componentArray.append(supplierName.substringToIndex(15) + "...")
+            }
+            else {
+                componentArray.append(supplier.name)
+            }
         }
         else {
             componentArray.append("-")
@@ -66,5 +72,22 @@ class Material: Object {
         componentArray.append(String(format: "%.2f $", price * mod))
         
         return componentArray
+    }
+    
+    static func formattedQuantity(forMaterial material: Material, withModifier mod: Double) -> String {
+        var quantityText = ""
+        if material.quantity * mod % 1 == 0 {
+            quantityText = String(format: "%.0f", material.quantity * mod)
+        }
+        else {
+            switch material.quantity * mod {
+            case 0.25: quantityText = "1/4"
+            case 0.50: quantityText = "1/2"
+            case 0.75: quantityText = "3/4"
+            default:   quantityText = "\(material.quantity * mod)"
+            }
+        }
+        
+        return quantityText
     }
 }
