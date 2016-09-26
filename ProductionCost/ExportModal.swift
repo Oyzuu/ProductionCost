@@ -61,7 +61,6 @@ class ExportModal: UIViewController {
         let avenir16 = UIFont(name: "Avenir", size: 16)!
         let avenir12 = UIFont(name: "Avenir", size: 12)!
         let avenir10 = UIFont(name: "Avenir", size: 10)!
-        var suppliers = Set<Supplier>() // Will be populated in the table creation loop and used later
         
         // Title
         
@@ -79,30 +78,14 @@ class ExportModal: UIViewController {
         
         // Components table
         
-        var dataArray = [[String]]()
-        let titles = ["Name", "Quantity", "Category", "Supplier", "Price"]
-        dataArray.append(titles)
+        let productData = generateData(fromProduct: productToExport)
         
-        for modifiedComponent in productToExport.components {
-            let material = modifiedComponent.material!
-            let modifier = modifiedComponent.modifier
-            
-            if let supplier = material.supplier {
-                suppliers.insert(supplier)
-            }
-            
-            dataArray.append(material.asArray(withModifier: modifier))
-        }
-        
-        let total = ["", "", "", "TOTAL :", String(format: "%.2f $", productToExport.price)]
-        dataArray.append(total)
-        
-        pdf.addTable(dataArray.count,
-                     columnCount: titles.count,
+        pdf.addTable(productData.tableData.count,
+                     columnCount: productData.columnCount,
                      rowHeight: 30,
-                     columnWidth: CGFloat(widthWithoutMargins / titles.count),
+                     columnWidth: CGFloat(widthWithoutMargins / productData.columnCount),
                      tableLineWidth: 0.5, font: avenir12,
-                     dataArray: dataArray)
+                     dataArray: productData.tableData)
         
         // Suppliers list
         
@@ -116,7 +99,7 @@ class ExportModal: UIViewController {
         pdf.addLineSpace(15)
         
         pdf.setFont(avenir12)
-        for supplier in suppliers {
+        for supplier in productData.suppliers {
             pdf.addText(supplier.name)
             
             var addressString = ""
@@ -135,16 +118,13 @@ class ExportModal: UIViewController {
             pdf.addLineSpace(5)
         }
         
+        print(productData.suppliers)
+        
         // PDF file generation
         
         let pdfData = pdf.generatePDFdata()
         do {
-            var filename = "\(productToExport.name)"
-            if let userMail = self.userMail {
-                filename += " by \(userMail).pdf"
-            }
-            
-            try pdfData.writeToFile(getDocumentsDirectory() + filename, options: .DataWritingAtomic)
+            try pdfData.writeToFile(getFilename(".pdf"), options: .DataWritingAtomic)
             HUD.flash(.LabeledSuccess(title: nil, subtitle: "Exported to documents"), delay: 1) {
                 result in
                 self.dismissViewControllerAnimated(true, completion: nil)
@@ -153,11 +133,69 @@ class ExportModal: UIViewController {
         catch {
             HUD.flash(.LabeledError(title: nil, subtitle: "Error"), delay: 1)
         }
-        
     }
     
     @IBAction func exportToCSV(sender: AnyObject) {
-        HUD.flash(.LabeledError(title: nil, subtitle: "Not implemented yet"), delay: 1)
+        let productData = generateData(fromProduct: productToExport)
+        var dataString = ""
+        for row in productData.tableData {
+            for element in row {
+                dataString += element
+                dataString += element == row.last ? "" : ";"
+            }
+            
+            dataString += "\n"
+        }
+        
+        let data = dataString.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        do {
+            try data!.writeToFile(getFilename(".csv"), options: .DataWritingAtomic)
+            HUD.flash(.LabeledSuccess(title: nil, subtitle: "Exported to documents"), delay: 1) {
+                result in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
+        catch {
+            HUD.flash(.LabeledError(title: nil, subtitle: "Error"), delay: 1)
+        }
+    }
+    
+    private func generateData(fromProduct product: Product) -> (tableData: [[String]], columnCount: Int, suppliers: Set<Supplier>) {
+        var suppliers = Set<Supplier>()
+        var dataArray = [[String]]()
+        let titles = ["Name", "Quantity", "Category", "Supplier", "Price"]
+        dataArray.append(titles)
+        
+        for modifiedComponent in productToExport.components {
+            let material = modifiedComponent.material!
+            let modifier = modifiedComponent.modifier
+            
+            if let supplier = material.supplier {
+                print(supplier.hash)
+                if suppliers.contains(supplier) {
+                    continue
+                }
+                
+                suppliers.insert(supplier)
+            }
+            
+            dataArray.append(material.asArray(withModifier: modifier))
+        }
+        
+        let total = ["", "", "", "TOTAL :", String(format: "%.2f $", productToExport.price)]
+        dataArray.append(total)
+        
+        return (dataArray, titles.count, suppliers)
+    }
+    
+    private func getFilename(withExtension: String) -> String {
+        var filename = "\(productToExport.name)"
+        if let userMail = self.userMail {
+            filename += " by \(userMail)"
+        }
+        
+        return getDocumentsDirectory() + filename + withExtension
     }
     
     @IBAction func cancel() {

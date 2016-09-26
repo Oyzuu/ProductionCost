@@ -16,4 +16,18 @@ class Supplier: Object {
     let         longitude        = RealmOptional<Double>()
     dynamic var address: String? = nil
     
+    override var hashValue: Int {
+        var hash = name.characters.count
+        
+        if let latitude = self.latitude.value {
+            hash += abs(Int(latitude))
+        }
+        
+        if let longitude = self.longitude.value {
+            hash += abs(Int(longitude))
+        }
+        
+        return hash
+    }
+    
 }
