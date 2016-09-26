@@ -113,7 +113,7 @@ class ActionsModal: UIViewController {
         pdf.addLineSpace(15)
         
         pdf.setFont(avenir12)
-        for (index, supplier) in productData.suppliers.enumerate() {
+        for (_, supplier) in productData.suppliers.enumerate() {
 //            if index != 0 && index % 2 == 0 {
 //                pdf.beginNewPage()
 //            }
@@ -122,7 +122,7 @@ class ActionsModal: UIViewController {
             
             var addressString = ""
             
-            if let address = supplier.address {
+            if let address = supplier.address where supplier.address != "" {
                 addressString = address
             }
             else {

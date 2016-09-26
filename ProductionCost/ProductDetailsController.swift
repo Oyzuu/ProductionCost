@@ -21,7 +21,6 @@ class ProductDetailsController: UIViewController {
     @IBOutlet weak var totalBackgroundView: UIView!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var numberOfComponentsLabel: UILabel!
-    @IBOutlet weak var exportButton: UIButton!
     
     // MARk: Properties
     
@@ -252,20 +251,29 @@ extension ProductDetailsController: MaterialPickerDelegate {
         let product = getActiveProduct()
         
         var hasFoundMaterial = false
-        for materialWithIdentifier in product.components {
-            if material.name == materialWithIdentifier.material?.name {
+        for materialWithModifier in product.components {
+            let materialName = material.name
+//                .stringByReplacingOccurrencesOfString("_", withString: "")
+            let materialWithModName = materialWithModifier.material?.name
+//                .stringByReplacingOccurrencesOfString("_", withString: "")
+            
+            if materialName == materialWithModName {
                 hasFoundMaterial = true
                 try! Realm().write {
-                    let index = product.components.indexOf(materialWithIdentifier)
-                    product.components[index!].modifier += quantity
+                    let index = product.components.indexOf(materialWithModifier)
+                    product.components[index!].modifier += quantity * material.quantity
                 }
             }
         }
         
         if !hasFoundMaterial {
             let materialWithModifier = MaterialWithModifier()
+            
             materialWithModifier.material = material
             materialWithModifier.modifier = quantity
+            
+//            materialWithModifier.material = material.subMaterial == nil ? material : material.subMaterial
+//            materialWithModifier.modifier = material.isSubMaterial ? quantity : quantity * material.quantity
 
             try! Realm().write {
                 product.components.append(materialWithModifier)

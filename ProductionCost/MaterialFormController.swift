@@ -118,10 +118,12 @@ class MaterialFormController: UITableViewController {
     }
 
     @IBAction func cancel(sender: AnyObject) {
+        view.endEditing(true)
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func save(sender: AnyObject) {
+        view.endEditing(true)
         guard checkMandatoryFields() else {
             HUD.flash(.Label("You have to fill these fields"), delay: 1) { result in
                 self.shake(textFields: self.nameField, self.priceField, self.quantityField)

@@ -78,6 +78,8 @@ class SupplierFormController: UIViewController {
     // MARK: Methods
     
     @IBAction func save(sender: AnyObject) {
+        view.endEditing(true)
+        
         var hudMessage = ""
         
         defer {
@@ -153,6 +155,7 @@ class SupplierFormController: UIViewController {
     }
     
     @IBAction func cancel(sender: AnyObject) {
+        view.endEditing(true)
         dismissViewControllerAnimated(true, completion: nil)
     }
 

@@ -13,6 +13,5 @@ class MaterialWithModifier: Object {
     
     dynamic var material: Material?
     dynamic var modifier   = 1.0
-    dynamic var usageCount = 0
     
 }
