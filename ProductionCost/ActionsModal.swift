@@ -129,6 +129,17 @@ class ActionsModal: UIViewController {
                 NSForegroundColorAttributeName: UIColor.grayColor(),
                 NSFontAttributeName: avenir10]))
             
+            // commented until appropriate solution from image display
+            
+//            let filename = supplier.name
+//                .stringByReplacingOccurrencesOfString(" ", withString: "") + ".png"
+//            let filepath = getDocumentsDirectory() + filename
+//            if let image = UIImage(contentsOfFile: filepath) {
+//                pdf.addImage(image)
+//            }
+            
+            pdf.addText("")
+            
             pdf.addLineSpace(5)
         }
         

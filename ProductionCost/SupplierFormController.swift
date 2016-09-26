@@ -115,6 +115,34 @@ class SupplierFormController: UIViewController {
             
             hudMessage = "Saved"
         }
+        
+        let options = MKMapSnapshotOptions()
+        options.region = mapView.region
+        options.size = mapView.frame.size
+        options.scale = UIScreen.mainScreen().scale / 2
+        
+        let snapShotter = MKMapSnapshotter(options: options)
+        snapShotter.startWithCompletionHandler { snapshot, error in
+            guard snapshot != nil else {
+                return
+            }
+            
+            if error != nil {
+                print(error)
+            }
+            
+            if let data = UIImagePNGRepresentation(snapshot!.image) {
+                let filename = self.nameField.text!
+                    .stringByReplacingOccurrencesOfString(" ", withString: "") + ".png"
+                let filepath = getDocumentsDirectory() + filename
+                do {
+                    try data.writeToFile(filepath, options: .DataWritingAtomic)
+                }
+                catch {
+                    print(error)
+                }
+            }
+        }
     }
     
     @IBAction func cancel(sender: AnyObject) {
