@@ -251,24 +251,25 @@ extension ProductDetailsController: MaterialPickerDelegate {
     func materialPicker(didPick material: Material, withQuantity quantity: Double) {
         let product = getActiveProduct()
         
-        // TODO: Uncomment these to implement reference counting on unique MaterialWithModifier
+        var hasFoundMaterial = false
+        for materialWithIdentifier in product.components {
+            if material.name == materialWithIdentifier.material?.name {
+                hasFoundMaterial = true
+                try! Realm().write {
+                    let index = product.components.indexOf(materialWithIdentifier)
+                    product.components[index!].modifier += quantity
+                }
+            }
+        }
         
-//        let results = try! Realm().objects(MaterialWithModifier.self)
-//            .filter("material = %@ AND modifier = %@", material, quantity)
-        
-        try! Realm().write {
-            var materialWithModifier: MaterialWithModifier
-//            
-//            if results.count > 0 {
-//                materialWithModifier = results.first!
-//            }
-//            else {
-                materialWithModifier = MaterialWithModifier()
-                materialWithModifier.material = material
-                materialWithModifier.modifier = quantity
-//            }
-            
-            product.components.append(materialWithModifier)
+        if !hasFoundMaterial {
+            let materialWithModifier = MaterialWithModifier()
+            materialWithModifier.material = material
+            materialWithModifier.modifier = quantity
+
+            try! Realm().write {
+                product.components.append(materialWithModifier)
+            }
         }
         
         updateUI()
@@ -290,13 +291,16 @@ extension ProductDetailsController: ProductNameEditionDelegate {
     }
     
     func productNameEditionDelegate(didFinishEditing name: String) {
-        productNameLabel.text = name
+        productNameLabel.text   = name
         isANewProduct = false
         
         if let productToEdit = self.productToEdit {
             try! Realm().write {
                 productToEdit.name = name
             }
+        }
+        else {
+            getActiveProduct().name = name
         }
     }
     

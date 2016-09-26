@@ -43,7 +43,7 @@ class MaterialListController: UIViewController {
         // tableView init
         
 //        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 49, right: 0)
-        tableView.rowHeight = 60
+        tableView.rowHeight = 50
         
         nibRegistration(onTableView: tableView, forIdentifiers:
             MaterialCellIdentifiers.AddMaterialCell,

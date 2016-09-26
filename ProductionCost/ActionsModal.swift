@@ -103,9 +103,9 @@ class ActionsModal: UIViewController {
         
         // Suppliers list
         
-        pdf.addLineSpace(15)
+//        pdf.beginNewPage()
         pdf.setFont(avenir16)
-        
+        pdf.addLineSpace(15)
         pdf.addAttributedText(NSAttributedString(string: "Suppliers", attributes: [
             NSFontAttributeName: avenir16,
             NSUnderlineStyleAttributeName: 1]))
@@ -113,7 +113,11 @@ class ActionsModal: UIViewController {
         pdf.addLineSpace(15)
         
         pdf.setFont(avenir12)
-        for supplier in productData.suppliers {
+        for (index, supplier) in productData.suppliers.enumerate() {
+//            if index != 0 && index % 2 == 0 {
+//                pdf.beginNewPage()
+//            }
+            
             pdf.addText(supplier.name)
             
             var addressString = ""
@@ -134,11 +138,14 @@ class ActionsModal: UIViewController {
 //            let filename = supplier.name
 //                .stringByReplacingOccurrencesOfString(" ", withString: "") + ".png"
 //            let filepath = getDocumentsDirectory() + filename
+//            
 //            if let image = UIImage(contentsOfFile: filepath) {
+//                print("Image size : \(image.size)")
 //                pdf.addImage(image)
 //            }
-            
-            pdf.addText("")
+//            else if let placeholderImage = UIImage(named: "pdfplaceholder") {
+//                pdf.addImage(placeholderImage)
+//            }
             
             pdf.addLineSpace(5)
         }
@@ -193,8 +200,6 @@ class ActionsModal: UIViewController {
         let titles = ["Name", "Quantity", "Category", "Supplier", "Price"]
         dataArray.append(titles)
         
-        print(productToExport.components.count)
-        
         for materialWithModifier in productToExport.components {
             let material = materialWithModifier.material!
             let modifier = materialWithModifier.modifier
@@ -203,7 +208,6 @@ class ActionsModal: UIViewController {
                 suppliers.insert(supplier)
             }
             
-            print("tick")
             dataArray.append(material.asArray(withModifier: modifier, forFileType: type))
         }
         

@@ -52,12 +52,21 @@ class Material: Object {
     func asArray(withModifier mod: Double, forFileType type: String) -> [String] {
         var componentArray = [String]()
         
-        componentArray.append(name.stringByReplacingOccurrencesOfString("_", withString: ""))
+        if name.characters.count > 18 && type == ".pdf" {
+            let shortenedName =
+                (name.stringByReplacingOccurrencesOfString("_", withString: "") as NSString)
+                    .substringToIndex(14) + "..."
+            componentArray.append(shortenedName)
+        }
+        else {
+            componentArray.append(name.stringByReplacingOccurrencesOfString("_", withString: ""))
+        }
+        
         componentArray.append(Material.formattedQuantity(forMaterial: self, withModifier: mod))
         componentArray.append(category)
         
         if let supplier = supplier {
-            if supplier.name.characters.count > 15 && type == ".pdf" {
+            if supplier.name.characters.count > 18 && type == ".pdf" {
                 let supplierName = supplier.name as NSString
                 componentArray.append(supplierName.substringToIndex(15) + "...")
             }

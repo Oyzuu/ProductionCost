@@ -116,10 +116,17 @@ class SupplierFormController: UIViewController {
             hudMessage = "Saved"
         }
         
+//        if location != nil {
+//            saveSnapshot()
+//        }
+    }
+    
+    private func saveSnapshot() {
         let options = MKMapSnapshotOptions()
         options.region = mapView.region
-        options.size = mapView.frame.size
-        options.scale = UIScreen.mainScreen().scale / 2
+        options.size   =
+            CGSize(width: mapView.frame.size.width / 2, height: mapView.frame.size.height / 2)
+        options.scale  = UIScreen.mainScreen().scale
         
         let snapShotter = MKMapSnapshotter(options: options)
         snapShotter.startWithCompletionHandler { snapshot, error in
