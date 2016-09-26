@@ -97,3 +97,28 @@ class SuppliersMap: UIViewController {
     }
     
 }
+
+// MARK: EXT - Table view delegate
+
+extension SuppliersMap: MKMapViewDelegate {
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let identifier = "Location"
+        var annotationView =
+            mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as! MKPinAnnotationView!
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView.enabled        = true
+            annotationView.animatesDrop   = false
+            annotationView.pinTintColor   = AppColors.raspberry
+        }
+        else {
+            annotationView.annotation = annotation
+        }
+        
+        return annotationView
+    }
+    
+}

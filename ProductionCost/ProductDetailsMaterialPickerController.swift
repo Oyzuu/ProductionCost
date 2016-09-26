@@ -118,7 +118,7 @@ extension ProductDetailsMaterialPickerController: ComponentQuantityDelegate {
     
     func componentQuantityDelegate(didPick quantity: Double, onMaterial material: Material) {
         delegate?.materialPicker(didPick: material, withQuantity: quantity)
-        dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(false, completion: nil)
         navigationController?.popViewControllerAnimated(true)
     }
     

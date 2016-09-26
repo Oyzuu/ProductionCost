@@ -132,8 +132,6 @@ class ActionsModal: UIViewController {
             pdf.addLineSpace(5)
         }
         
-        print(productData.suppliers)
-        
         // PDF file generation
         
         let pdfData = pdf.generatePDFdata()
@@ -183,19 +181,17 @@ class ActionsModal: UIViewController {
         let titles = ["Name", "Quantity", "Category", "Supplier", "Price"]
         dataArray.append(titles)
         
-        for modifiedComponent in productToExport.components {
-            let material = modifiedComponent.material!
-            let modifier = modifiedComponent.modifier
+        print(productToExport.components.count)
+        
+        for materialWithModifier in productToExport.components {
+            let material = materialWithModifier.material!
+            let modifier = materialWithModifier.modifier
             
-            if let supplier = material.supplier {
-                print(supplier.hash)
-                if suppliers.contains(supplier) {
-                    continue
-                }
-                
+            if let supplier = material.supplier where !suppliers.contains(supplier) {
                 suppliers.insert(supplier)
             }
             
+            print("tick")
             dataArray.append(material.asArray(withModifier: modifier))
         }
         
