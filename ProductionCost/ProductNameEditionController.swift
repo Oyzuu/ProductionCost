@@ -62,12 +62,12 @@ class ProductNameEditionController: UIViewController {
     @IBAction func validate(sender: AnyObject) {
         view.endEditing(true)
         
-        guard nameField.text != "" else {
+        guard nameField.text?.trim() != "" else {
             nameField.shake()
             return
         }
         
-        if let nameString = nameField.text {
+        if let nameString = nameField.text?.trim() {
             delegate?.productNameEditionDelegate(didFinishEditing: nameString)
             dismissViewControllerAnimated(true, completion: nil)
         }

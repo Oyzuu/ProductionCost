@@ -21,6 +21,7 @@ class ExportModal: UIViewController {
     // MARK: Properties
     
     var productToExport: Product!
+    let userMail = FIRAuth.auth()?.currentUser?.email
     
     // MARK: Overrides
 
@@ -56,7 +57,7 @@ class ExportModal: UIViewController {
         let pdf = SimplePDF(pageSize: A4paperSize, pageMargin: CGFloat(margin))
         
         let futura24 = UIFont(name: "Futura", size: 24)!
-        let avenir24 = UIFont(name: "Avenir", size: 24)!
+//        let avenir24 = UIFont(name: "Avenir", size: 24)!
         let avenir16 = UIFont(name: "Avenir", size: 16)!
         let avenir12 = UIFont(name: "Avenir", size: 12)!
         let avenir10 = UIFont(name: "Avenir", size: 10)!
@@ -69,7 +70,6 @@ class ExportModal: UIViewController {
         
         // User
         
-        let userMail = FIRAuth.auth()?.currentUser?.email
         pdf.setFont(avenir12)
         pdf.addText("created by \(userMail!)")
         
@@ -86,7 +86,10 @@ class ExportModal: UIViewController {
         for modifiedComponent in productToExport.components {
             let material = modifiedComponent.material!
             let modifier = modifiedComponent.modifier
-            suppliers.insert(material.supplier!)
+            
+            if let supplier = material.supplier {
+                suppliers.insert(supplier)
+            }
             
             dataArray.append(material.asArray(withModifier: modifier))
         }
@@ -102,6 +105,7 @@ class ExportModal: UIViewController {
                      dataArray: dataArray)
         
         // Suppliers list
+        
         pdf.addLineSpace(15)
         pdf.setFont(avenir16)
         
@@ -128,13 +132,19 @@ class ExportModal: UIViewController {
                 NSForegroundColorAttributeName: UIColor.grayColor(),
                 NSFontAttributeName: avenir10]))
             
+            pdf.addLineSpace(5)
         }
         
         // PDF file generation
         
         let pdfData = pdf.generatePDFdata()
         do {
-            try pdfData.writeToFile(getDocumentsDirectory() + "test.pdf", options: .DataWritingAtomic)
+            var filename = "\(productToExport.name)"
+            if let userMail = self.userMail {
+                filename += " by \(userMail).pdf"
+            }
+            
+            try pdfData.writeToFile(getDocumentsDirectory() + filename, options: .DataWritingAtomic)
             HUD.flash(.LabeledSuccess(title: nil, subtitle: "Exported to documents"), delay: 1) {
                 result in
                 self.dismissViewControllerAnimated(true, completion: nil)

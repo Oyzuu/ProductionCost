@@ -52,7 +52,7 @@ class Material: Object {
     func asArray(withModifier mod: Double) -> [String] {
         var componentArray = [String]()
         
-        componentArray.append(name)
+        componentArray.append(name.stringByReplacingOccurrencesOfString("_", withString: ""))
         componentArray.append("\(quantity * mod)")
         componentArray.append(category)
         
@@ -60,7 +60,7 @@ class Material: Object {
             componentArray.append(supplier.name)
         }
         else {
-            componentArray.append("")
+            componentArray.append("-")
         }
         
         componentArray.append(String(format: "%.2f $", price * mod))
