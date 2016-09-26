@@ -11,12 +11,13 @@ import PKHUD
 import SimplePDF
 import FirebaseAuth
 
-class ExportModal: UIViewController {
+class ActionsModal: UIViewController {
     
     // MARK: Outlets
     
     @IBOutlet weak var pdfButton: UIButton!
     @IBOutlet weak var csvButton: UIButton!
+    @IBOutlet weak var seeSuppliersButton: UIButton!
     
     // MARK: Properties
     
@@ -27,19 +28,32 @@ class ExportModal: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addBlurredBackground(onView: view, withStyle: .Dark)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        addBlurredBackground(onView: view, withStyle: .Dark)
+//        addBlurredBackground(onView: view, withStyle: .Dark)
         
+        seeSuppliersButton.withRoundedBorders()
         pdfButton.withRoundedBorders()
         csvButton.withRoundedBorders()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SuppliersMap" {
+            guard let navigationController = segue.destinationViewController as? UINavigationController,
+                controller = navigationController.viewControllers[0] as? SuppliersMap else {
+                    return
+            }
+            
+            controller.product = productToExport
+        }
     }
     
     // MARK: Methods
@@ -124,9 +138,10 @@ class ExportModal: UIViewController {
         
         let pdfData = pdf.generatePDFdata()
         do {
-            try pdfData.writeToFile(getFilename(".pdf"), options: .DataWritingAtomic)
-            HUD.flash(.LabeledSuccess(title: nil, subtitle: "Exported to documents"), delay: 1) {
-                result in
+            try pdfData.writeToFile(getDocumentsDirectory() + getFilename(".pdf"),
+                                    options: .DataWritingAtomic)
+            HUD.flash(.LabeledSuccess(title: nil,
+                subtitle: "Exported to documents"), delay: 1) { result in
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
@@ -150,9 +165,10 @@ class ExportModal: UIViewController {
         let data = dataString.dataUsingEncoding(NSUTF8StringEncoding)
         
         do {
-            try data!.writeToFile(getFilename(".csv"), options: .DataWritingAtomic)
-            HUD.flash(.LabeledSuccess(title: nil, subtitle: "Exported to documents"), delay: 1) {
-                result in
+            try data!.writeToFile(getDocumentsDirectory() + getFilename(".csv"),
+                                  options: .DataWritingAtomic)
+            HUD.flash(.LabeledSuccess(title: nil,
+                subtitle: "Exported to documents"), delay: 1) { result in
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
@@ -195,7 +211,7 @@ class ExportModal: UIViewController {
             filename += " by \(userMail)"
         }
         
-        return getDocumentsDirectory() + filename + withExtension
+        return filename + withExtension
     }
     
     @IBAction func cancel() {

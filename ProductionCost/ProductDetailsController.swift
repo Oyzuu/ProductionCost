@@ -95,8 +95,8 @@ class ProductDetailsController: UIViewController {
             }
         }
         
-        if segue.identifier == "ExportModal" {
-            if let controller = segue.destinationViewController as? ExportModal {
+        if segue.identifier == "ActionsModal" {
+            if let controller = segue.destinationViewController as? ActionsModal {
                 controller.productToExport = getActiveProduct()
             }
         }
@@ -154,6 +154,11 @@ class ProductDetailsController: UIViewController {
         let product = productToEdit == nil ? self.product : productToEdit
         
         return product
+    }
+    
+    
+    @IBAction func presentMoreActions(sender: AnyObject) {
+        performSegueWithIdentifier("ActionsModal", sender: nil)
     }
     
 }

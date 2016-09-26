@@ -743,10 +743,43 @@
             </objects>
             <point key="canvasLocation" x="1134" y="-49"/>
         </scene>
-        <!--Export Modal-->
+        <!--Suppliers-->
+        <scene sceneID="tyr-wN-fY6">
+            <objects>
+                <viewController id="J3e-iU-d7m" customClass="SuppliersMap" customModule="ProductionCost" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="naf-zH-st7"/>
+                        <viewControllerLayoutGuide type="bottom" id="rTF-gc-NrQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hoX-iJ-2hl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="EA1-ye-7qn">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Suppliers" id="EbD-UJ-yBx">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="17t-ev-d9U">
+                            <connections>
+                                <action selector="cancel" destination="J3e-iU-d7m" id="t3t-ZW-C8m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="EA1-ye-7qn" id="xf9-17-Kb6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4WI-Aj-1J6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1606" y="-1400"/>
+        </scene>
+        <!--Actions Modal-->
         <scene sceneID="kju-aa-7j4">
             <objects>
-                <viewController modalPresentationStyle="overFullScreen" id="TxY-m6-KFe" customClass="ExportModal" customModule="ProductionCost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overFullScreen" id="TxY-m6-KFe" customClass="ActionsModal" customModule="ProductionCost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1ln-aX-83K"/>
                         <viewControllerLayoutGuide type="bottom" id="tTS-n1-grg"/>
@@ -755,30 +788,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnS-Wq-5TP">
-                                <rect key="frame" x="60" y="231" width="200" height="40"/>
-                                <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
-                                <state key="normal" title="To PDF">
-                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="exportToPDF:" destination="TxY-m6-KFe" eventType="touchUpInside" id="EoG-uK-pH9"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4u-Cz-DNn">
-                                <rect key="frame" x="60" y="297" width="200" height="40"/>
-                                <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
-                                <state key="normal" title="To CSV">
-                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="exportToCSV:" destination="TxY-m6-KFe" eventType="touchUpInside" id="kcH-Xk-HHd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWb-a0-Sj7">
-                                <rect key="frame" x="60" y="361" width="200" height="40"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="glG-M4-J0Y">
+                                <rect key="frame" x="60" y="210" width="200" height="148"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uf9-2I-Pcw">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="36"/>
+                                        <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                        <state key="normal" title="See suppliers">
+                                            <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="h5Y-OW-oIa" kind="modal" identifier="SuppliersMap" id="eaA-sX-mI3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnS-Wq-5TP">
+                                        <rect key="frame" x="0.0" y="56" width="200" height="36"/>
+                                        <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                        <state key="normal" title="Export to PDF">
+                                            <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="exportToPDF:" destination="TxY-m6-KFe" eventType="touchUpInside" id="EoG-uK-pH9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4u-Cz-DNn">
+                                        <rect key="frame" x="0.0" y="112" width="200" height="36"/>
+                                        <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                        <state key="normal" title="Export to CSV">
+                                            <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="exportToCSV:" destination="TxY-m6-KFe" eventType="touchUpInside" id="kcH-Xk-HHd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="wHV-oN-J1u"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWb-a0-Sj7">
+                                <rect key="frame" x="60" y="378" width="200" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="392-Mt-4dC"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -789,10 +844,17 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="glG-M4-J0Y" firstAttribute="centerX" secondItem="7u2-Fs-NcH" secondAttribute="centerX" id="98y-kj-XNs"/>
+                            <constraint firstItem="IWb-a0-Sj7" firstAttribute="top" secondItem="glG-M4-J0Y" secondAttribute="bottom" constant="20" id="PAG-oi-6HT"/>
+                            <constraint firstItem="IWb-a0-Sj7" firstAttribute="centerX" secondItem="glG-M4-J0Y" secondAttribute="centerX" id="p95-DJ-13M"/>
+                            <constraint firstItem="glG-M4-J0Y" firstAttribute="centerY" secondItem="7u2-Fs-NcH" secondAttribute="centerY" id="v30-w9-r7I"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="csvButton" destination="d4u-Cz-DNn" id="eXy-fF-Etv"/>
                         <outlet property="pdfButton" destination="TnS-Wq-5TP" id="Ecm-mP-sWJ"/>
+                        <outlet property="seeSuppliersButton" destination="Uf9-2I-Pcw" id="4tU-Nr-c8h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uR8-xS-gFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1025,16 +1087,6 @@
                                         <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TfI-h0-jEC">
-                                        <rect key="frame" x="8" y="15" width="59" height="30"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Export">
-                                            <color key="titleColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="TxY-m6-KFe" kind="modal" identifier="ExportModal" id="cOU-BI-nCt"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.71372549019999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -1099,9 +1151,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.054901960780000002" green="0.47843137250000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Product details" id="6cB-Oi-oc0"/>
+                    <navigationItem key="navigationItem" title="Product details" id="6cB-Oi-oc0">
+                        <barButtonItem key="rightBarButtonItem" title="More" id="k0g-tW-dog">
+                            <connections>
+                                <action selector="presentMoreActions:" destination="gZ9-vP-1eN" id="Ek5-Wn-meC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="exportButton" destination="TfI-h0-jEC" id="t0C-fe-JCY"/>
                         <outlet property="imageView" destination="tj9-Qb-ujJ" id="H9u-EA-V3o"/>
                         <outlet property="numberOfComponentsLabel" destination="mif-no-u9O" id="FKg-th-ZFP"/>
                         <outlet property="productNameLabel" destination="LYa-rP-cKo" id="WlT-0k-w7I"/>
@@ -1110,6 +1167,7 @@
                         <outlet property="totalPriceLabel" destination="EEZ-XZ-JUY" id="IjE-NY-pFa"/>
                         <segue destination="qIC-Sk-pXA" kind="push" identifier="ProductComponentPicker" id="Ieh-G9-HXy"/>
                         <segue destination="Xh1-Uh-5NB" kind="modal" identifier="ProductNameEditionNA" animates="NO" id="pf4-gr-CgB"/>
+                        <segue destination="TxY-m6-KFe" kind="modal" identifier="ActionsModal" id="f9r-zS-wN3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8T-sZ-blq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1474,6 +1532,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B1Y-pV-nRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="485" y="1714"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GSc-rh-v0O">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h5Y-OW-oIa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Zo-hw-foS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="J3e-iU-d7m" kind="relationship" relationship="rootViewController" id="4jm-UL-bt2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4BX-SE-Yxp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1204" y="-1400"/>
         </scene>
     </scenes>
     <resources>
