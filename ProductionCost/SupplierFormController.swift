@@ -249,26 +249,28 @@ class SupplierFormController: UIViewController {
         var firstLine  = ""
         
         if let streetNumber = placemark.subThoroughfare {
-            firstLine += streetNumber + ", "
+            firstLine += streetNumber + " "
+            print("street number : \(streetNumber)")
         }
         
         if let streetName = placemark.thoroughfare {
             firstLine += streetName
+            print("street name : \(streetName)")
         }
-        
-        
         
         var secondLine = ""
         
         if let postalCode = placemark.postalCode {
             secondLine += postalCode + " "
+            print("postal code : \(postalCode)")
         }
         
         if let city = placemark.locality {
             secondLine += city
+            print("city : \(city)")
         }
         
-        return firstLine + "\n" + secondLine
+        return firstLine + " \n" + secondLine
     }
     
     func presentValidation(forLocation location: CLLocation) {
@@ -308,6 +310,7 @@ class SupplierFormController: UIViewController {
         let validateAction = UIAlertAction(title: "Yes", style: .Default) {
             action in
             self.addressField.text! = message
+            print(message)
             self.location = location
         }
         

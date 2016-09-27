@@ -115,7 +115,9 @@ extension SupplierListController {
             performSegueWithIdentifier("AddSupplier", sender: nil)
         }
         else {
-            performSegueWithIdentifier("EditSupplier", sender: results[indexPath.row])
+            let supplier = results[indexPath.row]
+            print(supplier)
+            performSegueWithIdentifier("EditSupplier", sender: supplier)
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

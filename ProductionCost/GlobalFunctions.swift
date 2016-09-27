@@ -117,31 +117,31 @@ func populateDatabaseForDemo() {
     meiserBread.name            = "Meiser Boulangerie"
     meiserBread.latitude.value  = 50.854668
     meiserBread.longitude.value =  4.397075
-    meiserBread.address         = "580 Chaussée de Louvain, 1030 Schaerbeek"
+    meiserBread.address         = "Chaussée de Louvain 580\n1030 Schaerbeek"
     
     let tongresGreens             = Supplier()
     tongresGreens.name            = "Tongres Légumes"
     tongresGreens.latitude.value  = 50.840280
     tongresGreens.longitude.value =  4.400677
-    tongresGreens.address         = "50 Rue des Tongres, 1040 Etterbeek"
+    tongresGreens.address         = "Rue des Tongres 50\n1040 Etterbeek"
     
     let hippofrom             = Supplier()
     hippofrom.name            = "Hippo Fromage"
     hippofrom.latitude.value  = 50.820027
     hippofrom.longitude.value =  4.377322
-    hippofrom.address         = "89 Avenue de l'Hippodrome, 1050 Ixelles"
+    hippofrom.address         = "Avenue de l'Hippodrome 89\n1050 Ixelles"
     
     let mannekenPaper             = Supplier()
     mannekenPaper.name            = "Manneken Papier"
     mannekenPaper.latitude.value  = 50.844682
     mannekenPaper.longitude.value =  4.349562
-    mannekenPaper.address         = "50 Rue de l'Etuve, 1000 Bruxelles"
+    mannekenPaper.address         = "Rue de l'Etuve 50\n1000 Bruxelles"
     
     let baudouinWrap             = Supplier()
     baudouinWrap.name            = "Baudouin Emballages"
     baudouinWrap.latitude.value  = 50.857311
     baudouinWrap.longitude.value =  4.350750
-    baudouinWrap.address         = "12 Boulevard Baudouin, 1000 Bruxelles"
+    baudouinWrap.address         = "Boulevard Baudouin 12\n1000 Bruxelles"
     
     let bread = Material()
     bread.with("bread", quantity: 24, price: 13.99, category: Category.food.rawValue,
