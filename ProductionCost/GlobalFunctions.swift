@@ -80,6 +80,10 @@ func setDefaultRealmForUser(username: String) {
     Realm.Configuration.defaultConfiguration = config
 }
 
+func stringToDouble(string: String) -> Double {
+    return Double(string.stringByReplacingOccurrencesOfString(",", withString: "."))!
+}
+
 // MARK: Extensions
 
 /// String easy trim
@@ -91,7 +95,7 @@ extension String {
     
 }
 
-extension UIButton {
+extension UIView {
     
     func round() {
         self.layer.cornerRadius = self.frame.size.height / 2

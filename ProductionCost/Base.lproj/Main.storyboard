@@ -125,6 +125,9 @@
                                         <color key="value" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="stb-Ok-ipg" id="P4R-RK-NdK"/>
+                                </connections>
                             </textField>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TGb-W6-tJa">
                                 <rect key="frame" x="150" y="274" width="20" height="20"/>
@@ -777,7 +780,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WI-Aj-1J6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1606" y="-1400"/>
+            <point key="canvasLocation" x="2936" y="-394"/>
         </scene>
         <!--Actions Modal-->
         <scene sceneID="kju-aa-7j4">
@@ -862,7 +865,95 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uR8-xS-gFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1204" y="-723"/>
+            <point key="canvasLocation" x="2122" y="-394"/>
+        </scene>
+        <!--Quantity Editor-->
+        <scene sceneID="Nyy-u2-9JQ">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="SWi-57-uq9" customClass="QuantityEditor" customModule="ProductionCost" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6qJ-Dx-nUy"/>
+                        <viewControllerLayoutGuide type="bottom" id="vuO-vp-Cet"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QKh-jK-qxq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32f-6U-K83">
+                                <rect key="frame" x="44" y="206" width="232" height="35"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="IzT-Ep-1Bs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="Ok">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="validate:" destination="SWi-57-uq9" eventType="touchUpInside" id="XFf-fU-m5c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQX-eX-cjn">
+                                <rect key="frame" x="44" y="249" width="232" height="33"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel:" destination="SWi-57-uq9" eventType="touchUpInside" id="7L4-xS-INN"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LyC-Qx-4L5" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <rect key="frame" x="44" y="144" width="232" height="54"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                        <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.5" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.5" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
+                                        <color key="value" red="1" green="0.33670168360000002" blue="0.28469473779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                        <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.5" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="32f-6U-K83" firstAttribute="leading" secondItem="EQX-eX-cjn" secondAttribute="leading" id="2Id-5Y-5bx"/>
+                            <constraint firstItem="32f-6U-K83" firstAttribute="leading" secondItem="LyC-Qx-4L5" secondAttribute="leading" id="6Ay-aa-3iD"/>
+                            <constraint firstItem="32f-6U-K83" firstAttribute="top" secondItem="LyC-Qx-4L5" secondAttribute="bottom" constant="8" symbolic="YES" id="OUf-Xx-Kna"/>
+                            <constraint firstItem="32f-6U-K83" firstAttribute="centerX" secondItem="QKh-jK-qxq" secondAttribute="centerX" id="Tpm-62-ISy"/>
+                            <constraint firstItem="EQX-eX-cjn" firstAttribute="centerX" secondItem="QKh-jK-qxq" secondAttribute="centerX" id="ZEa-jg-dCg"/>
+                            <constraint firstItem="32f-6U-K83" firstAttribute="top" secondItem="QKh-jK-qxq" secondAttribute="top" constant="206" id="aJq-ia-v7v"/>
+                            <constraint firstItem="LyC-Qx-4L5" firstAttribute="centerX" secondItem="QKh-jK-qxq" secondAttribute="centerX" id="eHD-y2-tpL"/>
+                            <constraint firstItem="EQX-eX-cjn" firstAttribute="top" secondItem="32f-6U-K83" secondAttribute="bottom" constant="8" symbolic="YES" id="w87-sW-swS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="okButton" destination="32f-6U-K83" id="NJr-wH-XrQ"/>
+                        <outlet property="quantityField" destination="LyC-Qx-4L5" id="ZVB-On-lRo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nu1-M7-1vA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1202" y="-807"/>
         </scene>
         <!--Product Name Edition Controller-->
         <scene sceneID="uIQ-2L-HHB">
@@ -876,8 +967,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2IX-zd-vF3" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="68" y="54" width="232" height="54"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2IX-zd-vF3" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <rect key="frame" x="44" y="143" width="232" height="54"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
@@ -898,14 +989,16 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
                                         <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="product name"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Product name"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                         <color key="value" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FwQ-Vi-wKs">
-                                <rect key="frame" x="68" y="116" width="48" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FwQ-Vi-wKs">
+                                <rect key="frame" x="44" y="248" width="232" height="33"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -913,9 +1006,13 @@
                                     <action selector="cancel:" destination="Xh1-Uh-5NB" eventType="touchUpInside" id="l89-3F-HbM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deL-BD-kaf">
-                                <rect key="frame" x="124" y="116" width="35" height="35"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deL-BD-kaf">
+                                <rect key="frame" x="44" y="205" width="232" height="35"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Iqw-pw-Ah7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Ok">
                                     <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -925,6 +1022,16 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="FwQ-Vi-wKs" firstAttribute="centerX" secondItem="AHg-nD-mlS" secondAttribute="centerX" id="7Wn-o5-hQ5"/>
+                            <constraint firstItem="2IX-zd-vF3" firstAttribute="centerX" secondItem="AHg-nD-mlS" secondAttribute="centerX" id="BOJ-uA-DuK"/>
+                            <constraint firstItem="deL-BD-kaf" firstAttribute="leading" secondItem="2IX-zd-vF3" secondAttribute="leading" id="ZjK-qj-Qdu"/>
+                            <constraint firstItem="FwQ-Vi-wKs" firstAttribute="top" secondItem="deL-BD-kaf" secondAttribute="bottom" constant="8" symbolic="YES" id="cVu-fX-hqx"/>
+                            <constraint firstItem="deL-BD-kaf" firstAttribute="top" secondItem="AHg-nD-mlS" secondAttribute="top" constant="205" id="hdd-Nq-crQ"/>
+                            <constraint firstItem="deL-BD-kaf" firstAttribute="leading" secondItem="FwQ-Vi-wKs" secondAttribute="leading" id="qyb-7M-hO7"/>
+                            <constraint firstItem="deL-BD-kaf" firstAttribute="top" secondItem="2IX-zd-vF3" secondAttribute="bottom" constant="8" symbolic="YES" id="tNv-jr-2xZ"/>
+                            <constraint firstItem="deL-BD-kaf" firstAttribute="centerX" secondItem="AHg-nD-mlS" secondAttribute="centerX" id="vtO-s6-6yw"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="nameField" destination="2IX-zd-vF3" id="aCI-hl-0XQ"/>
@@ -933,7 +1040,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PLE-Ai-JYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1600" y="-722.99999999999989"/>
+            <point key="canvasLocation" x="1600" y="-807"/>
         </scene>
         <!--Component Quantity Modal-->
         <scene sceneID="NSj-BK-frr">
@@ -1056,7 +1163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bd3-Tf-xq5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2046" y="-723"/>
+            <point key="canvasLocation" x="2526" y="320"/>
         </scene>
         <!--Product details-->
         <scene sceneID="ms4-Lq-IDD">
@@ -1171,6 +1278,7 @@
                         <segue destination="qIC-Sk-pXA" kind="push" identifier="ProductComponentPicker" id="Ieh-G9-HXy"/>
                         <segue destination="Xh1-Uh-5NB" kind="modal" identifier="ProductNameEditionNA" animates="NO" id="pf4-gr-CgB"/>
                         <segue destination="TxY-m6-KFe" kind="modal" identifier="ActionsModal" id="f9r-zS-wN3"/>
+                        <segue destination="SWi-57-uq9" kind="modal" identifier="QuantityEditor" id="ndm-ew-Cvz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8T-sZ-blq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1197,7 +1305,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q8n-Sz-GN5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2046" y="-49"/>
+            <point key="canvasLocation" x="2122" y="320"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lqH-2F-kZP">
@@ -1555,15 +1663,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4BX-SE-Yxp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1204" y="-1400"/>
+            <point key="canvasLocation" x="2526" y="-394"/>
         </scene>
     </scenes>
     <resources>
         <image name="raspberry" width="1" height="1"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hkH-b2-KNz"/>
         <segue reference="pah-zM-iAV"/>
+        <segue reference="hkH-b2-KNz"/>
         <segue reference="uBB-Ru-Aeh"/>
     </inferredMetricsTieBreakers>
 </document>

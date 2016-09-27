@@ -44,7 +44,7 @@ class ProductNameEditionController: UIViewController {
         
         addBlurredBackground(onView: self.view, withStyle: .Dark)
         
-        okButton.layer.cornerRadius = okButton.frame.size.height / 2
+        okButton.withRoundedBorders()
     }
 
     override func didReceiveMemoryWarning() {

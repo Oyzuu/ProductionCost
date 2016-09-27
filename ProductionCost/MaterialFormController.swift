@@ -125,7 +125,7 @@ class MaterialFormController: UITableViewController {
     @IBAction func save(sender: AnyObject) {
         view.endEditing(true)
         guard checkMandatoryFields() else {
-            HUD.flash(.Label("You have to fill these fields"), delay: 1) { result in
+            HUD.flash(.LabeledError(title: nil, subtitle: "Empty fields"), delay: 1) { result in
                 self.shake(textFields: self.nameField, self.priceField, self.quantityField)
             }
             hasErrors = true
@@ -144,10 +144,10 @@ class MaterialFormController: UITableViewController {
             let realm = try! Realm()
             
             try! realm.write() {
-                materialToEdit.name     = nameField.text!
-                materialToEdit.price    = stringToDouble(priceField.text!)
-                materialToEdit.quantity = stringToDouble(quantityField.text!)
-                materialToEdit.category = categoryLabel.text!
+                materialToEdit.name     = nameField.text!.trim()
+                materialToEdit.price    = stringToDouble(priceField.text!.trim())
+                materialToEdit.quantity = stringToDouble(quantityField.text!.trim())
+                materialToEdit.category = categoryLabel.text!.trim()
                 materialToEdit.supplier = componentSupplier
                 
                 if derivedComponentWillExistAtSave && materialToEdit.subMaterial == nil {
@@ -169,11 +169,11 @@ class MaterialFormController: UITableViewController {
         }
         else {
             let material = Material()
-            material.name     = nameField.text!
-            material.price    = stringToDouble(priceField.text!)
-            material.quantity = stringToDouble(quantityField.text!)
+            material.name     = nameField.text!.trim()
+            material.price    = stringToDouble(priceField.text!.trim())
+            material.quantity = stringToDouble(quantityField.text!.trim())
             material.isPack   = !isUnit
-            material.category = categoryLabel.text!
+            material.category = categoryLabel.text!.trim()
             material.supplier = componentSupplier
             
             if derivedComponentSwitch.on {
@@ -189,19 +189,19 @@ class MaterialFormController: UITableViewController {
     private func checkMandatoryFields() -> Bool {
         // TODO: Listen to fields to hide warning
         
-        if nameField.text != "" && priceField.text != "" && quantityField.text != "" {
+        if nameField.text?.trim() != "" && priceField.text?.trim() != "" && quantityField.text?.trim() != "" {
             return true
         }
         
-        if nameField.text == "" {
+        if nameField.text?.trim() == "" {
             nameWarning.hidden = false
         }
         
-        if priceField.text == "" {
+        if priceField.text?.trim() == "" {
             priceWarning.hidden = false
         }
         
-        if quantityField.text == "" {
+        if quantityField.text?.trim() == "" {
             quantityWarning.hidden = false
         }
         
@@ -211,7 +211,7 @@ class MaterialFormController: UITableViewController {
     private func shake(textFields fields: UITextField...) {
         for field in fields {
             if field.text == "" {
-                field.shake(4, withDelta: 5, speed: 0.2)
+                field.shake()
             }
         }
     }
@@ -239,10 +239,6 @@ class MaterialFormController: UITableViewController {
             
             derivedComponentButton.setTitle("Create", forState: .Normal)
         }
-    }
-    
-    func stringToDouble(string: String) -> Double {
-        return Double(string.stringByReplacingOccurrencesOfString(",", withString: "."))!
     }
     
 }

@@ -113,6 +113,13 @@ class ProductDetailsController: UIViewController {
                 controller.delegate   = self
             }
         }
+        
+        if segue.identifier == "QuantityEditor" {
+            if let controller = segue.destinationViewController as? QuantityEditor {
+                controller.componentToEdit = (sender as! MaterialWithModifier)
+                controller.delegate        = self
+            }
+        }
     }
     
     // MARK: Methods
@@ -237,6 +244,10 @@ extension ProductDetailsController: UITableViewDelegate {
         if tableView.cellForRowAtIndexPath(indexPath)?.reuseIdentifier == "AddSomethingCell" {
             performSegueWithIdentifier("ProductComponentPicker", sender: nil)
         }
+        else {
+            let componentToEdit = getActiveProduct().components[indexPath.row]
+            performSegueWithIdentifier("QuantityEditor", sender: componentToEdit)
+        }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -294,7 +305,7 @@ extension ProductDetailsController: ProductNameEditionDelegate {
         dismissViewControllerAnimated(true, completion: nil)
         
         if isANewProduct {
-            navigationController?.popViewControllerAnimated(true)
+            navigationController?.popViewControllerAnimated(false)
         }
     }
     
@@ -310,6 +321,19 @@ extension ProductDetailsController: ProductNameEditionDelegate {
         else {
             getActiveProduct().name = name
         }
+    }
+    
+}
+
+// MARK: EXT - Quantity editor delegate
+extension ProductDetailsController: QuantityEditorDelegate {
+    
+    func quantityEditorDelegate(didEditQuantity: String, onComponent: MaterialWithModifier) {
+        try! Realm().write {
+            onComponent.modifier = stringToDouble(didEditQuantity) / (onComponent.material?.quantity)!
+        }
+        
+        updateUI()
     }
     
 }

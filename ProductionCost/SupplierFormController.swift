@@ -11,6 +11,7 @@ import RealmSwift
 import PKHUD
 import CoreLocation
 import MapKit
+import SkyFloatingLabelTextField
 
 class SupplierFormController: UIViewController {
     
@@ -80,8 +81,42 @@ class SupplierFormController: UIViewController {
     @IBAction func save(sender: AnyObject) {
         view.endEditing(true)
         
-        var hudMessage = ""
+        guard nameField.text?.trim() != "" else {
+            (nameField as! SkyFloatingLabelTextField).errorMessage = "Name required"
+            HUD.flash(.LabeledError(title: nil, subtitle: "Name required"), delay: 1) {
+                result in
+                self.nameField.shake()
+            }
+            return
+        }
         
+        guard addressField.text?.trim() != "" else {
+            let alert = UIAlertController(title: "Empty address field",
+                                          message: "No address for this supplier. Continue ?",
+                                          preferredStyle: .Alert)
+            let noAction  = UIAlertAction(title: "No",  style: .Cancel, handler: nil)
+            let yesAction = UIAlertAction(title: "Yes", style: .Default) { action in
+                dispatch_after(500, dispatch_get_main_queue()) {
+                    self.saveSupplier()
+                }
+            }
+            
+            alert.addAction(noAction)
+            alert.addAction(yesAction)
+            presentViewController(alert, animated: true, completion: nil)
+            
+            return
+        }
+        
+        saveSupplier()
+        
+//        if location != nil {
+//            saveSnapshot()
+//        }
+    }
+    
+    private func saveSupplier() {
+        var hudMessage = ""
         defer {
             HUD.flash(.LabeledSuccess(title: nil, subtitle: hudMessage), delay: 0.3) { result in
                 self.manager.delegate = nil
@@ -92,8 +127,8 @@ class SupplierFormController: UIViewController {
         if let supplierToEdit = self.supplierToEdit {
             let realm = try! Realm()
             try! realm.write {
-                supplierToEdit.name            = nameField.text!
-                supplierToEdit.address         = addressField.text!
+                supplierToEdit.name    = nameField.text!
+                supplierToEdit.address = addressField.text!
                 
                 if let location = self.location {
                     supplierToEdit.latitude.value  = location.coordinate.latitude
@@ -117,10 +152,6 @@ class SupplierFormController: UIViewController {
             
             hudMessage = "Saved"
         }
-        
-//        if location != nil {
-//            saveSnapshot()
-//        }
     }
     
     private func saveSnapshot() {
@@ -306,6 +337,26 @@ extension SupplierFormController: CLLocationManagerDelegate {
             }
         }
     }
+}
+
+// MARK: EXT - Text field delegate
+
+extension SupplierFormController: UITextFieldDelegate {
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let textField = (textField as! SkyFloatingLabelTextField)
+        
+        guard textField.hasErrorMessage else {
+            return true
+        }
+        
+        transition(onView: textField, withDuration: 0.5) {
+            textField.errorMessage = ""
+        }
+        
+        return true
+    }
+    
 }
 
 // MARK: Map View delegate

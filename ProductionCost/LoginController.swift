@@ -85,54 +85,47 @@ class LoginController: UIViewController {
                                             withSuccessMessage successMessage: String) {
         print("User : \(user?.email!)")
         if error != nil {
-            print(error)
-            
-            var message = ""
-            
             switch error!.code {
             case 17007:
-                message = error!.localizedDescription
-                self.mailField.errorMessage = "Already in use"
-                self.mailField.shake()
+                setErrorWithFeedback(mailField, hudMessage: error!.localizedDescription,
+                                     errorMessage: "Already in use")
             case 17008:
-                message = error!.localizedDescription
-                self.mailField.errorMessage = "Wrong mail format"
-                self.mailField.shake()
+                setErrorWithFeedback(mailField, hudMessage: error!.localizedDescription,
+                                     errorMessage: "Wrong mail format")
             case 17009:
-                message = "Wrong password"
-                self.passwordField.errorMessage = "Wrong password"
-                self.passwordField.shake()
+                setErrorWithFeedback(passwordField, hudMessage: "Wrong password",
+                                     errorMessage: "Wrong password")
             case 17011:
-                message = "Mail not registered"
-                self.mailField.errorMessage = "Mail not registered"
-                self.mailField.shake()
+                setErrorWithFeedback(mailField, hudMessage: "Mail not registered",
+                                     errorMessage: "Mail not registered")
             case 17026:
-                message = error!.localizedDescription
-                self.passwordField.errorMessage = "Password too short"
-                self.passwordField.shake()
+                setErrorWithFeedback(passwordField, hudMessage: error!.localizedDescription,
+                                     errorMessage: "Password too short")
             case 17999:
-                print(mailField.text)
-                print(passwordField.text)
-                
                 if self.mailField.text! == "" {
-                    message = "Wrong user mail"
-                    self.mailField.errorMessage = "No mail"
-                    self.mailField.shake()
+                    setErrorWithFeedback(mailField, hudMessage: "Please enter a mail",
+                                         errorMessage: "No mail")
                 }
                 else {
-                    message = "Please enter a password"
-                    self.passwordField.errorMessage = "No password"
-                    self.passwordField.shake()
+                    setErrorWithFeedback(passwordField, hudMessage: "Please enter a password",
+                                         errorMessage: "No password")
                 }
                 
-            default: message = error!.localizedDescription
+            default:
+                HUD.flash(.LabeledError(title: nil, subtitle: error!.localizedDescription), delay: 1)
             }
-            
-            HUD.flash(.LabeledError(title: nil, subtitle: message), delay: 1)
         }
         else {
             HUD.flash(.LabeledSuccess(title: nil, subtitle: successMessage), delay: 0.5)
             self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
+    private func setErrorWithFeedback(field: UITextField, hudMessage: String, errorMessage: String) {
+        (field as! SkyFloatingLabelTextField).errorMessage = errorMessage
+        
+        HUD.flash(.LabeledError(title: nil, subtitle: hudMessage), delay: 1) { result in
+            field.shake()
         }
     }
 }

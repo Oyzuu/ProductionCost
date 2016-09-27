@@ -38,6 +38,7 @@
 		5C592DFB1D951BC8007F26DB /* ActionsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C592DFA1D951BC8007F26DB /* ActionsModal.swift */; };
 		5C6441551D86D80C006CA015 /* MaterialFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6441541D86D80C006CA015 /* MaterialFormController.swift */; };
 		5C6441571D86E4FC006CA015 /* UnitMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C6441561D86E4FC006CA015 /* UnitMaterialCell.xib */; };
+		5C6BCFEA1D9A72010032A171 /* QuantityEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6BCFE91D9A72010032A171 /* QuantityEditor.swift */; };
 		5C7BFCF71D869DC00004CFD5 /* PackMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7BFCF61D869DC00004CFD5 /* PackMaterialCell.xib */; };
 		5C7BFCF91D86A3390004CFD5 /* AddMaterialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7BFCF81D86A3390004CFD5 /* AddMaterialCell.xib */; };
 		5C7BFCFB1D86A7CC0004CFD5 /* MainMaterialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BFCFA1D86A7CC0004CFD5 /* MainMaterialCell.swift */; };
@@ -90,6 +91,7 @@
 		5C592DFA1D951BC8007F26DB /* ActionsModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsModal.swift; sourceTree = "<group>"; };
 		5C6441541D86D80C006CA015 /* MaterialFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialFormController.swift; sourceTree = "<group>"; };
 		5C6441561D86E4FC006CA015 /* UnitMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnitMaterialCell.xib; sourceTree = "<group>"; };
+		5C6BCFE91D9A72010032A171 /* QuantityEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuantityEditor.swift; sourceTree = "<group>"; };
 		5C7BFCF61D869DC00004CFD5 /* PackMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PackMaterialCell.xib; sourceTree = "<group>"; };
 		5C7BFCF81D86A3390004CFD5 /* AddMaterialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMaterialCell.xib; sourceTree = "<group>"; };
 		5C7BFCFA1D86A7CC0004CFD5 /* MainMaterialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMaterialCell.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				5C57A5B61D93E0C700AC57A0 /* ComponentQuantityModal.swift */,
 				5C592DFA1D951BC8007F26DB /* ActionsModal.swift */,
 				5C4C46311D991B080022488D /* SuppliersMap.swift */,
+				5C6BCFE91D9A72010032A171 /* QuantityEditor.swift */,
 			);
 			name = Modals;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C6BCFEA1D9A72010032A171 /* QuantityEditor.swift in Sources */,
 				5C7BFCFF1D86B3D20004CFD5 /* Material.swift in Sources */,
 				5C87C38E1D8FCF2300BD6C4E /* Supplier.swift in Sources */,
 				5C87C3921D8FEB6700BD6C4E /* SupplierPickerController.swift in Sources */,
