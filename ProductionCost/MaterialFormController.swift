@@ -124,6 +124,16 @@ class MaterialFormController: UITableViewController {
     
     @IBAction func save(sender: AnyObject) {
         view.endEditing(true)
+        
+        if nameField.text?.trim() == "populatedatabase" {
+            populateDatabaseForDemo()
+            delegate?.MaterialForm(didFinish: nil)
+        }
+        else if nameField.text?.trim() == "wipedatabase" {
+            wipeDatabase()
+            delegate?.MaterialForm(didFinish: nil)
+        }
+        
         guard checkMandatoryFields() else {
             HUD.flash(.LabeledError(title: nil, subtitle: "Empty fields"), delay: 1) { result in
                 self.shake(textFields: self.nameField, self.priceField, self.quantityField)

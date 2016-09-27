@@ -318,7 +318,6 @@ class SupplierFormController: UIViewController {
     }
     
     func showSupplier(withLatitude latitude: Double, andLongitude longitude: Double) {
-        // TODO: Make this safe
         let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let region = MKCoordinateRegionMakeWithDistance(center, 500, 500)
         mapView.setRegion(region, animated: true)

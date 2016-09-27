@@ -25,6 +25,16 @@ class Material: Object {
     
     // MARK: Methods
     
+    /// used only for demo
+    func with(name: String, quantity: Double, price: Double, category: String, supplier: Supplier) {
+        self.isPack   = true
+        self.name     = name
+        self.quantity = quantity
+        self.price    = price
+        self.category = category
+        self.supplier = supplier
+    }
+    
     func createDerivedComponent() {
         let subMaterial = Material()
         

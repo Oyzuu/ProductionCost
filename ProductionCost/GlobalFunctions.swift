@@ -106,6 +106,76 @@ func stringToDouble(string: String) -> Double {
     return Double(string.stringByReplacingOccurrencesOfString(",", withString: "."))!
 }
 
+func wipeDatabase() {
+    try! Realm().write {
+        try! Realm().deleteAll()
+    }
+}
+
+func populateDatabaseForDemo() {
+    let meiserBread             = Supplier()
+    meiserBread.name            = "Meiser Boulangerie"
+    meiserBread.latitude.value  = 50.854668
+    meiserBread.longitude.value =  4.397075
+    meiserBread.address         = "580 Chaussée de Louvain, 1030 Schaerbeek"
+    
+    let tongresGreens             = Supplier()
+    tongresGreens.name            = "Tongres Légumes"
+    tongresGreens.latitude.value  = 50.840280
+    tongresGreens.longitude.value =  4.400677
+    tongresGreens.address         = "50 Rue des Tongres, 1040 Etterbeek"
+    
+    let hippofrom             = Supplier()
+    hippofrom.name            = "Hippo Fromage"
+    hippofrom.latitude.value  = 50.820027
+    hippofrom.longitude.value =  4.377322
+    hippofrom.address         = "89 Avenue de l'Hippodrome, 1050 Ixelles"
+    
+    let mannekenPaper             = Supplier()
+    mannekenPaper.name            = "Manneken Papier"
+    mannekenPaper.latitude.value  = 50.844682
+    mannekenPaper.longitude.value =  4.349562
+    mannekenPaper.address         = "50 Rue de l'Etuve, 1000 Bruxelles"
+    
+    let baudouinWrap             = Supplier()
+    baudouinWrap.name            = "Baudouin Emballages"
+    baudouinWrap.latitude.value  = 50.857311
+    baudouinWrap.longitude.value =  4.350750
+    baudouinWrap.address         = "12 Boulevard Baudouin, 1000 Bruxelles"
+    
+    let bread = Material()
+    bread.with("bread", quantity: 24, price: 13.99, category: Category.food.rawValue,
+               supplier: meiserBread)
+    bread.createDerivedComponent()
+    
+    let tomato = Material()
+    tomato.with("tomato", quantity: 6, price: 2.35, category: Category.food.rawValue,
+                supplier: tongresGreens)
+    tomato.createDerivedComponent()
+    
+    let cheese = Material()
+    cheese.with("slice of cheese", quantity: 12, price: 2.5, category: Category.food.rawValue,
+                supplier: hippofrom)
+    cheese.createDerivedComponent()
+    
+    let paperWrap = Material()
+    paperWrap.with("paper wrap", quantity: 500, price: 6.99, category: Category.miscellaneous.rawValue,
+                   supplier: baudouinWrap)
+    paperWrap.createDerivedComponent()
+    
+    let napkin = Material()
+    napkin.with("napkin", quantity: 300, price: 4.99, category: Category.miscellaneous.rawValue,
+                supplier: mannekenPaper)
+    napkin.createDerivedComponent()
+    
+    let realm = try! Realm()
+    
+    try! realm.write {
+        let components = [bread, tomato, cheese, paperWrap, napkin]
+        realm.add(components)
+    }
+}
+
 // MARK: Extensions
 
 /// String easy trim
