@@ -36,6 +36,8 @@ class SupplierFormController: UIViewController {
     var isReverseGeocoding = false
     var lastGeocodingError: NSError?
     
+    var mapViewForeground: UIView?
+    
     // MARK: Overrides
 
     override func viewDidLoad() {
@@ -59,6 +61,10 @@ class SupplierFormController: UIViewController {
             longitude = supplierToEdit.longitude.value {
             showSupplier(withLatitude: latitude, andLongitude: longitude)
         }
+        else {
+            mapViewForeground = createColoredSubview(forView: mapView, withColor: AppColors.raspberry50)
+            mapView.addSubview(mapViewForeground!)
+        }
         
         locationButton.withRoundedBorders()
     }
@@ -66,8 +72,6 @@ class SupplierFormController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
@@ -91,6 +95,12 @@ class SupplierFormController: UIViewController {
         }
         
         guard addressField.text?.trim() != "" else {
+            if let mapViewBlurredForeground = self.mapViewForeground {
+                transition(onView: self.mapView, withDuration: 0.5) {
+                    mapViewBlurredForeground.hidden = false
+                }
+            }
+            
             let alert = UIAlertController(title: "Empty address field",
                                           message: "No address for this supplier. Continue ?",
                                           preferredStyle: .Alert)
@@ -130,10 +140,16 @@ class SupplierFormController: UIViewController {
                 supplierToEdit.name    = nameField.text!
                 supplierToEdit.address = addressField.text!
                 
-                if let location = self.location {
+                if addressField.text?.trim() != "", let location = self.location {
                     supplierToEdit.latitude.value  = location.coordinate.latitude
                     supplierToEdit.longitude.value = location.coordinate.longitude
                 }
+                else {
+                    supplierToEdit.latitude.value  = nil
+                    supplierToEdit.longitude.value = nil
+                }
+                
+                supplierToEdit.address = addressField.text!
             }
             
             hudMessage = "Edited"
@@ -142,8 +158,11 @@ class SupplierFormController: UIViewController {
             let supplier             = Supplier()
             supplier.name            = nameField.text!
             supplier.address         = addressField.text!
-            supplier.latitude.value  = location?.coordinate.latitude
-            supplier.longitude.value = location?.coordinate.longitude
+            
+            if addressField.text?.trim() != "", let location = self.location {
+                supplier.latitude.value  = location.coordinate.latitude
+                supplier.longitude.value = location.coordinate.longitude
+            }
             
             let realm = try! Realm()
             try! realm.write {
@@ -191,6 +210,8 @@ class SupplierFormController: UIViewController {
     }
 
     @IBAction func getLocation(sender: AnyObject) {
+        view.endEditing(true)
+        
         if CLLocationManager.authorizationStatus() == .NotDetermined {
             manager.requestWhenInUseAuthorization()
             return
@@ -251,10 +272,16 @@ class SupplierFormController: UIViewController {
     }
     
     func presentValidation(forLocation location: CLLocation) {
-        print("Present validation")
         var message = ""
         if let placemark = self.placemark {
             message = stringFromPlacemark(placemark)
+            showSupplier(withLatitude: location.coordinate.latitude,
+                         andLongitude: location.coordinate.longitude)
+            if let mapViewForeground = self.mapViewForeground {
+                transition(onView: mapView, withDuration: 0.5) {
+                    mapViewForeground.hidden = true
+                }
+            }
         }
         else {
             message = "error getting address"
@@ -269,13 +296,18 @@ class SupplierFormController: UIViewController {
             self.location  = nil
             self.placemark = nil
             self.isGettingLocation = false
+            guard let mapViewBlurredForeground = self.mapViewForeground else {
+                return
+            }
+            
+            transition(onView: self.mapView, withDuration: 0.5) {
+                mapViewBlurredForeground.hidden = false
+            }
         }
         
         let validateAction = UIAlertAction(title: "Yes", style: .Default) {
             action in
             self.addressField.text! = message
-            self.showSupplier(withLatitude: location.coordinate.latitude,
-                              andLongitude: location.coordinate.longitude)
             self.location = location
         }
         
@@ -295,7 +327,7 @@ class SupplierFormController: UIViewController {
     
 }
 
-// MARK: Location manager delegate
+// MARK: EXT - Location manager delegate
 
 extension SupplierFormController: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -359,7 +391,7 @@ extension SupplierFormController: UITextFieldDelegate {
     
 }
 
-// MARK: Map View delegate
+// MARK: EXT - Map View delegate
 
 extension SupplierFormController: MKMapViewDelegate {
     

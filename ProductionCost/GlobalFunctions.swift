@@ -56,17 +56,39 @@ func nibRegistration(onTableView tableView: UITableView, forIdentifiers identifi
     }
 }
 
-/// Add a blurred background
+/// Add a blurred background view with selected style
 func addBlurredBackground(onView view: UIView, withStyle style: UIBlurEffectStyle) {
     let blurEffect  = UIBlurEffect(style: style)
     let blurredView = UIVisualEffectView(effect: blurEffect)
     
-    blurredView.frame = view.bounds
+    blurredView.frame            = view.bounds
     blurredView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
     
     view.addSubview(blurredView)
     view.sendSubviewToBack(blurredView)
     view.backgroundColor = UIColor.clearColor()
+}
+
+/// returns a blurred view with selected style
+func createBlurredSubview(forView view: UIView, withStyle style: UIBlurEffectStyle) -> UIView {
+    let blurEffect  = UIBlurEffect(style: style)
+    let blurredView = UIVisualEffectView(effect: blurEffect)
+    
+    blurredView.frame            = view.bounds
+    blurredView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+    
+    return blurredView
+}
+
+/// returns a view with selected color
+func createColoredSubview(forView view: UIView, withColor color: UIColor) -> UIView {
+    let foregroundView = UIView()
+    
+    foregroundView.frame            = view.bounds
+    foregroundView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+    foregroundView.backgroundColor  = color
+    
+    return foregroundView
 }
 
 /// Wrapper for Realm instance configuration
