@@ -28,7 +28,7 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We use your location to get addresses for your suppliers</string>
+	<string>We use your location to get addresses for your suppliers and your home location. These informations are stored locally and won&apos;t be shared.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

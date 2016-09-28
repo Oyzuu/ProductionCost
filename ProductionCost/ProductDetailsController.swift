@@ -70,23 +70,6 @@ class ProductDetailsController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func willMoveToParentViewController(parent: UIViewController?) {
-        guard parent == nil else {
-            return
-        }
-        
-        if self.productToEdit != nil || isANewProduct {
-            return
-        }
-        
-        // TODO: Should verify field completion
-        
-        product.name = productNameLabel.text!
-        realm(saveProduct: product)
-        HUD.flash(.LabeledSuccess(title: nil, subtitle: product.name + " has been saved"),
-                  delay: 0.5)
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ProductComponentPicker" {
             if let controller = segue.destinationViewController as? ProductDetailsMaterialPickerController {
@@ -196,14 +179,7 @@ extension ProductDetailsController: UITableViewDataSource {
             let material = getActiveProduct().components[indexPath.row].material!
             let modifier = getActiveProduct().components[indexPath.row].modifier
             
-            let text = material.name.stringByReplacingOccurrencesOfString("_", withString: "")
-
-            cell.quantityLabel.text = Material.formattedQuantity(forMaterial: material,
-                                                                 withModifier: modifier)
-            cell.nameLabel.text     = text
-            cell.priceLabel.text    = String(format: "%.2f $", material.price * modifier)
-            
-            cell.setAlternativeBackground(forEvenIndexPath: indexPath)
+            cell.prepare(material, modifier: modifier, indexPath: indexPath)
             
             return cell
         }
@@ -264,16 +240,13 @@ extension ProductDetailsController: MaterialPickerDelegate {
         var hasFoundMaterial = false
         for materialWithModifier in product.components {
             let materialName = material.name
-//                .stringByReplacingOccurrencesOfString("_", withString: "")
             let materialWithModName = materialWithModifier.material?.name
-//                .stringByReplacingOccurrencesOfString("_", withString: "")
             
             if materialName == materialWithModName {
                 hasFoundMaterial = true
                 try! Realm().write {
                     let index = product.components.indexOf(materialWithModifier)
-                    product.components[index!].modifier += quantity * material.quantity
-                }
+                    product.components[index!].modifier += quantity                }
             }
         }
         
@@ -282,9 +255,6 @@ extension ProductDetailsController: MaterialPickerDelegate {
             
             materialWithModifier.material = material
             materialWithModifier.modifier = quantity
-            
-//            materialWithModifier.material = material.subMaterial == nil ? material : material.subMaterial
-//            materialWithModifier.modifier = material.isSubMaterial ? quantity : quantity * material.quantity
 
             try! Realm().write {
                 product.components.append(materialWithModifier)
@@ -313,12 +283,13 @@ extension ProductDetailsController: ProductNameEditionDelegate {
         productNameLabel.text   = name
         isANewProduct = false
         
-        if let productToEdit = self.productToEdit {
+        if productToEdit == nil {
             try! Realm().write {
-                productToEdit.name = name
+                try! Realm().add(getActiveProduct())
             }
         }
-        else {
+        
+        try! Realm().write {
             getActiveProduct().name = name
         }
     }
@@ -330,7 +301,7 @@ extension ProductDetailsController: QuantityEditorDelegate {
     
     func quantityEditorDelegate(didEditQuantity: String, onComponent: MaterialWithModifier) {
         try! Realm().write {
-            onComponent.modifier = stringToDouble(didEditQuantity) / (onComponent.material?.quantity)!
+            onComponent.modifier = stringToDouble(didEditQuantity)
         }
         
         updateUI()

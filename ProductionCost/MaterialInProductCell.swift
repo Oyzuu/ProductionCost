@@ -15,6 +15,7 @@ class MaterialInProductCell: UITableViewCell {
     @IBOutlet weak var nameLabel:     UILabel!
     @IBOutlet weak var priceLabel:    UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var typeLabel:     UILabel!
     
     // MARK: Overrides
 
@@ -28,6 +29,25 @@ class MaterialInProductCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func prepare(material: Material, modifier: Double, indexPath: NSIndexPath) -> MaterialInProductCell {
+        let text = material.name.stringByReplacingOccurrencesOfString("_", withString: "")
+        
+        quantityLabel.text = Material.formattedQuantity(forModifier: modifier)
+        nameLabel.text  = text
+        priceLabel.text = String(format: "%.2f $", material.price * modifier)
+        
+        if material.isPack {
+            typeLabel.text = modifier > 1 ? "packs" : "pack"
+        }
+        else {
+            typeLabel.text = modifier > 1 ? "units" : "unit"
+        }
+        
+        setAlternativeBackground(forEvenIndexPath: indexPath)
+        
+        return self
     }
     
     func setAlternativeBackground(forEvenIndexPath indexPath: NSIndexPath) {

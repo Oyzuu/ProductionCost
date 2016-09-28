@@ -25,7 +25,6 @@ class ComponentQuantityModal: UIViewController {
     @IBOutlet weak var oneButton: UIButton!
     @IBOutlet weak var fiveButton: UIButton!
     @IBOutlet weak var tenButton: UIButton!
-    @IBOutlet weak var packButton: UIButton!
     
     // MARK: Properties
     
@@ -43,8 +42,12 @@ class ComponentQuantityModal: UIViewController {
         
         view.backgroundColor = AppColors.modalBlack
         
-        let buttons = [oneQuarterButton, oneHalfButton, threeQuarterButton, oneButton,
-                       fiveButton,       tenButton,     packButton]
+        let buttons = [oneQuarterButton,
+                       oneHalfButton,
+                       threeQuarterButton,
+                       oneButton,
+                       fiveButton,
+                       tenButton]
         
         for button in buttons {
             button.round()
@@ -85,9 +88,5 @@ class ComponentQuantityModal: UIViewController {
     
     @IBAction func addTen(sender: AnyObject) {
         delegate?.componentQuantityDelegate(didPick: 10, onMaterial: selectedMaterial)
-    }
-    
-    @IBAction func addPack(sender: AnyObject) {
-        HUD.flash(.LabeledError(title: nil, subtitle: "Not implemented yet"), delay: 1)
     }
 }

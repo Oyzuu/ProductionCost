@@ -62,17 +62,19 @@ class Material: Object {
     func asArray(withModifier mod: Double, forFileType type: String) -> [String] {
         var componentArray = [String]()
         
-        if name.characters.count > 18 && type == ".pdf" {
+        let displayName = isPack ? name.uppercaseString : name
+        
+        if displayName.characters.count > 18 && type == ".pdf" {
             let shortenedName =
-                (name.stringByReplacingOccurrencesOfString("_", withString: "") as NSString)
+                (displayName.stringByReplacingOccurrencesOfString("_", withString: "") as NSString)
                     .substringToIndex(14) + "..."
             componentArray.append(shortenedName)
         }
         else {
-            componentArray.append(name.stringByReplacingOccurrencesOfString("_", withString: ""))
+            componentArray.append(displayName.stringByReplacingOccurrencesOfString("_", withString: ""))
         }
         
-        componentArray.append(Material.formattedQuantity(forMaterial: self, withModifier: mod))
+        componentArray.append(Material.formattedQuantity(forModifier: mod))
         componentArray.append(category)
         
         if let supplier = supplier {
@@ -93,20 +95,17 @@ class Material: Object {
         return componentArray
     }
     
-    static func formattedQuantity(forMaterial material: Material, withModifier mod: Double) -> String {
-        var quantityText = ""
-        if material.quantity * mod % 1 == 0 {
-            quantityText = String(format: "%.0f", material.quantity * mod)
+    static func formattedQuantity(forModifier mod: Double) -> String {
+        if mod % 1 == 0 {
+            return String(format: "%.0f", mod)
         }
         else {
-            switch material.quantity * mod {
-            case 0.25: quantityText = "1/4"
-            case 0.50: quantityText = "1/2"
-            case 0.75: quantityText = "3/4"
-            default:   quantityText = "\(material.quantity * mod)"
+            switch mod {
+            case 0.25: return "1/4"
+            case 0.50: return "1/2"
+            case 0.75: return "3/4"
+            default:   return "\(mod)"
             }
         }
-        
-        return quantityText
     }
 }

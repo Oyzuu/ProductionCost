@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Absurdly long component name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="SDo-Ie-1y2">
-                        <rect key="frame" x="52" y="11" width="150" height="28"/>
+                        <rect key="frame" x="58" y="11" width="146" height="28"/>
                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                         <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -26,9 +26,15 @@
                         <color key="textColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12,55" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="XsD-vT-nE6">
-                        <rect key="frame" x="8" y="9" width="36" height="33"/>
-                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="28"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2000" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="XsD-vT-nE6">
+                        <rect key="frame" x="8" y="8" width="42" height="23"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                        <color key="textColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="packs of" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfN-LG-i1a">
+                        <rect key="frame" x="8" y="28" width="42" height="13"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="10"/>
                         <color key="textColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -38,8 +44,9 @@
                 <outlet property="nameLabel" destination="SDo-Ie-1y2" id="88q-ja-uNE"/>
                 <outlet property="priceLabel" destination="ppL-ca-Ez9" id="o62-0C-6rc"/>
                 <outlet property="quantityLabel" destination="XsD-vT-nE6" id="myT-ru-wv0"/>
+                <outlet property="typeLabel" destination="ZfN-LG-i1a" id="Rb7-5H-vgy"/>
             </connections>
-            <point key="canvasLocation" x="407" y="325"/>
+            <point key="canvasLocation" x="306" y="335"/>
         </tableViewCell>
     </objects>
 </document>

@@ -30,7 +30,11 @@ class QuantityEditor: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         quantityField.becomeFirstResponder()
-        quantityField.text = "\((componentToEdit.material?.quantity)! * componentToEdit.modifier)"
+        let material      = componentToEdit.material!
+        let componentName = material.name
+            .stringByReplacingOccurrencesOfString("_", withString: "")
+        quantityField.placeholder = "Quantity of \(componentName)"
+        quantityField.text! = "\(componentToEdit.modifier)"
     }
     
     override func viewWillAppear(animated: Bool) {

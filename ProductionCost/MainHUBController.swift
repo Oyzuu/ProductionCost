@@ -41,17 +41,20 @@ class MainHUBController: UIViewController {
         requestQuote()
         
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
+            
+            var userMail = "no user"
             if let user = user {
-                transition(onView: self.currentUserLabel, withDuration: 0.5) {
-                    self.currentUserLabel.text = user.email
+                    userMail = user.email!
                     setDefaultRealmForUser(user.email!)
-                }
             }
             else {
-                transition(onView: self.currentUserLabel, withDuration: 0.5) {
-                    self.currentUserLabel.text = "no user"
-                }
+                setDefaultRealmForUser("default")
             }
+            
+            transition(onView: self.currentUserLabel, withDuration: 0.5) {
+                self.currentUserLabel.text = userMail
+            }
+            
         }
     }
     
@@ -81,7 +84,26 @@ class MainHUBController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "Account" {
+            guard let controller = segue.destinationViewController as? AccountController else {
+                return
+            }
+            
+            controller.user = sender as! FIRUser
+        }
+    }
+    
     // MARK: Methods
+    
+    @IBAction func toAccount(sender: AnyObject) {
+        if let user = FIRAuth.auth()?.currentUser {
+            performSegueWithIdentifier("Account", sender: user)
+        }
+        else {
+            performSegueWithIdentifier("Login", sender: nil)
+        }
+    }
     
     @IBAction func toSettings() {
         HUD.flash(.LabeledError(title: nil, subtitle: "Not implemented yet"), delay: 1)

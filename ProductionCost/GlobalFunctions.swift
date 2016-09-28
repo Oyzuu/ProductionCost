@@ -18,10 +18,18 @@ func printDocumentsDirectory() {
 }
 
 func getDocumentsDirectory() -> String {
-//    let urls = NSFileManager.defaultManager()
-//        .URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
     let bis = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
     return bis + "/"
+}
+
+func printFonts() {
+    let fontFamilyNames = UIFont.familyNames()
+    for familyName in fontFamilyNames {
+        print("------------------------------")
+        print("Font Family Name = [\(familyName)]")
+        let names = UIFont.fontNamesForFamilyName(familyName)
+        print("Font Names = [\(names)]")
+    }
 }
 
 /// I needed this for testing at some point, don't judge me.
@@ -90,7 +98,7 @@ func createColoredSubview(forView view: UIView, withColor color: UIColor) -> UIV
     
     return foregroundView
 }
-
+ 
 /// Wrapper for Realm instance configuration
 func setDefaultRealmForUser(username: String) {
     var config = Realm.Configuration()

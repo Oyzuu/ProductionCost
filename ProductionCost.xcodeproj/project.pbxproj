@@ -11,6 +11,7 @@
 		5C07D4471D900F25001DA584 /* SupplierListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C07D4461D900F25001DA584 /* SupplierListCell.xib */; };
 		5C07D4491D901048001DA584 /* SupplierListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C07D4481D901048001DA584 /* SupplierListCell.swift */; };
 		5C07D44B1D90214D001DA584 /* AddSupplierCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C07D44A1D90214D001DA584 /* AddSupplierCell.xib */; };
+		5C38B5471D9BBCAF003C2B78 /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C38B5461D9BBCAF003C2B78 /* AccountController.swift */; };
 		5C3F5F261D89782A00AFB082 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F5F251D89782A00AFB082 /* Category.swift */; };
 		5C3F5F281D8979B600AFB082 /* CategoriesPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F5F271D8979B600AFB082 /* CategoriesPickerController.swift */; };
 		5C49A17F1D8A971E0008EC93 /* ProductListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C49A17E1D8A971E0008EC93 /* ProductListController.swift */; };
@@ -62,6 +63,7 @@
 		5C07D4461D900F25001DA584 /* SupplierListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SupplierListCell.xib; sourceTree = "<group>"; };
 		5C07D4481D901048001DA584 /* SupplierListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierListCell.swift; sourceTree = "<group>"; };
 		5C07D44A1D90214D001DA584 /* AddSupplierCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSupplierCell.xib; sourceTree = "<group>"; };
+		5C38B5461D9BBCAF003C2B78 /* AccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
 		5C3F5F251D89782A00AFB082 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		5C3F5F271D8979B600AFB082 /* CategoriesPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesPickerController.swift; sourceTree = "<group>"; };
 		5C49A17E1D8A971E0008EC93 /* ProductListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListController.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 			children = (
 				5CF233AF1D914690000CFC17 /* AboutController.swift */,
 				5CCAD89F1D92751300A2D686 /* LoginController.swift */,
+				5C38B5461D9BBCAF003C2B78 /* AccountController.swift */,
 			);
 			name = "Hub Modals";
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				5C6BCFEA1D9A72010032A171 /* QuantityEditor.swift in Sources */,
 				5C7BFCFF1D86B3D20004CFD5 /* Material.swift in Sources */,
 				5C87C38E1D8FCF2300BD6C4E /* Supplier.swift in Sources */,
+				5C38B5471D9BBCAF003C2B78 /* AccountController.swift in Sources */,
 				5C87C3921D8FEB6700BD6C4E /* SupplierPickerController.swift in Sources */,
 				5CCAD8A01D92751300A2D686 /* LoginController.swift in Sources */,
 				5C07D4491D901048001DA584 /* SupplierListCell.swift in Sources */,
