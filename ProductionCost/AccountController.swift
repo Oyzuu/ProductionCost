@@ -9,11 +9,13 @@
 import UIKit
 import Firebase
 import SkyFloatingLabelTextField
+import PKHUD
 
 class AccountController: UIViewController {
     
     // MARK: Outlets
     
+    @IBOutlet weak var helloLabel: UILabel!
     @IBOutlet weak var usermailLabel: UILabel!
     @IBOutlet weak var newPasswordField: SkyFloatingLabelTextField!
     @IBOutlet weak var passConfirmField: SkyFloatingLabelTextField!
@@ -39,7 +41,15 @@ class AccountController: UIViewController {
         updateButton.setTitleColor(AppColors.black, forState: .Disabled)
         logOutButton.withRoundedBorders()
 
-        usermailLabel.attributedText = getAttributedString(forMail: user.email!)
+        usermailLabel.attributedText = getAttributedString(forMail: user.email!, ofSize: 17)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        transition(onView: helloLabel, withDuration: 0.5) {
+            self.helloLabel.hidden = false
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,19 +59,44 @@ class AccountController: UIViewController {
     // MARK: Methods
     
     @IBAction func update(sender: AnyObject) {
-        if !checkPasswordFieldsValidity() {
+        view.endEditing(true)
+        
+        guard checkPasswordFieldsValidity() else {
             newPasswordField.errorMessage = "error !"
             passConfirmField.errorMessage = "error !"
             enabledUpdateButton(false, withTransition: true)
+            return
+        }
+        
+        user.updatePassword(passConfirmField.text!) { error in
+            
+            if let error = error {
+                HUD.flash(.LabeledError(title: nil, subtitle: error.localizedDescription), delay: 1)
+            }
+            else {
+                HUD.flash(.LabeledSuccess(title: nil, subtitle: "Your password has been updated"),
+                          delay: 0.5)
+            }
         }
     }
     
     @IBAction func logOff(sender: AnyObject) {
-        try! FIRAuth.auth()!.signOut()
+        view.endEditing(true)
+        
+        do {
+            try FIRAuth.auth()!.signOut()
+            HUD.flash(.LabeledSuccess(title: nil, subtitle: "Sign out"),
+                      delay: 0.5)
+        }
+        catch {
+            HUD.flash(.LabeledError(title: nil, subtitle: "\(error)"), delay: 1)
+        }
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func cancel(sender: AnyObject) {
+        view.endEditing(true)
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -97,25 +132,12 @@ class AccountController: UIViewController {
             return false
         }
         
+        guard newPass == confirmPass else {
+            print("different passwords")
+            return false
+        }
+        
         return true
-    }
-    
-    private func getAttributedString(forMail mail: String) -> NSMutableAttributedString {
-        let indexOfArobase   = mail.characters.indexOf("@")
-        let userString       = mail.substringToIndex(indexOfArobase!)
-        let domainString     = mail.substringFromIndex(indexOfArobase!)
-        
-        let avenirMedium17 = UIFont(name: "Avenir-Medium", size: 17)
-        let avenirNextUltraLight17 = UIFont(name: "AvenirNext-UltraLight", size: 17)
-        
-        let attributedUser   = NSMutableAttributedString(string: userString, attributes:
-            [NSFontAttributeName: avenirMedium17!])
-        
-        let attributedDomain = NSMutableAttributedString(string: domainString, attributes:
-            [NSFontAttributeName: avenirNextUltraLight17!])
-        attributedUser.appendAttributedString(attributedDomain)
-        
-        return attributedUser
     }
 
 }

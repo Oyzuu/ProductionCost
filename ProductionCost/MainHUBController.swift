@@ -41,20 +41,19 @@ class MainHUBController: UIViewController {
         requestQuote()
         
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
-            
-            var userMail = "no user"
             if let user = user {
-                    userMail = user.email!
-                    setDefaultRealmForUser(user.email!)
+                transition(onView: self.currentUserLabel, withDuration: 0.5) {
+                    self.currentUserLabel.attributedText =
+                        getAttributedString(forMail: user.email!, ofSize: 14)
+                }
+                setDefaultRealmForUser(user.email!)
             }
             else {
+                transition(onView: self.currentUserLabel, withDuration: 0.5) {
+                    self.currentUserLabel.text = "no user"
+                }
                 setDefaultRealmForUser("default")
             }
-            
-            transition(onView: self.currentUserLabel, withDuration: 0.5) {
-                self.currentUserLabel.text = userMail
-            }
-            
         }
     }
     

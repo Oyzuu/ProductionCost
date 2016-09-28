@@ -32,6 +32,27 @@ func printFonts() {
     }
 }
 
+/// return a mutable attributed string from mail with @doma.in in a lighter font
+func getAttributedString(forMail mail: String, ofSize size: CGFloat) -> NSMutableAttributedString {
+    guard let avenirMedium17 = UIFont(name: "Avenir-Medium", size: size),
+          let avenirNextUltraLight17 = UIFont(name: "AvenirNext-UltraLight", size: size) else {
+            return NSMutableAttributedString(string: mail)
+    }
+    
+    let indexOfArobase   = mail.characters.indexOf("@")
+    let userString       = mail.substringToIndex(indexOfArobase!)
+    let domainString     = mail.substringFromIndex(indexOfArobase!)
+    
+    let attributedUser   = NSMutableAttributedString(string: userString, attributes:
+        [NSFontAttributeName: avenirMedium17])
+    
+    let attributedDomain = NSMutableAttributedString(string: domainString, attributes:
+        [NSFontAttributeName: avenirNextUltraLight17])
+    attributedUser.appendAttributedString(attributedDomain)
+    
+    return attributedUser
+}
+
 /// I needed this for testing at some point, don't judge me.
 func generateRandomString(ofSize size: Int) -> String {
     var string = ""

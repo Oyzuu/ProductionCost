@@ -967,6 +967,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FwQ-Vi-wKs">
+                                <rect key="frame" x="44" y="248" width="232" height="33"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel:" destination="Xh1-Uh-5NB" eventType="touchUpInside" id="l89-3F-HbM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deL-BD-kaf">
+                                <rect key="frame" x="44" y="205" width="232" height="35"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Iqw-pw-Ah7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="Ok">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="validate:" destination="Xh1-Uh-5NB" eventType="touchUpInside" id="A0R-H1-JME"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2IX-zd-vF3" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                 <rect key="frame" x="44" y="143" width="232" height="54"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -995,31 +1020,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FwQ-Vi-wKs">
-                                <rect key="frame" x="44" y="248" width="232" height="33"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancel:" destination="Xh1-Uh-5NB" eventType="touchUpInside" id="l89-3F-HbM"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deL-BD-kaf">
-                                <rect key="frame" x="44" y="205" width="232" height="35"/>
-                                <color key="backgroundColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="Iqw-pw-Ah7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Ok">
-                                    <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="validate:" destination="Xh1-Uh-5NB" eventType="touchUpInside" id="A0R-H1-JME"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1109,12 +1109,6 @@
                                     <action selector="addTen:" destination="per-5t-5LM" eventType="touchUpInside" id="Alu-sB-nMZ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQn-13-heF">
-                                <rect key="frame" x="77" y="145" width="177" height="32"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
-                                <color key="textColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwg-ni-Iko">
                                 <rect key="frame" x="130" y="274" width="60" height="60"/>
                                 <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -1127,7 +1121,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOE-gq-oNi">
-                                <rect key="frame" x="121" y="383" width="78" height="40"/>
+                                <rect key="frame" x="121" y="356" width="78" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Cancel">
@@ -1137,6 +1131,12 @@
                                     <action selector="cancel:" destination="per-5t-5LM" eventType="touchUpInside" id="5DR-mZ-BgS"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQn-13-heF">
+                                <rect key="frame" x="77" y="145" width="177" height="32"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <color key="textColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                     </view>
@@ -1331,8 +1331,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3dl-yM-87b" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="58" y="124" width="204" height="45"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3dl-yM-87b" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <rect key="frame" x="58" y="88" width="204" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
@@ -1364,8 +1364,8 @@
                                     <outlet property="delegate" destination="0p5-OY-hfw" id="8Qk-1b-BcO"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bQh-JE-OMk" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="58" y="193" width="204" height="45"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bQh-JE-OMk" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <rect key="frame" x="58" y="152" width="204" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
@@ -1397,54 +1397,36 @@
                                     <outlet property="delegate" destination="0p5-OY-hfw" id="KD5-zx-P9s"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PbE-gu-AXg">
-                                <rect key="frame" x="58" y="266" width="204" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PbE-gu-AXg">
+                                <rect key="frame" x="58" y="217" width="204" height="36"/>
                                 <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                <state key="normal" title="Update">
+                                <state key="normal" title="Change password">
                                     <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="update:" destination="0p5-OY-hfw" eventType="touchUpInside" id="dmk-eb-kxe"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiK-pJ-DmY">
-                                <rect key="frame" x="20" y="44" width="71" height="41"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiK-pJ-DmY">
+                                <rect key="frame" x="125" y="20" width="71" height="41"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="30"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChV-4e-dCE">
-                                <rect key="frame" x="20" y="80" width="171" height="24"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="usermail">
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="17" name="Avenir-Medium"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="@prodeasy.be">
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="17" name="AvenirNext-UltraLight"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5H-ON-58f" userLabel="Log Out Button">
-                                <rect key="frame" x="58" y="310" width="204" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5H-ON-58f" userLabel="Log Out Button">
+                                <rect key="frame" x="58" y="261" width="204" height="36"/>
                                 <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                <state key="normal" title="Log out">
+                                <state key="normal" title="Sign out">
                                     <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="logOff:" destination="0p5-OY-hfw" eventType="touchUpInside" id="g8C-32-3au"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmN-Zn-xgb">
-                                <rect key="frame" x="58" y="354" width="204" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmN-Zn-xgb">
+                                <rect key="frame" x="58" y="305" width="204" height="36"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -1454,10 +1436,50 @@
                                     <action selector="cancel:" destination="0p5-OY-hfw" eventType="touchUpInside" id="KNr-Je-Kvn"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChV-4e-dCE">
+                                <rect key="frame" x="75" y="56" width="171" height="24"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="usermail">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="Avenir-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="@prodeasy.be">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="AvenirNext-UltraLight"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="PbE-gu-AXg" firstAttribute="centerX" secondItem="fDJ-c2-tls" secondAttribute="centerX" id="0ug-I3-CXF"/>
+                            <constraint firstItem="qmN-Zn-xgb" firstAttribute="centerX" secondItem="fDJ-c2-tls" secondAttribute="centerX" id="6PQ-5L-m2x"/>
+                            <constraint firstItem="bQh-JE-OMk" firstAttribute="leading" secondItem="qmN-Zn-xgb" secondAttribute="leading" id="IoW-PQ-ljc"/>
+                            <constraint firstItem="bQh-JE-OMk" firstAttribute="top" secondItem="3dl-yM-87b" secondAttribute="bottom" constant="19" id="JBm-SM-Wli"/>
+                            <constraint firstItem="3dl-yM-87b" firstAttribute="centerX" secondItem="fDJ-c2-tls" secondAttribute="centerX" id="SWD-tv-XDV"/>
+                            <constraint firstItem="bQh-JE-OMk" firstAttribute="leading" secondItem="PbE-gu-AXg" secondAttribute="leading" id="TLU-eg-ZSb"/>
+                            <constraint firstItem="3dl-yM-87b" firstAttribute="top" secondItem="ChV-4e-dCE" secondAttribute="bottom" constant="8" symbolic="YES" id="Z3r-ld-pFv"/>
+                            <constraint firstItem="bQh-JE-OMk" firstAttribute="centerX" secondItem="fDJ-c2-tls" secondAttribute="centerX" id="cNW-Ku-J3O"/>
+                            <constraint firstItem="JiK-pJ-DmY" firstAttribute="top" secondItem="rt2-PO-rd1" secondAttribute="bottom" id="dJF-ad-TGT"/>
+                            <constraint firstItem="3dl-yM-87b" firstAttribute="top" secondItem="JiK-pJ-DmY" secondAttribute="bottom" constant="27" id="ekY-3a-aUn"/>
+                            <constraint firstItem="qmN-Zn-xgb" firstAttribute="top" secondItem="C5H-ON-58f" secondAttribute="bottom" constant="8" symbolic="YES" id="gPc-Al-BR8"/>
+                            <constraint firstItem="ChV-4e-dCE" firstAttribute="centerX" secondItem="fDJ-c2-tls" secondAttribute="centerX" id="h55-Eu-d1M"/>
+                            <constraint firstItem="C5H-ON-58f" firstAttribute="centerX" secondItem="fDJ-c2-tls" secondAttribute="centerX" id="kuf-L5-GF0"/>
+                            <constraint firstItem="PbE-gu-AXg" firstAttribute="top" secondItem="bQh-JE-OMk" secondAttribute="bottom" constant="20" id="lI2-aA-aXK"/>
+                            <constraint firstItem="JiK-pJ-DmY" firstAttribute="centerX" secondItem="fDJ-c2-tls" secondAttribute="centerX" id="liw-iu-xmZ"/>
+                            <constraint firstItem="sR1-7p-fLS" firstAttribute="top" secondItem="qmN-Zn-xgb" secondAttribute="bottom" constant="227" id="pbS-iN-YoA"/>
+                            <constraint firstItem="bQh-JE-OMk" firstAttribute="leading" secondItem="C5H-ON-58f" secondAttribute="leading" id="zHD-ob-TC7"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="helloLabel" destination="JiK-pJ-DmY" id="B3u-PK-VdY"/>
                         <outlet property="logOutButton" destination="C5H-ON-58f" id="0jn-9l-IkW"/>
                         <outlet property="newPasswordField" destination="3dl-yM-87b" id="97w-D8-C5K"/>
                         <outlet property="passConfirmField" destination="bQh-JE-OMk" id="cqc-xl-jM2"/>
@@ -1482,7 +1504,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gMR-gZ-acv" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="58" y="70" width="204" height="45"/>
+                                <rect key="frame" x="58" y="88" width="204" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
@@ -1512,7 +1534,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hxy-NU-iwb" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="58" y="144" width="204" height="45"/>
+                                <rect key="frame" x="58" y="151" width="204" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
@@ -1542,7 +1564,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFx-CK-QF5">
-                                <rect key="frame" x="58" y="219" width="204" height="36"/>
+                                <rect key="frame" x="58" y="217" width="204" height="36"/>
                                 <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Sign in">
@@ -1553,8 +1575,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbx-CX-0sE">
-                                <rect key="frame" x="58" y="263" width="204" height="36"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="58" y="261" width="204" height="36"/>
+                                <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Sign up">
                                     <color key="titleColor" red="0.96078431372549022" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
@@ -1564,7 +1586,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2u-GT-7uO">
-                                <rect key="frame" x="58" y="307" width="204" height="36"/>
+                                <rect key="frame" x="58" y="305" width="204" height="36"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -1573,31 +1595,33 @@
                                     <action selector="backToHub:" destination="55h-sE-r8s" eventType="touchUpInside" id="bEl-wC-ET4"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c82-mN-KDq">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c82-mN-KDq">
                                 <rect key="frame" x="97" y="20" width="127" height="41"/>
                                 <string key="text" base64-UTF8="YES">
 EFdlbGNvbWU
 </string>
                                 <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="30"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="nbx-CX-0sE" firstAttribute="centerX" secondItem="K5t-Bl-VlQ" secondAttribute="centerX" id="3Pu-Gh-Tda"/>
-                            <constraint firstItem="gMR-gZ-acv" firstAttribute="top" secondItem="Qse-rk-CZV" secondAttribute="bottom" constant="50" id="86c-Np-3y2"/>
-                            <constraint firstItem="SFx-CK-QF5" firstAttribute="centerX" secondItem="K5t-Bl-VlQ" secondAttribute="centerX" id="DHe-7Z-TLB"/>
-                            <constraint firstItem="P2u-GT-7uO" firstAttribute="centerX" secondItem="K5t-Bl-VlQ" secondAttribute="centerX" id="Dy0-bq-Fl0"/>
-                            <constraint firstItem="P2u-GT-7uO" firstAttribute="top" secondItem="nbx-CX-0sE" secondAttribute="bottom" constant="8" symbolic="YES" id="Ntq-hA-FcL"/>
-                            <constraint firstItem="hxy-NU-iwb" firstAttribute="centerX" secondItem="K5t-Bl-VlQ" secondAttribute="centerX" id="Zy2-lE-bxZ"/>
-                            <constraint firstItem="nbx-CX-0sE" firstAttribute="top" secondItem="SFx-CK-QF5" secondAttribute="bottom" constant="8" symbolic="YES" id="c5x-zH-Tiw"/>
-                            <constraint firstItem="hxy-NU-iwb" firstAttribute="top" secondItem="gMR-gZ-acv" secondAttribute="bottom" constant="29" id="cll-XQ-55y"/>
-                            <constraint firstItem="gMR-gZ-acv" firstAttribute="centerX" secondItem="K5t-Bl-VlQ" secondAttribute="centerX" id="czk-3h-lfE"/>
-                            <constraint firstItem="gMR-gZ-acv" firstAttribute="leading" secondItem="P2u-GT-7uO" secondAttribute="leading" id="hQu-We-DOz"/>
-                            <constraint firstItem="gMR-gZ-acv" firstAttribute="leading" secondItem="nbx-CX-0sE" secondAttribute="leading" id="lsf-4A-mK7"/>
-                            <constraint firstItem="gMR-gZ-acv" firstAttribute="leading" secondItem="SFx-CK-QF5" secondAttribute="leading" id="meh-G3-AiL"/>
-                            <constraint firstItem="SFx-CK-QF5" firstAttribute="top" secondItem="hxy-NU-iwb" secondAttribute="bottom" constant="30" id="rXS-Tt-4IR"/>
+                            <constraint firstItem="hxy-NU-iwb" firstAttribute="leading" secondItem="SFx-CK-QF5" secondAttribute="leading" id="1f8-NQ-n4d"/>
+                            <constraint firstItem="P2u-GT-7uO" firstAttribute="centerX" secondItem="K5t-Bl-VlQ" secondAttribute="centerX" id="2Q9-ea-kuf"/>
+                            <constraint firstItem="c82-mN-KDq" firstAttribute="centerX" secondItem="K5t-Bl-VlQ" secondAttribute="centerX" id="81g-hA-FfH"/>
+                            <constraint firstItem="hxy-NU-iwb" firstAttribute="centerX" secondItem="K5t-Bl-VlQ" secondAttribute="centerX" id="C8m-8L-OUm"/>
+                            <constraint firstItem="hxy-NU-iwb" firstAttribute="leading" secondItem="P2u-GT-7uO" secondAttribute="leading" id="GWJ-Mb-Tyh"/>
+                            <constraint firstItem="P2u-GT-7uO" firstAttribute="top" secondItem="nbx-CX-0sE" secondAttribute="bottom" constant="8" symbolic="YES" id="MbF-Fz-kLH"/>
+                            <constraint firstItem="gMR-gZ-acv" firstAttribute="centerX" secondItem="K5t-Bl-VlQ" secondAttribute="centerX" id="OlS-vD-yCp"/>
+                            <constraint firstItem="c82-mN-KDq" firstAttribute="top" secondItem="Qse-rk-CZV" secondAttribute="bottom" id="PZu-uP-zKI"/>
+                            <constraint firstItem="hxy-NU-iwb" firstAttribute="top" secondItem="gMR-gZ-acv" secondAttribute="bottom" constant="18" id="SN8-zm-qU9"/>
+                            <constraint firstItem="hxy-NU-iwb" firstAttribute="leading" secondItem="nbx-CX-0sE" secondAttribute="leading" id="VxZ-Sz-i6J"/>
+                            <constraint firstItem="nbx-CX-0sE" firstAttribute="centerX" secondItem="K5t-Bl-VlQ" secondAttribute="centerX" id="Zfe-oF-MCn"/>
+                            <constraint firstItem="SFx-CK-QF5" firstAttribute="centerX" secondItem="K5t-Bl-VlQ" secondAttribute="centerX" id="ihI-gb-Bpq"/>
+                            <constraint firstItem="SFx-CK-QF5" firstAttribute="top" secondItem="hxy-NU-iwb" secondAttribute="bottom" constant="21" id="ko1-Qz-SZB"/>
+                            <constraint firstItem="nbx-CX-0sE" firstAttribute="top" secondItem="SFx-CK-QF5" secondAttribute="bottom" constant="8" symbolic="YES" id="y0d-Wy-uOO"/>
+                            <constraint firstItem="gMR-gZ-acv" firstAttribute="top" secondItem="c82-mN-KDq" secondAttribute="bottom" constant="27" id="ztt-rM-kaX"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1606,6 +1630,7 @@ EFdlbGNvbWU
                         <outlet property="passwordField" destination="hxy-NU-iwb" id="tKj-sS-uMf"/>
                         <outlet property="signInButton" destination="SFx-CK-QF5" id="uh2-of-jg8"/>
                         <outlet property="signUpButton" destination="nbx-CX-0sE" id="6qZ-yO-ZB8"/>
+                        <outlet property="welcomeLabel" destination="c82-mN-KDq" id="PU5-ZO-YdO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lQq-Tq-GDf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1631,12 +1656,6 @@ EFdlbGNvbWU
                                     <segue destination="7l2-UH-cx1" kind="push" id="xTM-BC-bAu"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Products" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VzM-U8-a1L">
-                                <rect key="frame" x="20" y="243" width="73" height="21"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0sh-XJ-dZz">
                                 <rect key="frame" x="135" y="185" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -1647,7 +1666,7 @@ EFdlbGNvbWU
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Components" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSp-FP-VoD">
                                 <rect key="frame" x="111" y="242" width="99" height="24"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKp-ix-20e">
@@ -1660,7 +1679,7 @@ EFdlbGNvbWU
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Suppliers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dY-ex-Gco">
                                 <rect key="frame" x="229" y="242" width="71" height="24"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUL-Td-brq">
@@ -1673,7 +1692,7 @@ EFdlbGNvbWU
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvz-5p-1v5">
                                 <rect key="frame" x="25" y="359" width="63" height="24"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qh9-MK-HDa">
@@ -1686,7 +1705,7 @@ EFdlbGNvbWU
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mW-wD-pkf">
                                 <rect key="frame" x="129" y="359" width="62" height="24"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ap-ay-Y7b">
@@ -1699,14 +1718,7 @@ EFdlbGNvbWU
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fW-0K-k3h">
                                 <rect key="frame" x="240" y="359" width="48" height="24"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="justified" lineBreakMode="headTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="eEn-AD-axN">
-                                <rect key="frame" x="20" y="491" width="280" height="69"/>
-                                <string key="text">"No man was ever wise by chance.""No man was ever wise by chance.""No man was ever wise by chance.""No man was ever wise by chance.""No man was ever wise by chance."</string>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current user : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdG-KS-q2j">
@@ -1715,16 +1727,28 @@ EFdlbGNvbWU
                                 <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.74865301724137934" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="On a random day, this random philospher with a lengthy name said : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="lOH-L7-clO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="current@user.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySI-cI-KGB">
+                                <rect key="frame" x="111" y="74" width="189" height="20"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="lOH-L7-clO">
                                 <rect key="frame" x="20" y="471" width="280" height="17"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                 <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.50021551724137936" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="current@user.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySI-cI-KGB">
-                                <rect key="frame" x="111" y="74" width="189" height="20"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="justified" lineBreakMode="headTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="eEn-AD-axN">
+                                <rect key="frame" x="20" y="491" width="280" height="69"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Products" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VzM-U8-a1L">
+                                <rect key="frame" x="20" y="243" width="73" height="21"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

@@ -15,6 +15,7 @@ class LoginController: UIViewController {
     
     // MARK: Outlets
 
+    @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var signInButton:  UIButton!
     @IBOutlet weak var signUpButton:  UIButton!
     @IBOutlet weak var backButton:    UIButton!
@@ -42,6 +43,14 @@ class LoginController: UIViewController {
         
         mailField.delegate     = self
         passwordField.delegate = self
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        transition(onView: welcomeLabel, withDuration: 0.5) {
+            self.welcomeLabel.hidden = false
+        }
     }
 
     override func didReceiveMemoryWarning() {
