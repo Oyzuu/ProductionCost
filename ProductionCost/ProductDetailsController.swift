@@ -190,12 +190,9 @@ extension ProductDetailsController: UITableViewDataSource {
         if editingStyle == .Delete {
             
             try! Realm().write {
-                if let productToEdit = self.productToEdit {
-                    productToEdit.components.removeAtIndex(indexPath.row)
-                }
-                else {
-                    product.components.removeAtIndex(indexPath.row)
-                }
+                let materialWithIdentifier = getActiveProduct().components[indexPath.row]
+                getActiveProduct().components.removeAtIndex(indexPath.row)
+                try! Realm().delete(materialWithIdentifier)
             }
             
             updateUI()

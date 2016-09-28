@@ -23,7 +23,6 @@ class MaterialListController: UIViewController {
     
     // MARK: Outlets
     
-    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Properties

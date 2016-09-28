@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import PKHUD
 
 // MARK: Protocol for delegate
 
@@ -19,17 +20,13 @@ class ProductDetailsMaterialPickerController: UITableViewController {
     
     // MARK: Properties
     
-    var dataModel = [Material]()
-    var results: Results<Material>?
+    var results = try! Realm().objects(Material.self).sorted("name")
     var delegate: MaterialPickerDelegate?
     
     // MARK: Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        results = try! Realm().objects(Material.self).sorted("name")
-        updateDataModel()
         
         nibRegistration(onTableView: tableView, forIdentifiers: "MaterialInProductPickerCell")
     }
@@ -38,6 +35,15 @@ class ProductDetailsMaterialPickerController: UITableViewController {
         super.viewWillAppear(animated)
         
         tableView.backgroundColor = AppColors.white
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if results.count == 0 {
+            HUD.flash(.Label("No component found"), delay: 1) { result in
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,19 +60,6 @@ class ProductDetailsMaterialPickerController: UITableViewController {
             controller.selectedMaterial = (sender as! Material)
         }
     }
-    
-    // MARK: Methods
-    
-    private func updateDataModel() {
-        guard let results = self.results else {
-            return
-        }
-        
-        dataModel = []
-        for result in results {
-            dataModel.append(result)
-        }
-    }
 
 }
 
@@ -75,13 +68,13 @@ class ProductDetailsMaterialPickerController: UITableViewController {
 extension ProductDetailsMaterialPickerController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataModel.count
+        return results.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(
             "MaterialInProductPickerCell", forIndexPath: indexPath) as! MaterialInProductPickerCell
-        let material = dataModel[indexPath.row]
+        let material = results[indexPath.row]
         
         let imageName = material.isPack || material.isSubMaterial ? "raspberry" : "naples"
         let image = UIImage(named: imageName)
@@ -104,7 +97,7 @@ extension ProductDetailsMaterialPickerController {
 extension ProductDetailsMaterialPickerController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let material = results![indexPath.row]
+        let material = results[indexPath.row]
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         performSegueWithIdentifier("ComponentQuantityModal", sender: material)

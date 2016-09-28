@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import PKHUD
 
 protocol SupplierPickerDelegate: class {
     func supplierPickerDelegate(didPick supplier: Supplier)
@@ -30,6 +31,16 @@ class SupplierPickerController: UITableViewController {
         super.viewWillAppear(animated)
         
         tableView.tableFooterView = UIView()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if results.count == 0 {
+            HUD.flash(.Label("No supplier found"), delay: 1) { result in
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

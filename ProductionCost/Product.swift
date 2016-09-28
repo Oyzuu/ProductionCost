@@ -26,4 +26,16 @@ class Product: Object {
         return sum
     }
     
+    var suppliersCount: Int {
+        var count = 0
+        
+        for component in components {
+            if component.material?.supplier != nil {
+                count += 1
+            }
+        }
+        
+        return count
+    }
+    
 }

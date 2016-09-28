@@ -34,11 +34,17 @@ class ActionsModal: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-//        addBlurredBackground(onView: view, withStyle: .Dark)
-        
+        seeSuppliersButton.setTitleColor(AppColors.black, forState: .Disabled)
         seeSuppliersButton.withRoundedBorders()
+        setEnableState(ofButton: seeSuppliersButton, onCondition: productToExport.suppliersCount > 0)
+        
+        pdfButton.setTitleColor(AppColors.black, forState: .Disabled)
         pdfButton.withRoundedBorders()
+        setEnableState(ofButton: pdfButton, onCondition: productToExport.components.count > 0)
+        
+        csvButton.setTitleColor(AppColors.black, forState: .Disabled)
         csvButton.withRoundedBorders()
+        setEnableState(ofButton: csvButton, onCondition: productToExport.components.count > 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,6 +63,11 @@ class ActionsModal: UIViewController {
     }
     
     // MARK: Methods
+    
+    private func setEnableState(ofButton button: UIButton, onCondition condition: Bool) {
+        button.enabled         = condition
+        button.backgroundColor = condition ? AppColors.raspberry : AppColors.black25
+    }
     
     @IBAction func exportToPDF(sender: AnyObject) {
         
@@ -84,7 +95,10 @@ class ActionsModal: UIViewController {
         // User
         
         pdf.setFont(avenir12)
-        pdf.addText("created by \(userMail!)")
+        if let userMail = userMail {
+            pdf.addText("created by \(userMail)")
+        }
+        
         
         pdf.addLineSpace(5)
         pdf.addLineSeparator(height: 0.1)

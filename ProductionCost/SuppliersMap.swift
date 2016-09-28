@@ -110,9 +110,9 @@ extension SuppliersMap: MKMapViewDelegate {
         
         if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView.enabled        = true
-            annotationView.animatesDrop   = false
-            annotationView.pinTintColor   = AppColors.raspberry
+            annotationView.enabled      = true
+            annotationView.animatesDrop = false
+            annotationView.pinTintColor = AppColors.raspberry
         }
         else {
             annotationView.annotation = annotation
