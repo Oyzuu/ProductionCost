@@ -8,13 +8,36 @@
 
 import Foundation
 import RealmSwift
+import MapKit
 
-class Supplier: Object {
+class Supplier: Object, MKAnnotation {
+    
+    // MARK: Stored properties
     
     dynamic var name             = ""
+    dynamic var address: String? = nil
     let         latitude         = RealmOptional<Double>()
     let         longitude        = RealmOptional<Double>()
-    dynamic var address: String? = nil
+    
+    // MARK: MKAnnotation properties
+    
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latitude.value!, longitude: longitude.value!)
+    }
+    
+    var title: String? {
+        return name
+    }
+    
+    var subtitle: String? {
+        if let address = self.address {
+            return address
+        }
+        
+        return "No address"
+    }
+    
+    // MARK: Hash value
     
     override var hashValue: Int {
         var hash = name.characters.count

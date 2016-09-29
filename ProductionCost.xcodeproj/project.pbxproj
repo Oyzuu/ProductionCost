@@ -217,10 +217,7 @@
 		5C4AE6D31D8695610021199F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5C7BFCFE1D86B3D20004CFD5 /* Material.swift */,
-				5C49A1831D8A98D30008EC93 /* Product.swift */,
-				5C87C38D1D8FCF2300BD6C4E /* Supplier.swift */,
-				5C57A5B81D94002500AC57A0 /* MaterialWithModifier.swift */,
+				5CC19ABE1D9D031F008FA17F /* Realm models */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -276,6 +273,17 @@
 				5CAE04EF1D87FC6B00BB9590 /* GlobalFunctions.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		5CC19ABE1D9D031F008FA17F /* Realm models */ = {
+			isa = PBXGroup;
+			children = (
+				5C7BFCFE1D86B3D20004CFD5 /* Material.swift */,
+				5C49A1831D8A98D30008EC93 /* Product.swift */,
+				5C87C38D1D8FCF2300BD6C4E /* Supplier.swift */,
+				5C57A5B81D94002500AC57A0 /* MaterialWithModifier.swift */,
+			);
+			name = "Realm models";
 			sourceTree = "<group>";
 		};
 		5CCAD8A11D92755500A2D686 /* Component list */ = {

@@ -29,9 +29,7 @@ class SuppliersMap: UIViewController {
                 continue
             }
             
-            if let latitude = supplier.latitude.value, longitude = supplier.longitude.value {
-                mapView.addAnnotation(CLLocation(latitude: latitude, longitude: longitude))
-            }
+            mapView.addAnnotation(supplier)
         }
     }
     
@@ -110,9 +108,11 @@ extension SuppliersMap: MKMapViewDelegate {
         
         if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView.enabled      = true
-            annotationView.animatesDrop = false
-            annotationView.pinTintColor = AppColors.raspberry
+            
+            annotationView.enabled        = true
+            annotationView.animatesDrop   = false
+            annotationView.pinTintColor   = AppColors.raspberry
+            annotationView.canShowCallout = true
         }
         else {
             annotationView.annotation = annotation
