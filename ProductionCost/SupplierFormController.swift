@@ -137,18 +137,17 @@ class SupplierFormController: UIViewController {
         if let supplierToEdit = self.supplierToEdit {
             let realm = try! Realm()
             try! realm.write {
-                supplierToEdit.name    = nameField.text!
-                supplierToEdit.address = addressField.text!
                 
                 if addressField.text?.trim() != "", let location = self.location {
                     supplierToEdit.latitude.value  = location.coordinate.latitude
                     supplierToEdit.longitude.value = location.coordinate.longitude
                 }
-                else {
+                else if addressField.text?.trim() != supplierToEdit.address {
                     supplierToEdit.latitude.value  = nil
                     supplierToEdit.longitude.value = nil
                 }
                 
+                supplierToEdit.name    = nameField.text!
                 supplierToEdit.address = addressField.text!
             }
             
@@ -194,6 +193,7 @@ class SupplierFormController: UIViewController {
                 let filename = self.nameField.text!
                     .stringByReplacingOccurrencesOfString(" ", withString: "") + ".png"
                 let filepath = getDocumentsDirectory() + filename
+                
                 do {
                     try data.writeToFile(filepath, options: .DataWritingAtomic)
                 }

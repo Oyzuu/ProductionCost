@@ -22,7 +22,11 @@ class Supplier: Object, MKAnnotation {
     // MARK: MKAnnotation properties
     
     var coordinate: CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(latitude: latitude.value!, longitude: longitude.value!)
+        guard let latitude = self.latitude.value, let longitude = self.longitude.value else {
+            return CLLocationCoordinate2D()
+        }
+        
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
     var title: String? {

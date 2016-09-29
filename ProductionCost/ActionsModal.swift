@@ -58,7 +58,7 @@ class ActionsModal: UIViewController {
                     return
             }
             
-            controller.product = productToExport
+            controller.product  = productToExport
         }
     }
     

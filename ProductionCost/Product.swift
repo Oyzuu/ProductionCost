@@ -26,12 +26,22 @@ class Product: Object {
         return sum
     }
     
+    // used only on SuppliersMap thus need to exclude suppliers without coordinate
     var suppliersCount: Int {
         var count = 0
         
         for component in components {
-            if component.material?.supplier != nil {
+            guard let supplier = component.material?.supplier else {
+                print("no supplier")
+                continue
+            }
+            
+            if supplier.coordinate.latitude != 0 &&  supplier.coordinate.longitude != 0 {
                 count += 1
+                print("found supplier coordinate")
+            }
+            else {
+                print("empty supplier coordinate")
             }
         }
         

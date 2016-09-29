@@ -17,7 +17,7 @@ class SuppliersMap: UIViewController {
     
     // MARK: Properties
     
-    var product: Product!
+    var product:  Product!
     
     // MARK: Overrides
 
@@ -26,9 +26,16 @@ class SuppliersMap: UIViewController {
         
         for component in product.components {
             guard let supplier = component.material?.supplier else {
+                print("SuppliersMap : nil supplier")
                 continue
             }
             
+            guard supplier.latitude.value != nil && supplier.longitude.value != nil else {
+                print("SuppliersMap : nil coordinate")
+                continue
+            }
+            
+            print("SuppliersMap : added one supplier")
             mapView.addAnnotation(supplier)
         }
     }
@@ -63,8 +70,8 @@ class SuppliersMap: UIViewController {
         var region = MKCoordinateRegion()
         
         switch annotations.count {
-        case 0:
-            region = MKCoordinateRegionMakeWithDistance(mapView.userLocation.coordinate, 1000, 1000)
+//        case 0:
+//            region = MKCoordinateRegionMakeWithDistance(mapView.userLocation.coordinate, 1000, 1000)
         case 1:
             region = MKCoordinateRegionMakeWithDistance(annotations[0].coordinate, 1000, 1000)
         default :
@@ -82,7 +89,7 @@ class SuppliersMap: UIViewController {
                 
                 let center = CLLocationCoordinate2D(latitude: centerLatitude, longitude: centerLongitude)
                 
-                let extraSpace = 1.5
+                let extraSpace = 1.9
                 let span = MKCoordinateSpan(
                     latitudeDelta:  extraSpace * abs(topLeft.latitude  - bottomRight.latitude),
                     longitudeDelta: extraSpace * abs(topLeft.longitude - bottomRight.longitude))

@@ -195,11 +195,10 @@
 		5C4AE6D11D8691860021199F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5C87C3931D8FF59400BD6C4E /* MainHUBController.swift */,
+				5CC19AC11D9D4115008FA17F /* Hub */,
 				5CCAD8A11D92755500A2D686 /* Component list */,
 				5CCAD8A21D92756900A2D686 /* Product list */,
 				5CCAD8A31D92757500A2D686 /* Supplier list */,
-				5CCAD8A41D92757E00A2D686 /* Hub Modals */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -286,6 +285,15 @@
 			name = "Realm models";
 			sourceTree = "<group>";
 		};
+		5CC19AC11D9D4115008FA17F /* Hub */ = {
+			isa = PBXGroup;
+			children = (
+				5C87C3931D8FF59400BD6C4E /* MainHUBController.swift */,
+				5CCAD8A41D92757E00A2D686 /* Modals */,
+			);
+			name = Hub;
+			sourceTree = "<group>";
+		};
 		5CCAD8A11D92755500A2D686 /* Component list */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,14 +325,14 @@
 			name = "Supplier list";
 			sourceTree = "<group>";
 		};
-		5CCAD8A41D92757E00A2D686 /* Hub Modals */ = {
+		5CCAD8A41D92757E00A2D686 /* Modals */ = {
 			isa = PBXGroup;
 			children = (
 				5CF233AF1D914690000CFC17 /* AboutController.swift */,
 				5CCAD89F1D92751300A2D686 /* LoginController.swift */,
 				5C38B5461D9BBCAF003C2B78 /* AccountController.swift */,
 			);
-			name = "Hub Modals";
+			name = Modals;
 			sourceTree = "<group>";
 		};
 		94A0D64F4311AC8DC4CA8D76 /* Frameworks */ = {
