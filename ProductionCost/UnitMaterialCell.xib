@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,8 +15,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="999999,99 €" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MN4-ee-GOY">
-                        <rect key="frame" x="187" y="11" width="125" height="27"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999999,99 €" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MN4-ee-GOY">
+                        <rect key="frame" x="199" y="11" width="113" height="27"/>
                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                         <color key="textColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -33,6 +34,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="MN4-ee-GOY" firstAttribute="top" secondItem="btM-YP-rPP" secondAttribute="topMargin" constant="3" id="HSW-nZ-Pfk"/>
+                    <constraint firstItem="MN4-ee-GOY" firstAttribute="centerY" secondItem="btM-YP-rPP" secondAttribute="centerY" id="epF-xj-y2c"/>
+                    <constraint firstItem="MN4-ee-GOY" firstAttribute="trailing" secondItem="btM-YP-rPP" secondAttribute="trailingMargin" id="fO9-PQ-i5J"/>
+                </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.96078431372549022" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
             <connections>

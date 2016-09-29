@@ -78,6 +78,9 @@ class AccountController: UIViewController {
                           delay: 0.5)
             }
         }
+        
+        newPasswordField.text = ""
+        passConfirmField.text = ""
     }
     
     @IBAction func logOff(sender: AnyObject) {

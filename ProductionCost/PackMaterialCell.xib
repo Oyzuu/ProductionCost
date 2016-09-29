@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -29,8 +30,8 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="raspberry" translatesAutoresizingMaskIntoConstraints="NO" id="sAU-7m-bQt">
                         <rect key="frame" x="0.0" y="0.0" width="10" height="50"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="999999,99 €" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2WL-dt-bye">
-                        <rect key="frame" x="183" y="12" width="129" height="26"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999999,99 €" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2WL-dt-bye">
+                        <rect key="frame" x="199" y="12" width="113" height="26"/>
                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                         <color key="textColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -38,6 +39,11 @@
                         <size key="shadowOffset" width="1" height="1"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="2WL-dt-bye" firstAttribute="top" secondItem="OUi-Au-dWO" secondAttribute="topMargin" constant="4" id="B4i-oq-j6N"/>
+                    <constraint firstItem="2WL-dt-bye" firstAttribute="trailing" secondItem="OUi-Au-dWO" secondAttribute="trailingMargin" id="aI8-nF-8GS"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="2WL-dt-bye" secondAttribute="bottom" constant="3" id="mll-fv-RGI"/>
+                </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
             <connections>

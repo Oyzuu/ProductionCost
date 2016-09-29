@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -29,8 +30,8 @@
                         <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.74865301724137934" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="999999,99 €" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkK-OO-CqE">
-                        <rect key="frame" x="183" y="12" width="129" height="26"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999999,99 €" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkK-OO-CqE">
+                        <rect key="frame" x="199" y="12" width="113" height="26"/>
                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                         <color key="textColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="0.5" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -38,6 +39,11 @@
                         <size key="shadowOffset" width="1" height="1"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="gkK-OO-CqE" firstAttribute="top" secondItem="tdK-N0-MOP" secondAttribute="topMargin" constant="4" id="UbD-IP-ebJ"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="gkK-OO-CqE" secondAttribute="bottom" constant="3" id="p1j-wJ-klI"/>
+                    <constraint firstItem="gkK-OO-CqE" firstAttribute="trailing" secondItem="tdK-N0-MOP" secondAttribute="trailingMargin" id="uRD-L7-LIW"/>
+                </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.96078431369999995" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
             <connections>

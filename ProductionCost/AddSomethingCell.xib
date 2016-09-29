@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,15 +15,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add something" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IC0-zH-BLc">
-                        <rect key="frame" x="92" y="12" width="137" height="26"/>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add something" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IC0-zH-BLc">
+                        <rect key="frame" x="91" y="11" width="138" height="27"/>
                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                         <color key="textColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <size key="shadowOffset" width="1" height="1"/>
                     </label>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xNS-5F-JbZ" customClass="FontAwesomeView" customModule="FontAwesome_swift">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNS-5F-JbZ" customClass="FontAwesomeView" customModule="FontAwesome_swift">
                         <rect key="frame" x="129" y="6" width="63" height="37"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.76862745099999996" green="0.16078431369999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -32,6 +33,14 @@
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="xNS-5F-JbZ" firstAttribute="leading" secondItem="PeC-S7-XJ0" secondAttribute="leading" constant="129" id="HLG-Oq-qEC"/>
+                    <constraint firstItem="IC0-zH-BLc" firstAttribute="centerX" secondItem="PeC-S7-XJ0" secondAttribute="centerX" id="Qrn-Wp-6GS"/>
+                    <constraint firstItem="IC0-zH-BLc" firstAttribute="centerY" secondItem="PeC-S7-XJ0" secondAttribute="centerY" id="YNP-eE-tj1"/>
+                    <constraint firstItem="xNS-5F-JbZ" firstAttribute="centerY" secondItem="PeC-S7-XJ0" secondAttribute="centerY" id="aIH-bl-dag"/>
+                    <constraint firstItem="xNS-5F-JbZ" firstAttribute="top" secondItem="PeC-S7-XJ0" secondAttribute="topMargin" constant="-2" id="qis-al-6fi"/>
+                    <constraint firstItem="xNS-5F-JbZ" firstAttribute="centerX" secondItem="PeC-S7-XJ0" secondAttribute="centerX" id="yvW-ic-yXc"/>
+                </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,8 +15,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="999999,99 $" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RL-AF-sRS">
-                        <rect key="frame" x="202" y="11" width="110" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999999,99 $" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RL-AF-sRS">
+                        <rect key="frame" x="207" y="11" width="105" height="21"/>
                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                         <color key="textColor" red="0.13725490200000001" green="0.1176470588" blue="0.1176470588" alpha="0.5" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -30,6 +31,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="9RL-AF-sRS" firstAttribute="trailing" secondItem="cQD-Go-ode" secondAttribute="trailingMargin" id="1XI-wk-Bgy"/>
+                    <constraint firstItem="9RL-AF-sRS" firstAttribute="top" secondItem="cQD-Go-ode" secondAttribute="topMargin" constant="3" id="eUG-Cg-PsF"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="9RL-AF-sRS" secondAttribute="bottom" constant="3" id="sgG-pQ-rCd"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="indicator" destination="hEZ-UF-B99" id="Tsz-b9-kkH"/>
