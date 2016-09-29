@@ -11,10 +11,12 @@ import RealmSwift
 
 class Product: Object {
     
-    // MARK: Properties
+    // MARK: Realm properties
     
     dynamic var name = ""
     let components   = List<MaterialWithModifier>()
+    
+    // MARK: Properties
     
     var price: Double {
         var sum = 0.0

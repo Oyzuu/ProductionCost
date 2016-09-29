@@ -12,7 +12,7 @@ import MapKit
 
 class Supplier: Object, MKAnnotation {
     
-    // MARK: Stored properties
+    // MARK: Realm properties
     
     dynamic var name             = ""
     dynamic var address: String? = nil

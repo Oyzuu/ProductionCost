@@ -11,6 +11,8 @@ import RealmSwift
 
 class MaterialWithModifier: Object {
     
+    // MARK: Realm properties
+    
     dynamic var material: Material?
     dynamic var modifier   = 1.0
     

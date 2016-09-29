@@ -11,7 +11,7 @@ import RealmSwift
 
 class Material: Object {
     
-    // MARK: properties
+    // MARK: Realm properties
     
     dynamic var name             = ""
     dynamic var quantity: Double = 1.0
