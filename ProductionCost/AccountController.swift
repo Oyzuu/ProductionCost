@@ -62,8 +62,6 @@ class AccountController: UIViewController {
         view.endEditing(true)
         
         guard checkPasswordFieldsValidity() else {
-            newPasswordField.errorMessage = "error !"
-            passConfirmField.errorMessage = "error !"
             enabledUpdateButton(false, withTransition: true)
             return
         }
@@ -71,7 +69,8 @@ class AccountController: UIViewController {
         user.updatePassword(passConfirmField.text!) { error in
             
             if let error = error {
-                HUD.flash(.LabeledError(title: nil, subtitle: error.localizedDescription), delay: 1)
+                print(error.localizedDescription)
+                HUD.flash(.LabeledError(title: nil, subtitle: "Please log in again and retry"), delay: 1)
             }
             else {
                 HUD.flash(.LabeledSuccess(title: nil, subtitle: "Your password has been updated"),
@@ -125,18 +124,29 @@ class AccountController: UIViewController {
         let newPass     = newPasswordField.text?.trim()
         let confirmPass = passConfirmField.text?.trim()
         
-        guard newPass != "" && confirmPass != "" else {
-            print("empty fields")
+        guard newPass != "" || confirmPass != "" else {
+            newPasswordField.errorMessage = newPass     == "" ? "Empty field" : nil
+            passConfirmField.errorMessage = confirmPass == "" ? "Empty field" : nil
             return false
         }
         
-        guard newPass?.characters.count >= 6 && confirmPass?.characters.count >= 6 else {
-            print("fields with less than 6 chars")
+        guard newPass != "" else {
+            newPasswordField.errorMessage = "Empty field"
+            return false
+        }
+        
+        guard confirmPass != "" else {
+            passConfirmField.errorMessage = "Empty field"
+            return false
+        }
+        
+        guard newPass?.characters.count >= 6 else {
+            newPasswordField.errorMessage = "password is too short"
             return false
         }
         
         guard newPass == confirmPass else {
-            print("different passwords")
+            passConfirmField.errorMessage = "confirmation is different"
             return false
         }
         
